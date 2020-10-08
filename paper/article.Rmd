@@ -1,0 +1,347 @@
+---
+title:  |
+        | Long Article Title:
+        | A Very Long Subtitle
+author: 
+  - Danilo Freire[^freire]
+  - Umberto Mignozzetti[^mignozzetti]
+date: \today
+thanks: "The authors thank Professors John and Jane Doe for their helpful comments."
+abstract: "This is a personal article template for RMarkdown. It uses Linux Libertine and Inconsolata fonts, British English, double-spaced text and numbered sections. The colours are personalised too: URLs are in dark blue, internal links are in mahogany and the table of contents is in black. The template also has pre-formatted entries for the abstract, keywords and JEL classification codes. You need to install `R` (and the `rmarkdown` package), `pandoc` and a `TeX` system to compile the pdf. In case you don't want to download large `TeX` binaries, I recommend you to install the great `TinyTeX R` package. A quick note: if you want to use colons in the abstract or the `thanks` entry, please don't forget to put the whole text in quotes. Otherwise, YAML might not parse it correctly. I hope you find this template useful and feel free to send me a message if you have any suggestions."
+abstractspacing: double
+keywords: R Markdown; pandoc; template
+jelcodes: A00, B11, C22
+fontsize: 12pt
+margin: 2cm
+urlcolor: darkblue
+linkcolor: Mahogany
+citecolor: Mahogany
+spacing: double
+papersize: a4paper
+bibliography: references.bib
+biblio-style: apalike
+output:
+  pdf_document:
+    citation_package: natbib
+    fig_caption: yes
+    number_sections: yes
+    keep_tex: no
+    toc: no
+    toc_depth: 3
+    template: article-template.latex
+---
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+# If you need to install any package while knitting the document
+r <- getOption("repos")
+r["CRAN"] <- "https://cran.rstudio.com/"
+options(repos = r)
+if (!require("kableExtra")) {
+    install.packages("kableExtra")
+}
+```
+
+[^freire]: Independent Researcher,
+[`danilofreire@gmail.com`](mailto:danilofreire@gmail.com),
+<http://danilofreire.github.io>.
+
+[^mignozzetti]: Visiting Assistant Professor, Quantitative Theory and Methods
+Department, Emory University, 532 North Kilgo Circle, 4^th^ Floor, Atlanta, GA
+30322, USA,
+[`umberto.mignozzetti@emory.edu`](mailto:umberto.mignozzetti@emory.edu),
+<http://umbertomig.com>.
+
+\newpage
+
+# Introduction
+\label{sec:intro}
+
+The *Aedes aegypti* mosquito species is the major vector of several arboviral
+diseases worldwide, including dengue, yellow fever, Zika, and chikungunya
+[@burt2012chikungunya; @jansen2010dengue; @leta2018global;
+@thangamani2016vertical]. Over the past 30 years, arboviral incidence has
+increased exponentially, with estimates suggesting that dengue is endemic in
+around 100 countries, causing 400 million infections and 22 thousands deaths
+each year [@bhatt2013global; @cdc2020dengue; @musso2018unexpected]. Since there
+are no safe vaccines for most *A. aegypti*-transmitted diseases
+[@sridhar2018effect; @world2017dengue], we have seen a number of recent dengue
+and Zika outbreaks in Asia, the Caribbean, South America, and the United States
+[@carlson2016ecological; @leta2018global]. Chikungunya virus, which was endemic
+only to Africa, has already been reported in every region of the world
+[@grandadam2011chikungunya; @kraemer2015global; @mayer2017emergence].
+
+Mosquito control is the primary strategy to prevent *A. aegypti*-borne
+infections [@beatty2010best; @eisen2009proactive; @ooi2006dengue]. The World
+Health Organization recommends the elimination of containers and the use of
+insecticide to reduce vector breeding, specially in settings where human-vector
+contacts are frequent, such as schools, hospitals, and workplaces
+[@WHO2012global; @world2020denguecontrol]. However, cleaning breeding sites and
+insecticide spraying are labour-intensive processes and are often carried out
+inconsistently [@paz2015dengue; @siddiqui2016use; @WHO2012global]. In most
+endemic countries, local governments are the main responsible for providing
+vector control, thus increasing the productivity of civil servants is essential
+to the effectiveness of anti-mosquito programmes worldwide.
+
+Financial incentives are crucial determinants of worker performance in public
+and private organisations [@burgess2003role]. While studies indicate that
+reward schemes may improve the productivity of health care providers
+[@basinga2011effect; @flodgren2011overview; @ulrich2005does], it is unclear how
+they affect the motivation of workers fighting *A. aegypti*. Moreover, there is
+no evidence about the impact of financial incentives on patient-level arboviral
+outcomes, such as virus-related hospitalisations or disease incidence
+[@flodgren2011overview].  
+
+To explore how monetary incentives affect health worker motivation and patient
+outcomes, we ran a randomised field experiment in the city of Rio Verde,
+Brazil, which has experienced a peak in dengue infections in the last years. We
+hired and trained teams of health care workers to perform simplified procedures
+designed to exterminate *A. aegypti* breeding sites. Our experiment consisted
+of two treatment arms plus a control condition. The control group received a
+fixed compensation for completing their task, and we offered individual or
+collective bonuses to those allocated in the two treatment groups. We then
+measured the impact of the compensations schemes on the number of breeding
+sites discovered, larvae exterminated, and city-level dengue incidence 30, 60,
+and 120 days after our intervention.
+
+We find that monetary rewards increase the number of cleaned breeding sites in
+both treatment conditions (individual and team bonuses) and collective
+financial incentives also improve larvae extermination. Our results show that
+the control group has a high incidence of houses visited in less than two
+minutes apart from each other, which suggests that workers may cheat in the
+absence of financial incentives. When we combine both treatments, we also find
+that the intervention decreases dengue incidence in 10.3%, but the results are
+not robust. In summary, we provide experimental evidence that performance
+bonuses increase productivity in public service delivery and that small
+financial incentives to health workers may improve patient outcomes and reduce
+hospitalisation costs in *Aedes*-endemic countries.
+
+# Methods
+\label{sec:methods}
+
+We ran a randomised field experiment at the individual level in the municipality
+of Rio Verde, Brazil, which had experienced a major dengue outbreak one year
+prior to our experiment (2017). We used Facebook advertisements to recruit
+potential participants. The advertisements directed applicants to a Google Forms
+web page that requested their contact information, and we sent a pre-treatment
+demographic questionnaire to every applicant who provided a valid email address.
+At this stage, we excluded all individuals under 18 years old. We invited the
+remaining applicants to our training session, which we ran on the 4^th^ of May,
+2018. The meeting consisted of a lecture on *A. aegypti* vector biology and
+practical instructions on how to find and exterminate mosquito breeding sites.
+Those who did not attend the session were also excluded from the study. 
+
+Table \ref{tab:covbal} displays the attrition tests, the covariate balance
+tests, and the territorial assignment before and after applying propensity
+score matching [@dehejia2002propensity; @rosenbaum1985constructing] on census
+tract characteristics. We observe no significant differences regarding
+attrition rates, reinforcing that the treatment was correctly randomised.
+Participants' demographics are also similar across all groups, and the matching
+technique successfully balanced the territorial assignment.
+
+\begin{table}[ht] \centering 
+\small
+  \caption{Covariate Balance on Individual Characteristics} 
+  \label{tab:covbal} 
+\begin{tabular}{@{\extracolsep{5pt}} lcccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Variable & Attrition & Control & Individual & Collective & F-Statistic & P-Value \\
+\hline \\[-1.8ex] 
+& & \multicolumn{5}{l}{Panel A: Attrition Pattern Test} \\
+\hline \\[-1.8ex]
+Age &  26.17 & 25.04 & 26.07 & 26.00 & 0.461 & 0.710 \\ 
+Female &   0.72 &  0.79 &  0.79 &  0.74 & 0.805 & 0.492 \\ 
+Has Vehicle &   0.35 &  0.27 &  0.37 &  0.37 & 0.651 & 0.582 \\ 
+N & 341 & 73 & 71 & 73 &  &  \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\begin{tabular}{@{\extracolsep{5pt}} lccccc} 
+Variable & Control & Individual & Collective & F-Statistic & P-Value \\
+\hline \\[-1.8ex] 
+& \multicolumn{5}{l}{Panel B: Covariate Balance on Individual Characteristics} \\
+\hline \\[-1.8ex]
+Altruist &  0.63 &  0.68 &  0.62 & 0.239 & 0.788 \\ 
+Age & 25.01 & 26.00 & 26.90 & 0.754 & 0.472 \\ 
+Religiosity &  0.53 &  0.38 &  0.45 & 1.487 & 0.228 \\ 
+Pol. Engagement &  0.69 &  0.65 &  0.68 & 0.163 & 0.849 \\ 
+Soc. Engagement &  0.59 &  0.62 &  0.67 & 0.454 & 0.636 \\ 
+Above 2 Min. Wage &  0.34 &  0.35 &  0.29 & 0.336 & 0.715 \\ 
+FB Popularity &  0.53 &  0.56 &  0.58 & 0.175 & 0.840 \\ 
+\hline \\[-1.8ex] 
+& \multicolumn{5}{l}{Panel C: Unmatched Covariate Balance on Territorial Assignment} \\
+\hline \\[-1.8ex] 
+Number of Houses & 276.41 & 243.58 & 255.20 &  2.368 & 0.098 \\ 
+Number of Households & 885.67 & 750.34 & 785.18 &  3.765 & 0.026 \\ 
+Avg. Household Size &   3.21 &   3.07 &   3.07 &  6.566 & 0.002 \\ 
+Log Avg. Income &   6.47 &   6.86 &   6.85 &  9.213 & 0.000 \\ 
+Cases Before Treatment &  13.78 &   5.94 &   4.66 & 15.638 & 0.000 \\ 
+\hline \\[-1.8ex] 
+& \multicolumn{5}{l}{Panel D: Matched Covariate Balance on Territorial Assignment} \\
+\hline \\[-1.8ex] 
+Number of Houses & 276.41 & 282.04 & 281.19 & 0.068 & 0.935 \\ 
+Number of Households & 885.67 & 903.04 & 900.39 & 0.060 & 0.942 \\ 
+Avg. Household Size &   3.21 &   3.21 &   3.20 & 0.008 & 0.992 \\ 
+Log Avg. Income &   6.47 &   6.45 &   6.45 & 0.084 & 0.920 \\ 
+Cases Before Treatment &  13.78 &  10.24 &  10.77 & 1.443 & 0.240 \\ 
+\hline
+Pairs & 34 & 34 & 35 &  &  \\ 
+N & 68 & 68 & 70 &  &  \\
+\hline\hline \\[-1.8ex] 
+\end{tabular}
+\end{table}
+
+\normalsize
+
+The intervention took place on the 5^th^ of May, 2018. We randomly assigned
+subjects to three groups. To avoid spillovers, we directed each group to
+separate headquarters before the intervention began. Participants worked in
+pairs and were aware of other groups, but they did not know about the different
+treatment conditions. In the control group ($n = 68$), we told participants
+that they would receive a flat payment regardless of their performance (BRL 110
+/ USD 20 per subject). In the individual treatment group ($n = 68$), we
+informed subjects that we would rank individual performances, and that we would
+double the compensation for all of those who performed above the sample median
+(BRL 220 / USD 50 per subject). In the collective treatment group ($n = 70$),
+we explained that we would rank the pair performance and double the payment for
+teams who presented results better than the sample median (BRL 220 / USD 50 per
+subject). The teams received a leaflet with a map of the area they should
+cover. The route comprised of two to three blocks and contained around 120
+houses.
+
+A typical visit to a household consisted of the following steps. First,
+participants rang the doorbell in a house and explained that the municipality
+had experienced a dengue fever outbreak. They instructed dwellers on how to
+lower dengue incidence and handed them a leaflet with information about dengue
+prevention practices. Our subjects then requested whether they could inspect
+the person's yard. If granted permission, they entered the household and
+searched for clean breeding sites, such as pots filled with clear water, and
+recipients containing larvae. Upon exterminating a breeding site (pouring out
+the accumulated water, for example), subjects had to report their task by
+taking a photo on their cellphones. When they discovered larvae, they had to
+record a video showing the larvae before exterminating it. At the end of their
+visit, they had to take a picture of the household to account for their
+presence in the location.
+
+The primary outcome in this study is field productivity of the health care
+workers. We measure worker productivity by coding cellphone data collected
+during the intervention into four indicators: 1) the number of houses visited;
+2) the number of houses visited within less than two minutes; 3) the number of
+breeding sites removed and cleaned; 4) the number of exterminated larvae. We
+employed ordinary least squares with robust standard errors [@imbens2016robust].
+We estimated the statistical power of the study assuming a treatment effect of
+0.15 standard deviations. 
+
+The second outcome of interest is dengue incidence in the municipality of Rio
+Verde. The Rio Verde Mayor's Office provided us with its annual health care
+report, which contains the dates and personal information of patients who had
+dengue fever and received hospital treatment from January to September 2018. We
+georeferenced the home addresses of the patients and compared the incidence map
+with the distribution of our intervention. We use a differences-in-differences
+estimator to assess the impact of our experiment [@angrist2008mostly;
+@card1994minimum]. 
+
+We pre-registered the experiment on the Evidence in Governance and Policy
+(EGAP) website (<https://osf.io/6q8vu/>) and received IRB approval from New
+York University (IRB-FY2017-17) and Fundação Getulio Vargas (IRB-01/2017). The
+funders of this study had no influence over the formulation, organisation,
+analysis, and interpretation of the outcomes. Health care workers gave written
+consent upon filling the Qualtrics questionnaire. During the intervention, the
+occupants of households inspected for breeding sites and larvae gave oral
+consent. For more information on the experimental design, sample
+characteristics, exclusion criteria, and estimation methods, please refer to
+the Supplementary Material.
+
+# Results
+\label{sec:results}
+
+We find that providing financial incentives to health care worker significantly
+increase their field productivity. Both our individual bonus and our collective
+bonus treatment groups find more *A. aegypti* breeding sites and exterminate
+more mosquito larvae than participants in the control condition, which did not
+receive performance compensations. Our results also indicate that the
+intervention decreases city-wide levels of dengue incidence, but the
+coefficients only reach statistical significance when we combine the two
+treatments together and contrast them with the control group. Overall, the
+findings suggest that monetary payments are an effective method of improving
+health worker performance, yet more research is needed to assess whether higher
+labour productivity leads to fewer dengue-related hospitalisations.
+
+## Field Productivity
+\label{sub:productivity}
+
+We have four indicators to measure health worker productivity. The first is the
+number of houses visited during the intervention. The second indicator is the
+number of houses in which the visits lasted for less than two minutes. The
+third dependent variable is the number of *A. aegypti* breeding sites removed
+and cleaned. Our fourth variable indicates the number of mosquito larvae
+exterminated. Table \ref{tab:productivity} summarises the experimental results.
+
+\begin{table}[ht] 
+  \centering 
+  \small
+  \caption{Field Productivity} 
+  \label{tab:productivity} 
+\begin{tabular}{@{\extracolsep{5pt}}lcccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent Variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & Houses & Houses & Breeding & Larvae \\ 
+& Visited & Visited ($<$ 2min.) & Sites & Exterminated \\ 
+\hline \\[-1.8ex] 
+ Individual Bonus & $-$9.879$^{**}$ & $-$8.044$^{**}$ & 25.118$^{***}$ & 0.022 \\ 
+  & (4.906) & (4.018) & (5.251) & (0.058) \\ 
+  & & & & \\ 
+ Collective Bonus & $-$7.554$^{*}$ & $-$6.479$^{*}$ & 21.512$^{***}$ & 0.163$^{**}$ \\ 
+  & (4.428) & (3.571) & (4.049) & (0.076) \\ 
+  & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 197 & 197 & 197 & 197 \\ 
+Residual SE & 27.301 & 22.153 & 30.545 & 0.425 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{Robust standard errors in parentheses. $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+Subjects who received monetary incentives, either alone or in pairs, visited
+fewer houses than those who did not earn financial rewards. While the result
+may seem counter-intuitive, it actually attests the effectiveness of the
+treatment. This is because we offered incentives for subjects to exterminate
+larvae and find breeding sites, but not to visit a greater number of
+households. As a result, participants in the two treatment groups did a
+thorough job in each household, which explains the lower number of visits
+during the allotted time. We find that subjects in the individual and in the
+collective bonus groups visited $-9.879$ (CI: [XXX, XXX], $p-$value $= 0.XXX$)
+and $-7.554$ (CI: [XXX, XXX], $p-$value $= 0.XXX$) households, respectively.
+
+Our second indicator provides further evidence in favour of our argument. We
+see that the two groups which earned performance bonuses spent more time in the
+households, as their number of houses visited for less than two minutes is
+significantly lower than those of the control condition. On average,
+participants in the individual bonus treatment arm visited $-8.044$ (CI: [XXX,
+XXX], $p-$value $= 0.XXX$) fewer houses than the control, and those in the
+collective bonus group visited $-6.479$ (CI: [XXX, XXX], $p-$value $= 0.XXX$).
+
+Incentivised teams find and clean more breeding sites than non-incentivised
+ones. Individually incentivised health workers find 25.118 (CI: [XXX, XXX],
+$p-$value $= 0.XXX$) more breeding sites than the non-incentivised control
+group. The effect for those in the collective bonus group is 21.512 (CI: [XXX,
+XXX], $p-$value $= 0.XXX$), slightly smaller than for the first treatment.
+
+Collective incentivized teams are more effective in finding larvae. In our
+study, collectively incentivized subjects have 16.3\% more chance to find
+larvae than non incentivized workers. Finding larvae is harder, and the
+detection chances profit from teamwork. If teams are cooperating, searching the
+house becomes more natural, and they can coordinate to do a more thorough job.
+Additionally, the detection tends to be excludable: one individual finding
+larvae makes the chances of keep finding larvae in the household considerably
+smaller. Collective bonus is not excludable within the teams, making them
+cooperate more to get the reward.
+
+
+
+
+\newpage
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{5pt}

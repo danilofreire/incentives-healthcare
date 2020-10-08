@@ -1,0 +1,523 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[super]{nth}
+\usepackage{libertine}
+\usepackage{setspace}
+\usepackage{color, graphics, graphicx}
+\usepackage[libertine]{newtxmath}
+\usepackage[scaled=.95]{inconsolata}
+\usepackage{underscore, lscape, dcolumn, arydshln}
+\usepackage[usenames, svgnames, dvipsnames]{xcolor}
+\usepackage[sharp]{easylist}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[font=small, format=plain, labelfont=bf,up, textfont=it,up]{caption}
+\usepackage[pdftex, 
+            plainpages=false,
+            pdfpagelabels,
+            pagebackref=false,
+			colorlinks=true,
+			citecolor=Mahogany,
+			linkcolor=Mahogany,
+			urlcolor=darkblue,
+			filecolor=darkblue,
+			bookmarksopen=true]{hyperref}
+\usepackage{tabularx}
+\usepackage[para, online, flushleft]{threeparttable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{natbib}
+\usepackage{subcaption, rotating}
+\usepackage{pgf, tikz, pgfplots, mathrsfs}
+\usepackage[brazilian, UKenglish]{babel}
+\usepackage[UKenglish]{isodate}
+\cleanlookdateon
+\setcitestyle{aysep={}}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+	 \NAT@nmfmt{\NAT@nm}%
+	 \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+	 \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+	 \NAT@nmfmt{\NAT@nm}%
+	 \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+   {\@citeb\@extra@b@citeb}%
+	 \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+  {}{}
+\makeatother
+
+\usetikzlibrary{positioning,arrows,calc,fit}
+\pgfplotsset{compat=newest}
+\definecolor{wrwrwr}{rgb}{0.38,0.38,0.38}
+\definecolor{rvwvcq}{rgb}{0.08,0.38,0.75}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.55}
+\tikzset{
+block/.style={
+  draw,
+  rectangle,
+  minimum height=1.5cm,
+  minimum width=3cm, align=center
+  },
+line/.style={->,>=latex'}
+}
+\tikzset{container/.style={draw, rectangle, dashed, inner sep=1.5em}}
+\bibpunct{(}{)}{;}{a}{}{,}
+\pagestyle{plain}
+\renewcommand{\arraystretch}{1.2}
+\sloppy
+
+%\renewcommand{\thepage}{}
+\renewcommand{\bibname}{References}
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+\newcommand{\wh}[1] {\widehat { #1 }}
+
+\newcommand{\twopd}[4]{\left\{\begin{array}{ll} #1 & \text{if } #2 \\ #3 & \text{if } #4 \end{array} \right.}
+
+\newcommand{\twopdo}[3]{\left\{\begin{array}{ll} #1 & \text{if } #2 \\ #3 & \text{otherwise} \end{array} \right.}
+
+\newcommand{\threepd}[6]{ \left\{ \begin{array}{lll} #1 & \text{if } #2 \\
+#3 & \text{if } #4 \\ #5 & \text{if } #6 \end{array} \right.}
+
+\newcommand{\threepdo}[5]{ \left\{ \begin{array}{lll} #1 & \text{if } #2 \\
+#3 & \text{if } #4 \\ #5 & \text{otherwise} \end{array} \right.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\doublespacing
+
+\title{Individual and Collective Incentives for Preventive Healthcare Provision: \\ Evidence from an Experimental \textit{Aedes aegypti} Control Programme in Brazil\thanks{We thank XXXX , and participants at the MPSA, NYU PE Seminar, and SPSA for their valuable comments. Special thanks to XXXX for their excellent research assistance. Replication materials are available at \url{http://github.com/XXXX/XXXX}.}}
+
+\author{Danilo Freire\thanks{Postdoctoral Research Associate, The Political Theory Project, Brown University, 8 Fones Alley, Providence, RI 02912, USA, \href{mailto:danilofreire@gmail.com}{\texttt{danilofreire@gmail.com}}, \url{http://danilofreire.github.io}.} 
+\and Umberto Mignozzetti\thanks{Visiting Assistant Professor, Department of XXXX, Emory University, XXXXX.}}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% \renewcommand{\abstractname}{Summary}
+% MUST INCLUDE primary outcome expressed as the difference between groups with
+% a confidence interval on that difference (absolute, not relative).
+\begin{abstract}
+\noindent
+\begin{itemize}
+  \item \textbf{Background}:
+	\item \textbf{Methods}: We run a field experiment to assess the impact of financial incentives on the productivity of health care workers in Rio Verde, Brazil.
+	  %[] The trial was pre-registered through EGAP, by the number 20180504AA and is available \hyperlink{https://osf.io/zpyfm}{here}.
+    \item \textbf{Findings}:
+	\item \textbf{Interpretation}:
+    \item \textbf{Funding}: Getulio Vargas Foundation.
+\end{itemize}
+\end{abstract}
+
+\newpage
+
+\section{Introduction}
+
+The \textit{Aedes aegypti} mosquito species is the major vector of
+several arboviral diseases worldwide, including dengue, yellow fever, Zika, and
+chikungunya \citep{burt2012chikungunya, jansen2010dengue, leta2018global,
+thangamani2016vertical}. Over the past 30 years, arboviral incidence has
+increased exponentially, with estimates suggesting that dengue is endemic in
+around 100 countries, causing 400 million infections and 22 thousands deaths
+each year \citep{bhatt2013global, cdc2020dengue, musso2018unexpected}. Since
+there are no safe vaccines for most \textit{A. aegypti}-transmitted diseases
+\citep{sridhar2018effect, world2017dengue}, we have seen a number of recent
+dengue and Zika outbreaks in Asia, the Caribbean, South America, and the United
+States \citep{carlson2016ecological, leta2018global}. Chikungunya virus, which
+was endemic only to Africa, has already been reported in every region of the
+world \citep{grandadam2011chikungunya, kraemer2015global, mayer2017emergence,
+sourisseau2007characterization}.
+
+Mosquito control is the primary strategy to prevent \textit{A.
+aegypti}-borne infections \citep{beatty2010best, eisen2009proactive,
+ooi2006dengue}. The World Health Organization recommends the elimination of
+containers and the use of insecticide to reduce vector breeding, specially in
+settings where human-vector contacts are frequent, such as schools, hospitals,
+and workplaces \citep{WHO2012global, world2020denguecontrol}. However,
+cleaning breeding sites and insecticide spraying are labour-intensive processes
+and are often carried out inconsistently \citep{paz2015dengue, siddiqui2016use,
+WHO2012global}. In most endemic countries, local governments are the main
+responsible for providing vector control, thus increasing their productivity is
+crucial to the effectiveness of anti-mosquito programmes worldwide.
+
+Financial incentives are important determinants of worker performance in
+public and private organisations \citep{burgess2003role}. While studies
+indicate that reward schemes may improve the productivity of health care
+providers \citep{basinga2011effect, flodgren2011overview,
+miller2012effectiveness, ulrich2005does}, it is unclear how they affect the
+motivation of workers fighting \textit{A. aegypti}. Moreover, there is no
+evidence about the impact of financial incentives on patient-level arboviral
+outcomes, such as virus-related hospitalisations or disease incidence
+\citep{flodgren2011overview}.  
+
+To explore how monetary incentives affect health worker motivation and patient
+outcomes, we run a randomised field experiment in the city of Rio Verde, Brazil,
+which has experienced a peak in dengue infections in the last years. We hired
+and trained teams of health care workers to perform simplified procedures
+designed to exterminate \textit{Aedes aegypti} breeding sites. Our experiment
+consists of two treatment arms plus a control condition. The control group
+received a fixed compensation for completing their task, and we offered
+individual or collective bonuses to those allocated in the two treatment groups.
+We then measured the impact of the compensations schemes on the number of
+breeding sites discovered, larvae exterminated, and city-level dengue incidence
+30, 60, and 120 days after our intervention.
+
+We find that monetary rewards increase the number of cleaned breeding sites in both
+treatment conditions (individual and team bonuses) and collective financial
+incentives also improve larvae extermination. Our results show that the
+control group has a high incidence of houses visited in less than two minutes
+apart from each other, which suggests that workers may cheat in the absence of
+financial incentives. When we combine both treatments, we also find that the
+intervention decreases dengue incidence in 10.3\%, but the results are not
+robust. In summary, we provide experimental evidence that performance bonuses
+increase productivity in public service delivery and that small financial
+incentives to health workers may improve patient outcomes and reduce
+hospitalisation costs in \textit{Aedes}-endemic countries.
+
+\tikzstyle{box1} = [rounded corners, rectangle, draw = black, thin,
+fill=red!65!blue!20, text width = 15cm, minimum height = 3.7cm]
+
+\begin{figure}
+    \centering
+    \label{box:context}
+\begin{tikzpicture}
+ \linespread{1.0}
+\node (context) [box1] {\textbf{Research in Context}
+\footnotesize
+\begin{itemize}
+    \item \textbf{Evidence before this study}: Controlling the spread of Aedes-borne diseases is a matter of public policy, wherein healthcare systems and communities must collaborate in performing preventive practices. The terms and procedures of this cooperation are not yet consolidated, as a number of collective action problems interpose. A number of trials testing chemical and mechanical extermination of adult mosquitoes show they are inefficient, and aiming at breeding sites consistently produces better results. The main unresolved issue surrounds the fact that controlling this type of vector requires sustained local-level practices by ordinary people, who demand constant monitoring by health agents.
+    \item \textbf{Added value of this study}: We bring novel insight by investigating how to increase the productivity of the workers who link health agencies to the general population. We find teams of health workers respond to performance-based compensation with better quality of work, which should lead to lower infection rates.
+    \item \textbf{Implications of all the available evidence}: Our results bridge the gap between the definition of appropriate strategies to control viral epidemics, and how to execute them efficiently. Increasing incentives can improve policy implementation, optimising public investment by lifting clinic treatment burdens from healthcare systems. Our conclusions transpose \textit{Aedes}-borne diseases, and the evidence we present can guide any policy that depends on unskilled health service provision.
+\end{itemize}};
+
+\end{tikzpicture}
+\end{figure}
+
+\section{Methods}
+
+\subsection{Study design and clusters}
+
+%% Rewrite: should we talk about design here? The subsection only mentions location. And we don't have clusters, do we?
+
+We conducted the experiment at the participant level, conducted in the municipality of Rio Verde, in Brazil. Rio Verde is the fourth-largest town in the state of Goias, with a population of about 229,000. Out of the potential cities that could host the experiment, Rio Verde experienced the most substantial disease occurrence. The pre-analysis plan is available \hyperlink{https://osf.io/6q8vu/}{here}.
+
+\subsection{Study population}
+
+%%% Rewrite: reduce redundancy with the Results section
+
+We used Facebook advertisements to recruit potential participants in the municipality. The advertisements directed applicants to a Google Forms web page which requested their contact information. We sent a pre-treatment demographic questionnaire to the applicants who provided a valid email address. At this stage, we excluded all individuals under 18 years old. We invited the remaining applicants to our training sessions. Those who did not attend the session were also excluded from the study. Lastly, we also excluded participants who did not complete their tasks in the field experiments. Together, all these steps reduced our original sample in 45.8\%.
+
+We received IRB approval from the New York University (IRB-FY2017-17) and Fundação Getulio Vargas (IRB-01/2017). Health care workers gave written consent for participation in the experiment upon filling the Qualtrics survey. During the intervention, the occupants of households inspected for breeding sites and larvae gave oral consent.
+
+\subsection{Randomisation and masking}
+
+We assign participants to three types of monetary incentives: flat compensation regardless of performance (control group), an individual performance bonus (individual treatment), and a peer performance bonus (collective treatment). We allocate the subjects using block randomisation applied on seven variables included in the pre-intervention survey.
+
+We use propensity score matching to weight according to census data. % Rewrite and include in the previous paragraph.
+
+Participants were randomised upon completion of the training session and attendance on intervention day. To avoid spillovers, we direct them to three separate headquarters (HQs), one for each treatment. The experiment is single-blinded, as participants were aware that other groups of workers were in action, but unaware of the differences between their compensation scheme (treatment) and others'. % Rewrite to change verb tenses to present tense, if possible.
+
+\subsection{Procedures}
+
+The intervention started around 11:00 AM and ended around 6:00 PM on the 5th of May, 2018. The treatment was delivered at around 10:30 AM after participants had received their monitoring cellphones and working kits.\footnote{Participants had attended a training session the day before (May 4, 2018), where they were instructed on how to perform measurements and use the equipment. They were also briefly educated on the biology of \textit{Aedes} mosquitoes and how they spread diseases.} The head research assistant in each headquarter informed the participants collectively of how each treatment status operated. Participants were paired randomly,\footnote{They worked in pairs because governmental programs for monitoring \textit{Aedes aegypti} in similar formats use pairs of health workers.} and in a one-on-one discussion, the research assistants reinforced the treatment for each of the pairs.
+
+% Change passive voice to active above, preferably using the present tense
+
+The treatment delivery had the following guidelines. All groups were equally informed that we would measure and monitor their performance in the field. In the control group, we told participants that their compensation would be assigned without a performance assessment. In the individual treatment group, we explained participants that we would rank individual performances, and anyone reaching performance above the median would double their compensation. In the collective treatment group, we explained that we would rank the team performance, which was the sum of both participant's performances, and teams reaching performance above the median would double their compensation. Baseline field compensation was BRL 110.00. Those who successfully doubled it received BRL 220.00. The teams received a leaflet with a map of the area they should cover. The route was comprised of two to three blocks, containing around 120 houses. The blocks were within a census sector, to facilitate the use of census data afterwards.
+
+% Same. Also, add values in dollars.
+
+A typical visit to a household consisted of the following steps. First, the participants rang the doorbell in the house and explained that the municipality was experiencing a dengue fever outbreak.\footnote{Despite the widespread news coverage of Zika in the US, people have little knowledge about it in Brazil. Dengue, on the other hand, in constantly in the in the news since the 1980s. In fact, in Brazil, the \textit{Aedes aegypti} is popularly referred to as ``the Dengue mosquito''.} They instructed dwellers on how to lower the disease incidence, protect their families, and handed them a leaflet with information about appropriate dengue prevention practices. Our subjects then requested whether they could inspect the person's yard. When granted permission, they entered the household and searched for clean breeding sites, such as pots filled with clear water, and recipients containing larvae. Upon dismantling (\textbf{is this word used in this context?}) a breeding site (pouring out the accumulated water, for example), they had to report it by taking a photo on their cellphones. When they discovered larvae, they had to record a video showing the larvae before exterminating it. At the end of their visit, they had to take a picture of the household to account for their presence in the place.
+
+% Good!
+
+All of the image evidence collected by the participants was geolocated through the cellphones. At the end of the day, all subjects reported back to their respective headquarters, and presented the equipment back to the head research assistant. The performance parameters were calculated in the treatment groups based on the photos and videos recorded, and, accordingly, all workers received the promised compensation in cash.
+
+% Again: change passive voice
+
+\subsection{Outcomes}
+
+The primary outcome in this study is field productivity of the health care workers. We measure worker productivity by coding cellphone data collected during the intervention into four indicators: 1) the number of houses visited; 2) the number of houses visited within less than two minutes; 3) the number of breeding sites removed and cleaned; 4) the number of exterminated larvae.
+
+The second outcome is disease incidence in the municipality of Rio Verde. The Rio Verde Mayor's Office provided us with its annual health care report, which contains the dates and personal information of people who presented dengue fever symptoms and received hospital treatment from January to September 2018. We accessed the patients' addresses, and were able to map the areas of the city with the most cases and compare it with the distribution of our intervention. (\textbf{rewrite last sentence})
+
+\subsection{Statistical Analysis}
+
+The intention-to-treat population of our control and individual bonus treatment had 68 subjects and the collective bonus treatment included 69 individuals. These sample sizes were defined according to the availability of persons who filled in all the forms, attended the training session, and showed up to implement the intervention on May 5th, 2018. The actual populations, discarding subjects who withdrew from the experiment mid-intervention, were: Control (n = 58), individual bonus treatment (n = 64), and collective bonus treatment (n = 75).
+
+% Checar se a informação não está repetida, cortar voz passiva se possível
+
+We evaluate the effect of the treatment on disease incidence and field productivity using four types of statistical models: Balance tests, performance outcome analysis, disease incidence analysis, and differences-in-differences analysis. To perform the test power calculations, we assumed an effect of 0.15 standard deviations. We used statistics software R (version 3.6.3). The data was monitored by our teams of researchers, and the trial was registered under \hyperlink{https://osf.io/zpyfm}{EGAP ID 20180504AA}.
+
+% Já fizemos comentários a respeito deste parágrafo
+
+\subsection{Role of the funding source}
+
+The authors are solely responsible for the design, implementation, and analyses of this experiment. They also assume responsibility for the writing of this article and all conclusions drawn from the results. The funders had no influence over the formulation, organisation, analysis, and interpretation of the outcomes. UM is responsible for the study design, the implementation of the intervention, and the statistical analysis. DF wrote the article and made publishing decisions.
+
+% Já corrigido
+
+\section{Results}
+% The text in this section needs more flow, but i don't know how to give it flow. It really does seem like we're just meant to state info.
+
+% Paragraphs in this section should follow the order:
+% a description of number of participants recruited and included in analysis;
+% baseline characteristics;
+% findings for the primary outcome,
+% secondary outcome,
+% adverse events, : a prefeitura demorou um ano para enviar os dados de infecção do município.
+% and finally any post-hoc or sensitivity analyses.
+
+%No subheadings should be used in the Results or the Discussion sections.
+% The first paragraph should state the exact dates (eg Jan 1 2013, to Dec 31 2014) between which participants were recruited, and include a trial profile.
+
+% Add the date in which the Facebook ad was launched. The end date is May 4th.
+
+Participants could enlist for eligibility evaluation from the day the Facebook advertisement was launched, on April 23, %essa é a data do fb ad que está no appendix. não sei se essa foi a data de lancamento do form, though.
+2018. They oficially enrolled by attending the intervention in the Rio Verde municipality, Goias, Brazil on May 5th, 2018. They were randomised at around 10 am that day, one hour before the treatment was administered. Of the 558 who read the Facebook advertisement and filled in the Google Form attached, only 407 responded to us and filled in the Qualtrics survey. They were all notified of the following steps via email, but, the day before the intervention (May 4th), only 256 eligible subjects attended the training session. We had a final sample of 205 enrolled participants, and a total of 197 subjects by the end of the experiment had their performance analysed.
+
+\tikzstyle{box2} = [rounded corners, rectangle, text centered, draw = red!65!blue!20, ultra thick, fill=red!20!blue!3.5, minimum width = 4cm, minimum height = 1cm]
+\tikzstyle{box3} = [rounded corners, rectangle, text centered, draw = red!65!blue!20, ultra thick, fill=red!20!blue!3.5, minimum width = 2cm, minimum height = 1cm]
+\tikzstyle{box4} = [rounded corners, rectangle, text centered, draw = red!65!blue!20, very thick, fill=gray!10, minimum width = 2cm, minimum height = 1cm]
+\tikzstyle{arrow} = [draw = red!65!blue!20, ultra thick,->,>=stealth]
+
+\begin{figure}
+    \centering
+    \caption{Trial Profile}
+    \label{fig:trial_profile}
+
+    \begin{tikzpicture}[node distance = 2.4cm, xshift = 1.5cm, centered]
+
+    \footnotesize
+\linespread{1.0}
+
+     \node (form) [box2] {\textbf{558} filled in Google Form};
+     \node (qualtrics) [box2, below of = form] {\textbf{407} filled in Qualtrics survey};
+     \node (training) [box2, below of = qualtrics] {\textbf{256} showed up for the training session};
+     \node (int) [box2, below of = training] {\textbf{205} showed up for the intervention};
+     \node (treat1) [box3, below of = int] {Individual treatment \textbf{(n = 68)}};
+     \node (ctrl) [box3, left of = treat1, xshift = -3.5cm] {Control \textbf{(n = 68)}};
+     \node (treat2) [box3, right of = treat1, xshift = 3.5cm] {Peer treatment \textbf{(n = 69)}};
+     \node (sample1) [box3, below of = treat1, yshift = -1cm] {\textbf{64} received individual bonus};
+     \node (control) [box3, below of = ctrl, yshift = -1cm] {\textbf{58} received control intervention};
+     \node (sample2) [box3, below of = treat2, yshift = -1cm] {\textbf{75} received collective bonus};
+
+     \begin{scriptsize}
+     \node (at1) [box4, below of = form, xshift = 3.5cm, yshift = 1.2cm] {\textbf{151} did not respond};
+     \node (at2) [box4, below of = qualtrics, xshift = 3.5cm, yshift = 1.2cm] {\textbf{151} did not respond};
+     \node (at3) [box4, below of = training, xshift = 3.5cm, yshift = 1.2cm] {\textbf{51} did not show up};
+     \node (at4) [box4, below of = ctrl, xshift = 2cm, yshift = .7cm] {\textbf{10} did not adhere to protocol};
+     \node (at5) [box4, below of = treat1, xshift = 1.93cm, yshift = .7cm] {\textbf{4} did not adhere to protocol};
+     \node (at4) [box4, below of = treat2, xshift = 1.23cm, yshift = .7cm] {\textbf{6} subjects joined};
+     \end{scriptsize}
+
+     \draw [arrow] (form) -- (qualtrics);
+     \draw [arrow] (qualtrics) -- (training);
+     \draw [arrow] (training) -- (int);
+     \draw [arrow] (int) -- (ctrl);
+     \draw [arrow] (int) -- (treat1);
+     \draw [arrow] (int) -- (treat2);
+     \draw [arrow] (ctrl) -- (control);
+     \draw [arrow] (treat1) -- (sample1);
+     \draw [arrow] (treat2) -- (sample2);
+     \draw [arrow] (0,-1.2) -- (2.1,-1.2);
+     \draw [arrow] (0,-3.6) -- (2.1,-3.6);
+     \draw [arrow] (0,-6) -- (2.1,-6);
+    \end{tikzpicture}
+\end{figure}
+
+The average age of the participants was 25.7 [measure SD] years, of which 77.3\% were female, and 22.7\%, male. There were no relevant differences between groups in the measured baseline characteristics. Of the intention-to-treat population, 4\% of participants did not complete the intervention, but the attrition pattern test does not indicate shared characteristics that explain dropping out.
+
+%%%%%%%%%% idk why there is space between the Individual and Collective columns.
+
+% In their baseline characteristics tables, they add the SD in parenthesis next to the means, and in the contagens, they add the percentage of n that that category represents. So we need to do that as well :). They also recommend not adding F-Statistics and P-values bc those things are not supposed to matter if the randomisation was well done.
+
+
+\begin{table}[!htbp] \centering
+  \caption{Baseline Characteristics}
+  \label{tab:baseline}
+  \footnotesize
+\begin{tabular}{@{\extracolsep{5pt}}lcccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Variable & & Control & Individual & Collective\\
+\hline \\[-1.8ex]
+& \multicolumn{4}{l}{Panel A: Matched covariate balance on territorial assignment} \\
+\hline \\[-1.8ex]
+Number of Houses & & 276.41 & 282.04 & 281.19\\
+Number of Households & & 885.67 & 903.04 & 900.39\\
+Avg. Household Size & &  3.21 &   3.21 &   3.20\\
+Log Avg. Income & &  6.47 &   6.45 &   6.45\\
+Cases Before Treatment & & 13.78 &  10.24 &  10.77\\
+\hline \\[-1.8ex]
+& \multicolumn{4}{l}{Panel B: Covariate balance on participant characteristics} \\
+\hline \\[-1.8ex]
+Altruist & & 0.63 &  0.68 &  0.62 \\
+Age & & 25.01 & 26.00 & 26.90 \\
+Religiosity & & 0.53 &  0.38 &  0.45 \\
+Pol. Engagement & & 0.69 &  0.65 &  0.68 \\
+Soc. Engagement & & 0.59 &  0.62 &  0.67 \\
+Above 2 Min. Wage & & 0.34 &  0.35 &  0.29 \\
+FB Popularity & & 0.53 &  0.56 &  0.58 \\
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+& \multicolumn{4}{l}{Panel C: Attrition pattern test} \\
+\hline \\[-1.8ex]
+Variable & Attrition & Control & Individual & Collective\\
+\hline \\[-1.8ex]
+Age &  26.17 & 25.04 & 26.07 & 26.00 \\
+Female &   0.72 &  0.79 &  0.79 &  0.74 \\
+Has Vehicle &   0.35 &  0.27 &  0.37 &  0.37 \\
+N & 341 & 73 & 71 & 73 \\
+\hline \\[-1.8ex]
+\end{tabular}
+\end{table}
+
+
+
+% Add to the tables (mandatorily):
+    % - 95% Confidence Intervals of the difference between groups.
+    % - exact p-values (not necessary only if p < 0.0001)
+    % - the points that indicate decimals need to be mid-line. idk how to do that on latex :)
+
+\begin{table}[!htbp] \centering
+  \caption{Results}
+  \footnotesize
+  \label{results}
+\begin{tabular}{@{\extracolsep{5pt}}lcccccc}
+\\[-1.8ex]\hline
+\hline \\
+\multicolumn{7}{l} {\textbf{Primary Results}}\\
+\hline
+\multicolumn{7}{l} {\textit{Disease Incidence -- Differences in Differences Model}}\\
+\hline
+\\[-1.8ex]
+ & \multicolumn{6}{c}{\textit{Dependent variable:}} \\
+\cline{2-7}
+\\[-1.8ex] & N Infected & N Infected & N Infected & N Infected & N Infected &  \\
+& (full) & (12 weeks) & (8 weeks) & (4 weeks) & (indv. x collect.) & \\
+\hline \\[-1.8ex]
+ DID & $-$0.103$^{*}$ & $-$0.130 & $-$0.167 & $-$0.097 & $-$0.029 & \\
+  & (0.053) & (0.091) & (0.118) & (0.166) & (0.035) \\
+  & & & & & & \\
+\hline \\[-1.8ex]
+Observations & 7,452 & 3,312 & 1,656 & 828 & 2,201 & \\
+Residual SE & 1.004 & 1.319 & 1.442 & 1.513 & 0.381 & \\
+\\[-1.8ex]\hline
+\hline \\
+\multicolumn{7}{l} {\textit{Disease Incidence by Rio Verde Census Sector}} \\
+\hline
+\\ [-1.8ex] & \multicolumn{6}{c}{\textit{Dependent variable:}}\\
+\cline{2-7} \\
+[-1.8ex] & Before & 15 days & 30 days & 60 days & 90 days & 30-60 days \\
+& Intv. & After Intv. & After Intv. & After Intv. & After Intv. & After Intv. \\
+\hline \\[-1.8ex]
+ Individual & $-$3.534 & 0.116 & 0.551 & 1.551 & 1.534 & 0.936 \\
+  & (2.919) & (1.338) & (2.193) & (3.260) & (3.258) & (1.188) \\
+  & & & & & & \\
+ Collective & $-$3.008 & $-$1.329 & $-$0.826 & 0.344 & 1.091 & 1.068 \\
+  & (4.174) & (1.440) & (1.971) & (3.233) & (3.610) & (1.582) \\
+  & & & & & & \\
+\hline \\[-1.8ex]
+Observations & 139 & 139 & 139 & 139 & 139 & 139 \\
+Residual Std. Error & 9.442 & 4.076 & 6.095 & 8.896 & 9.341 & 3.536 \\
+\hline \\
+\multicolumn{7}{l} {\textbf{Secondary Results}}\\
+\hline
+\\
+\hline \\[-1.8ex]
+\textit{Note:} & \multicolumn{6}{l}{DID stands for the Differences-in-Differences estimator.} \\
+[-1.8ex] & \multicolumn{6}{l}{Robust standard error, clustered at the Census-Sector level, in parenthesis.} \\
+& \multicolumn{6}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+\end{table}
+
+%%%%%%%%% JUNTAR COM A TABELA ANTERIOR E INVERTER AS DUAS (VARIAVEIS COMO LINHAS)
+
+\begin{table}[!htbp] \centering
+  \caption{Field Productivity}
+  \label{prodregs}
+\begin{tabular}{@{\extracolsep{5pt}}lcccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\
+\cline{2-5}
+\\[-1.8ex] & Houses & Houses & Breeding & Larvae \\
+& Visited & Visited ($<$ 2min.) & Sites & Exterminated \\
+\hline \\[-1.8ex]
+ Individual Bonus & $-$9.879$^{**}$ & $-$8.044$^{**}$ & 25.118$^{***}$ & 0.022 \\
+  & (4.906) & (4.018) & (5.251) & (0.058) \\
+  & & & & \\
+ Collective Bonus & $-$7.554$^{*}$ & $-$6.479$^{*}$ & 21.512$^{***}$ & 0.163$^{**}$ \\
+  & (4.428) & (3.571) & (4.049) & (0.076) \\
+  & & & & \\
+\hline \\[-1.8ex]
+Observations & 197 & 197 & 197 & 197 \\
+Residual SE & 27.301 & 22.153 & 30.545 & 0.425 \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{4}{r}{Robust Standard Errors in Parenthesis. $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+\end{table}
+
+The differences-in-differences analysis of the primary results is divided into time-windows after the intervention. The treatment status represents the assigned intervention against a pure-control of non-visited households. The cross-sectional coefficient shows the experiment lowered disease incidence in 10.3\%, and is the only significant effect -- at the 10\% level. Even so, the negative signs indicate that, had there been a significant effect, our health workers' visits would have decreased dengue incidence when compared to the pure control. Thus, a more powerful intervention -- with larger samples, coverage of other neighbourhoods, or subsequent rounds of visits to the same households --, would likely show stronger results. The coefficient comparing the two primary treatment statuses -- in which the collective treatment is the main intervention, and the individual treatment is the control -- shows an impact of 2.9\% less infections in the collective bonus group, which could indicate it is more effective. Nevertheless, at standard levels, it is insignificant.
+
+Subsequently, we evaluate the disease incidence by census sector, analysing the addresses of citizens hospitalised with dengue and the households visited by our health workers. We compare the number of hospitalisations before the intervention, and afterwards within a few time-frames. Figure \ref{figc360daysdiseaseinc} illustrates the differences in disease incidence using a 60 days window before and after the intervention. The maps show a consistent reduction in the number of infected people, which is compatible with the 10.3\% reduction estimated in the differences-in-differences model.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/c3diseaseincidence60dw.pdf}
+\caption[Disease incidence.]{Disease incidence 60 days around the treatment.\label{figc360daysdiseaseinc}}
+\end{figure}
+
+Secondary results refer to subjects' field productivity. Compared to control groups, incentivised workers visited on average 8.7 less houses. This may sound counterintuitive, but it reflects their motivation to be thorough, and spend more time examining yards to guarantee they find and eliminate all breeding sites. On average, individually and collectivelly incentivised workers find 25.1 and 21.5 more breeding sites, respectively, than non-incentivised agents. Workers in the collective bonus treatment cleaned on average 50\% more breeding sites, and are 16.3\% more likely to find larvae than members of the control group.
+
+The main adversity we faced regarded access to our main outcome data. We needed to georeference the municipality's hospitalisation dataset to match the infected persons' addresses to the locations of our intervention. Since this data is considered sensitive\footnote{The dataset includes addresses, full names, social security numbers (Brazilian CPFs), and other sensitive personal information.} and is protected by law, the Rio Verde authorities decided to only make it available to us one year after the intervention took place. We eventually received the data, and encrypted it to store it safely. However, this considerably delayed our analysis.
+
+\section{Discussion}
+%%%%%%%%%% I may have been a little prolixa.
+%%% Also nothing has been revised yet.
+
+Giving health workers performance-based financial incentives has the potential to boost treatment efficacy by increased productivity. We tested two types of incentives -- collective and individual -- and found that agents who saw benefit in working harder delivered more results in terms of exterminated \textit{Aedes} breeding sites and larvae. While the literature on \textit{Aedes} control strategies usually reports the results as larval indexes -- Container, House, and Breteau -- we tried to reach for the final consequence our interventions aim. However, the effect of productivity growth on the number of infections is still unclear, as our results did not reach statistical significance. We attribute this mainly to our intervention's lack of strength, as it was restricted geographic and duration-wise.
+
+Our paper dialogues with two dimensions of health policy implementation. First, it directly treats \textit{Aedes aegypti} infestations, adding to the literature on community-based interventions, where healthcare personnel and community members partner in preventive practices. Second, it investigates the essentially economic question of how to increase the efficiency of states' investments in healthcare -- an issue that becomes especially resolute in developing countries with poor populations. These two dimensions are double-sided. Dengue does not have a known cure or specific treatment\footnote{Health agencies in most endemic countries have not implemented widespread use of the \textit{Dengvaxia®} (CYD-TDV), an existing tetravalent dengue vaccine produced by French laboratory Sanofi Pasteur, as a prevention mechanism. The WHO advises against it for seronegative individuals, while for the seropositive, it is efficacious and safe \citep{who2018vaccine}. Early 2020, the Butantan Institute in Brazil concluded tests for another dengue vaccine, but results in general population are still under observation.}, and its numbers rise every year for the past decade. As more people fall ill, the more victims there are, and the more expenditures in clinical care grow. Although preventive strategies require additional investments -- which our research design implicates --, they should diminish infection and casualties -- which we attempt to measure as our primary outcomes -- and significantly decrease the burden on already overcharged healthcare systems.
+
+% Do we cite our own meta-analysis?
+In their \citeyear{WHO2012global} 'Global Strategy for Dengue Prevention and Control 2012-2020', the WHO' recommendations all implicate engaging healthcare institutions and community work in a mixture of top-down and bottom-up approaches that focus on controlling the \textit{Aedes} vector. This is supported by entomologists for a number of reasons \citep{merzel2003reconsidering}. \citet{Abbas2014Integrated} evaluates past efforts to combat dengue and reaches the conclusion that integrated approaches are the best solution. This position opposes to exclusively vertical interventions -- such as insecticide space spraying, or installation of insecticide treated nets on doors and windows, for example -- as well as to those that rely on communities' grassroots mobilisation only. In two different systematic reviews, \citet{Heintze2007what} and \citet{Ballenger-Browning2009multi} attempted to identify what were the main characteristics of successful community-based interventions -- where 'successful' translates efficacy in reducing vector density. Yet, they found no regularities or mechanisms strong enough to recommend a particular strategy.
+
+The main issue seems to be the sustainability -- or lack thereof\footnote{\citet{brathwaite2012history} observe that although \textit{Aedes}-borne diseases had nearly disappeared from the American continent in the 20th century, the 1970s reinfestation struck due to popular negligence and abandonment of the necessary control practices to remain \textit{Aedes aegypti}-free.} -- of the prevention practices, which suggests the population needs constant monitoring from health authorities to "stay on track" \citep{Morrison2008defining}. Some scholars believe that sustained programs with strong surveillance mechanisms might be able to instill behavioural changes that preclude constant elevated investments \citep{Gubler2013prevention}. Although citizens may not develop such autonomy, it is consensual that healthcare systems must act locally in partnership with community members to reduce mosquito populations. Recent randomised-controlled trials such as \cite{castro2012community}, \cite{caprara2015entomological}, and \cite{ulibarri2016control} propose interventions designs specially focused on this interplay, promoting capacity building, community mobilisation, distribution of educational material, instruction on exterminating breeding sites, installation of oviposition traps, and other strategies.
+
+The literature addresses community health worker productivity in a wider set of circumstances, as they play a fundamental role of linking healthcare systems and the general population. \citet{muthmainnah2017improving} reviews 25 articles, showing that better salaries improve productivity and the working satisfaction of nurses. When it comes to health workers outside of the clinical environment, who implement preventive treatments, \cite{Ballard2017systematic} review 14 articles and find that improving these workers' performance -- through several different incentive schemes -- affect mostly behavioural, but not biological, outcomes for patients. This is in line with our results: although breeding sites were exterminated and people were educated on how to sustain these practices (behaviour change), results on disease incidence (biological outcome) were not significant. Moreover, this review finds that performance-improving interventions can increase the quality of care by incentivising adherence to treatment protocols and more rigorous completion of activities.
+
+% Is this relevant enough to deserve a full paragraph? I think it's a cool way to strengthen our experiment :) but please help me judge
+More recent studies analyse how sustained practices of financial incentive affect real healthcare systems. For instance, some Indian provinces have a program for maternal health with one performance-rewarded, and one flat salary community health workers. \citet{koehn2020remuneration} found that receiving a visit from the incentivised agents do not increase the chances that a pregnant woman will access the healthcare system's pre and postnatal care structures. We have no means of predicting how the \textit{Aedes} prevention teams would behave in a long-term situation alike. However, there is a fundamental difference between our compensation scheme and that implemented by these Indian provinces. Each community has a single performance-compensated agent, who receives a bonus for each woman they visit who underwent an institutionalised delivery. In the meantime, our bonuses presuppose a median performance among several agents, those who place above it, and those who place below it. While a paid-for-performance Indian health worker gets rewarded for any one positive outcome she achieves, our agents must produce better results than 50\% of their counterparts. Thus, we believe our incentive scheme is stronger, and has more potential to inspire workers to put in extra effort.
+
+Our main criticism to the current scholarship on \textit{Aedes} control regards the outcome measurements and how they only indirectly address the problem at hand. The assumption that lower vector density leads to lower disease incidence is not yet micro-founded, in the sense that an algorithm to quantitatively predict their relationship still does not exist \cite{Morrison2008defining}. The vast majority of \textit{Aedes} control interventions report entomological indexes, and Knowledge, Attitudes and Practices (KAP) surveys as their main outcomes, not accounting for data on the number of viral infections before and after the treatment. Although it is impossible to accurately count undiagnosed patients, there should be observable drops in hospitalisation -- related to these diseases -- in local public healthcare networks where the interventions are successful. We acquire access to this data -- through the Rio Verde mayor's office -- and attempt to make these estimations more precise, looking into how community programs reflect on their ultimate goal of reducing infection rates and mortality.
+
+Although our intervention did not reach the desired efficacy, we developed a formal model\footnote{Please refer to the Appendix for the full model and explanation.} that explains the general framework of our design. In simple terms, by choosing the optimal incentive scheme, the healthcare system can induce more effort and more cooperation among workers. When health workers receive a flat salary without performance bonuses, to them, exerting effort only seems to generate costs, without any benefits. When the governmental agency sets rewards for both individual and collective performances, health workers choose to put effort in their own tasks, but also in helping peers get theirs done. Both governmental agency and health worker benefit from this situation, as is potentiates the chances of generating successful service provision, and of receiving the maximum reward. Thus, the optimal incentive scheme lies on collective incentives. This becomes clear when looking at our results, as collectively incentivised teams were able to find more larvae. This happens because once one agent discovers one container of larvae in a home, it is unlikely that the other worker will find a second one (breeding sites are excludable). Thus, workers who coordinate have better outcomes than individuals 'competing' against their peers.
+
+Finally, we raise a few hypotheses as to why increased productivity did not cause fewer hospitalisations, recommending that future research increases test power and isolates intervention effects. First, we point out that finding a breeding site does not implicate that all larvae were exterminated in a location, as it is likely there are more breeding sites in the surroundings. The presence of a larvae-filled container in a household implies that there necessarily is a mosquito within a 70 meter radius. The mosquito could have laid eggs anywhere else in this perimeter, but, statistically, other breeding sites become harder to detect. Furthermore, we did not isolate treated regions, which means that a block of houses that received the intervention could have been less than 70 meters away from untreated households. Thus, spillover mosquitoes might have infected treated populations.
+
+Second, the municipality had significantly high dengue incidence, reaching 3,411 reported infections from January to September 2018. It is possible that any efforts within this time range only produce a robust effect above a certain threshold. For example, measles is only considered as eradicated by herd immunity when vaccination reaches around 95\% of the population \citep{fox1983herd}. The threshold for dengue is unknown, but maybe we would have had to assemble enough teams to cover 90\% of the households in Rio Verde. Lastly, our intervention might have actually increased hospitalisation in the treated area because one of the first things our health workers said to the population was they should visit a doctor if they experienced any dengue symptoms. This may have caused a competing effect, and as the number of infections decreased, the number of people reporting to hospitals increased, offsetting the impact.
+
+For future research, we highly recommend research designs to encompass broader areas and to promote more than a single wave of treatments. Still, we believe our model and compensation scheme to be extremely promising in promoting progress for a stagnant, yet adequate, strategy. Once the scholarship is able to precise the levels and depth of intervention necessary to halt the \textit{Aedes} proliferation, it will serve as crucial information to policy-makers searching to optimise the investments in health and specifically in \textit{Aedes}-borne disease prevention. For now, our study also presents important findings to health agencies, since it is valuable to know also what policies to steer away from. Our results indicate that any Dengue prevention program which underestimates the necessary area of coverage and duration will be a sunk investment.
+
+We believe a few recent studies have been wise to explore one of the key assets in our design: mobile technology to both precise measures and monitor performance and workflow of community health agents. \citet{feroz2020using} showed that cellphones can help collect data, provide quality healthcare services, and organise health workers' tasks, but in low and middle income settings, these outcomes become nonviable due to technical difficulties and lack of training. \citet{kenny2020design} propose that, in remote regions, or in urban areas with poor infrastructure, offline platforms can be successfully used for the same functions. Thus, developing tropical countries should find in our type of intervention a feasible and promising means to finally make progress in their combat to \textit{Aedes}-borne viral infections, and optimise public expenditure, and increase their population's welfare.
+
+\singlespacing
+\begin{footnotesize}
+\bibliographystyle{apalike}
+\bibliography{biblio.bib}
+\end{footnotesize}
+
+\end{document}
