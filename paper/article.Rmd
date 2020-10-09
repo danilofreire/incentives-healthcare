@@ -55,67 +55,66 @@ Department, Emory University, 532 North Kilgo Circle, 4^th^ Floor, Atlanta, GA
 # Introduction
 \label{sec:intro}
 
-The *Aedes aegypti* mosquito species is the major vector of several arboviral
-diseases worldwide, including dengue, yellow fever, Zika, and chikungunya
+The *Aedes aegypti* mosquito is the major worldwide vector of several arboviral
+diseases, including dengue, yellow fever, Zika, and chikungunya
 [@burt2012chikungunya; @jansen2010dengue; @leta2018global;
 @thangamani2016vertical]. Over the past 30 years, arboviral incidence has
 increased exponentially, with estimates suggesting that dengue is endemic in
-around 100 countries, causing 400 million infections and 22 thousands deaths
+around 100 countries and causes 400 million infections and 22 thousands deaths
 each year [@bhatt2013global; @cdc2020dengue]. Since there are no safe vaccines
-for most *A. aegypti*-transmitted diseases [@sridhar2018effect;
-@world2017dengue], we have seen a number of recent dengue and Zika outbreaks in
-Asia, the Caribbean, South America, and the United States
-[@carlson2016ecological; @leta2018global]. Chikungunya virus, which was endemic
-only to Africa, has already been reported in every region of the world
-[@grandadam2011chikungunya; @kraemer2015global; @mayer2017emergence].
+for most *Aedes*-transmitted diseases [@sridhar2018effect;
+@world2017dengue], we have seen a number of dengue and Zika outbreaks in Asia,
+the Caribbean, South America, and the United States [@carlson2016ecological;
+@leta2018global]. Chikungunya virus, which was endemic only to Africa, has
+already been reported in every region of the world [@grandadam2011chikungunya;
+@kraemer2015global; @mayer2017emergence].
 
-Mosquito control is the primary strategy to prevent *A. aegypti*-borne
-infections [@beatty2010best; @eisen2009proactive]. The World Health Organization
+Mosquito control is the primary strategy to prevent *Aedes*-borne infections
+[@beatty2010best; @eisen2009proactive]. The World Health Organization
 recommends the elimination of containers and the use of insecticide to reduce
-vector breeding, specially in settings where human-vector contacts are frequent,
-such as schools, hospitals, and workplaces [@WHO2012global;
-@world2020denguecontrol]. However, cleaning breeding sites and insecticide
+vector breeding, specially in settings where human-vector contacts are
+frequent, such as schools, hospitals, and workplaces [@WHO2012global;
+@world2020denguecontrol]. However, breeding site cleaning and insecticide
 spraying are labour-intensive processes, and they are often carried out
 inconsistently in developing countries [@paz2015dengue; @siddiqui2016use;
 @WHO2012global]. In this regard, improving the performance of those responsible
-for vector control is essential to the effectiveness of anti-mosquito programmes
-worldwide.
+for mosquito control is essential to the effectiveness of anti-*Aedes*
+programmes.
 
-Studies show that financial incentives may increase the productivity of health
-care workers [@clemens2014physicians; @muthmainnah2017improving;
-@ulrich2005does]. However, systematic reviews indicate the available evidence
-has methodological shortcomings, such as selection bias and inadequate
-experimental blinding, which limit its generalisability [@bassani2013financial;
-@flodgren2011overview; @scott2011effect]. Moreover, it remains unclear which
-rewarding schemes have a stronger effect on health care worker performance
-[@fainman2020design], or whether they have a sustained effect on patient
-outcomes [@jha2012long; @langdown2014use].
+Research shows that financial incentives may increase the productivity of
+health care workers [@clemens2014physicians; @muthmainnah2017improving;
+@ulrich2005does]. However, systematic reviews indicate that the available
+evidence has serious methodological shortcomings, such as selection bias and
+inadequate experimental blinding, what limits the generalisability of current
+findings [@bassani2013financial; @flodgren2011overview; @scott2011effect].
+Moreover, it remains unclear which rewarding schemes have a stronger effect on
+health care worker performance [@fainman2020design], and whether monetary
+incentives have a sustained effect on patient outcomes [@jha2012long;
+@langdown2014use].
 
 In this paper, we explore how financial incentives affect the productivity of
 health care personnel involved in *A. aegypti* control and measure how monetary
-rewards impact dengue hospitalisations in the long run. We run a randomised
-field experiment in the city of Rio Verde, Brazil, which has experienced a peak
-in dengue infections in the last years. We hired and trained teams of health
-care workers to perform simplified procedures designed to exterminate *A.
-aegypti* breeding sites. Our experiment consisted of two treatment arms plus a
-control condition. The control group received a fixed compensation for
-completing their task, and we offered individual or collective bonuses to those
-allocated in the two treatment groups. We then measured the impact of the
-compensations schemes on the number of breeding sites discovered, larvae
-exterminated, and city-level dengue incidence 30, 60, and 120 days after our
-intervention.
+rewards impact dengue hospitalisations. We run a randomised field experiment in
+the city of Rio Verde, Brazil, which has experienced a peak in dengue
+infections in the last years. We hired and trained teams of health care workers
+to perform simplified procedures designed to exterminate *A. aegypti* breeding
+sites. Our experiment consisted of two treatment arms plus a control condition.
+The control group received a fixed compensation for completing their tasks, and
+we offered individual or collective bonuses to those allocated in the two
+treatment groups. We then measured how the different compensations schemes
+affect the number of breeding sites discovered, larvae exterminated, and
+city-level dengue incidence. 
 
 We find that monetary rewards increase the number of cleaned breeding sites in
 both treatment conditions (individual and team bonuses), and that collective
 financial incentives also improve larvae extermination. Our results show that
-the control group has a high incidence of houses visited in less than two
-minutes apart from each other, which suggests that workers may cheat in the
-absence of financial incentives. When we combine both treatments, we also find
-that the intervention decreases dengue incidence in 10.3%, but the results are
-not robust. In summary, we provide experimental evidence that performance
-bonuses enhance public service delivery and that small financial incentives may
-improve patient outcomes and reduce hospitalisation costs in *Aedes*-endemic
-countries.
+the control group has a high number of houses visited in less than two minutes
+apart from each other, which suggests that workers may cheat in the absence of
+financial incentives. When we combine both treatments, we also find that the
+intervention decreases dengue incidence in 10.3%, but the results are not
+robust. In summary, we provide experimental evidence that performance bonuses
+enhance public service delivery and that small financial incentives may improve
+patient outcomes and reduce hospitalisations in *Aedes*-endemic countries.
 
 # Methods
 \label{sec:methods}
@@ -242,7 +241,7 @@ addresses of the patients and compared the incidence map with the distribution
 of our intervention. We also compare dengue incidence in each of the treatment
 statuses with incidence figures in the control group. The unit of analysis is
 the census tract in both models. We employ a differences-in-differences
-estimator to assess the treatment effects. [@angrist2008mostly]. 
+estimator to assess the treatment effects [@angrist2008mostly]. 
 
 We pre-registered the experiment on the Evidence in Governance and Policy (EGAP)
 website (<https://osf.io/6q8vu/>) and received IRB approval from New York
@@ -258,17 +257,17 @@ Supplementary Material.
 # Results
 \label{sec:results}
 
-We find that providing financial incentives to health care worker significantly
-increase their field productivity. Both our individual bonus and our collective
-bonus treatment groups find more *A. aegypti* breeding sites and exterminate
-more mosquito larvae than participants in the control condition, which did not
-receive performance compensations. Our results also indicate that the
-intervention decreases city-wide levels of dengue incidence, but the
-coefficients only reach statistical significance when we combine the two
-treatments together and contrast them with the control group. Overall, the
-findings suggest that monetary payments are an effective method of improving
-health worker performance, yet more research is needed to assess whether higher
-labour productivity leads to fewer dengue-related hospitalisations.
+We find that financial incentives significantly increase the field productivity
+of health care workers fighting *Aedes aegypti*. Subjects in both the
+individual and the collective bonus groups locate more mosquito breeding sites
+and exterminate more larvae than participants in the control condition. Our
+results also show the intervention decreases city-wide levels of dengue
+incidence, but the coefficients only reach statistical significance when we
+combine the two treatments together and contrast them with the control group.
+Overall, the findings suggest that monetary payments are an effective method of
+improving health worker performance, yet more research is needed to assess
+whether higher labour productivity leads to fewer dengue-related
+hospitalisations.
 
 ## Field Productivity
 \label{sub:productivity}

@@ -14,10 +14,10 @@ BibTeX entry:
 
 ```
 @misc{freire-mignozzetti2020incentives,
-  title={{Incentives for Health Care Provisio}},
-  author={Freire, Danilo and Mignozzetti, Umberto},
-  pages={1--17},
-  year={2020},
+  title        = {{Incentives for Health Care Provision}},
+  author       = {Freire, Danilo and Mignozzetti, Umberto},
+  pages        = {1--17},
+  year         = {2020},
   howpublished = {\url{https://doi.org/10.31235/osf.io/9a6ch}}
 }
 ``` 
