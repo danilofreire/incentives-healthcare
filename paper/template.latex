@@ -65,6 +65,10 @@ $endif$
 \usepackage[UKenglish]{isodate}
 \cleanlookdateon
 
+% Numbers Natbib
+% Remove to run
+% \usepackage[numbers]{natbib}
+
 % Penalties
 \exhyphenpenalty=1000
 \hyphenpenalty=1000

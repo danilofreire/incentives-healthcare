@@ -19,7 +19,6 @@ citecolor: Mahogany
 spacing: double
 papersize: a4paper
 bibliography: references.bib
-biblio-style: apalike
 output:
   pdf_document:
     citation_package: natbib
@@ -28,7 +27,7 @@ output:
     keep_tex: no
     toc: no
     toc_depth: 3
-    template: article-template.latex
+    template: template.latex
 ---
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
@@ -62,81 +61,85 @@ diseases worldwide, including dengue, yellow fever, Zika, and chikungunya
 @thangamani2016vertical]. Over the past 30 years, arboviral incidence has
 increased exponentially, with estimates suggesting that dengue is endemic in
 around 100 countries, causing 400 million infections and 22 thousands deaths
-each year [@bhatt2013global; @cdc2020dengue; @musso2018unexpected]. Since there
-are no safe vaccines for most *A. aegypti*-transmitted diseases
-[@sridhar2018effect; @world2017dengue], we have seen a number of recent dengue
-and Zika outbreaks in Asia, the Caribbean, South America, and the United States
+each year [@bhatt2013global; @cdc2020dengue]. Since there are no safe vaccines
+for most *A. aegypti*-transmitted diseases [@sridhar2018effect;
+@world2017dengue], we have seen a number of recent dengue and Zika outbreaks in
+Asia, the Caribbean, South America, and the United States
 [@carlson2016ecological; @leta2018global]. Chikungunya virus, which was endemic
 only to Africa, has already been reported in every region of the world
 [@grandadam2011chikungunya; @kraemer2015global; @mayer2017emergence].
 
 Mosquito control is the primary strategy to prevent *A. aegypti*-borne
-infections [@beatty2010best; @eisen2009proactive; @ooi2006dengue]. The World
-Health Organization recommends the elimination of containers and the use of
-insecticide to reduce vector breeding, specially in settings where human-vector
-contacts are frequent, such as schools, hospitals, and workplaces
-[@WHO2012global; @world2020denguecontrol]. However, cleaning breeding sites and
-insecticide spraying are labour-intensive processes and are often carried out
-inconsistently [@paz2015dengue; @siddiqui2016use; @WHO2012global]. In most
-endemic countries, local governments are the main responsible for providing
-vector control, thus increasing the productivity of civil servants is essential
-to the effectiveness of anti-mosquito programmes worldwide.
+infections [@beatty2010best; @eisen2009proactive]. The World Health Organization
+recommends the elimination of containers and the use of insecticide to reduce
+vector breeding, specially in settings where human-vector contacts are frequent,
+such as schools, hospitals, and workplaces [@WHO2012global;
+@world2020denguecontrol]. However, cleaning breeding sites and insecticide
+spraying are labour-intensive processes, and they are often carried out
+inconsistently in developing countries [@paz2015dengue; @siddiqui2016use;
+@WHO2012global]. In this regard, improving the performance of those responsible
+for vector control is essential to the effectiveness of anti-mosquito programmes
+worldwide.
 
-Financial incentives are crucial determinants of worker performance in public
-and private organisations [@burgess2003role]. While studies indicate that
-reward schemes may improve the productivity of health care providers
-[@basinga2011effect; @flodgren2011overview; @ulrich2005does], it is unclear how
-they affect the motivation of workers fighting *A. aegypti*. Moreover, there is
-no evidence about the impact of financial incentives on patient-level arboviral
-outcomes, such as virus-related hospitalisations or disease incidence
-[@flodgren2011overview].  
+Studies show that financial incentives may increase the productivity of health
+care workers [@clemens2014physicians; @muthmainnah2017improving;
+@ulrich2005does]. However, systematic reviews indicate the available evidence
+has methodological shortcomings, such as selection bias and inadequate
+experimental blinding, which limit its generalisability [@bassani2013financial;
+@flodgren2011overview; @scott2011effect]. Moreover, it remains unclear which
+rewarding schemes have a stronger effect on health care worker performance
+[@fainman2020design], or whether they have a sustained effect on patient
+outcomes [@jha2012long; @langdown2014use].
 
-To explore how monetary incentives affect health worker motivation and patient
-outcomes, we ran a randomised field experiment in the city of Rio Verde,
-Brazil, which has experienced a peak in dengue infections in the last years. We
-hired and trained teams of health care workers to perform simplified procedures
-designed to exterminate *A. aegypti* breeding sites. Our experiment consisted
-of two treatment arms plus a control condition. The control group received a
-fixed compensation for completing their task, and we offered individual or
-collective bonuses to those allocated in the two treatment groups. We then
-measured the impact of the compensations schemes on the number of breeding
-sites discovered, larvae exterminated, and city-level dengue incidence 30, 60,
-and 120 days after our intervention.
+In this paper, we explore how financial incentives affect the productivity of
+health care personnel involved in *A. aegypti* control and measure how monetary
+rewards impact dengue hospitalisations in the long run. We run a randomised
+field experiment in the city of Rio Verde, Brazil, which has experienced a peak
+in dengue infections in the last years. We hired and trained teams of health
+care workers to perform simplified procedures designed to exterminate *A.
+aegypti* breeding sites. Our experiment consisted of two treatment arms plus a
+control condition. The control group received a fixed compensation for
+completing their task, and we offered individual or collective bonuses to those
+allocated in the two treatment groups. We then measured the impact of the
+compensations schemes on the number of breeding sites discovered, larvae
+exterminated, and city-level dengue incidence 30, 60, and 120 days after our
+intervention.
 
 We find that monetary rewards increase the number of cleaned breeding sites in
-both treatment conditions (individual and team bonuses) and collective
+both treatment conditions (individual and team bonuses), and that collective
 financial incentives also improve larvae extermination. Our results show that
 the control group has a high incidence of houses visited in less than two
 minutes apart from each other, which suggests that workers may cheat in the
 absence of financial incentives. When we combine both treatments, we also find
 that the intervention decreases dengue incidence in 10.3%, but the results are
 not robust. In summary, we provide experimental evidence that performance
-bonuses increase productivity in public service delivery and that small
-financial incentives to health workers may improve patient outcomes and reduce
-hospitalisation costs in *Aedes*-endemic countries.
+bonuses enhance public service delivery and that small financial incentives may
+improve patient outcomes and reduce hospitalisation costs in *Aedes*-endemic
+countries.
 
 # Methods
 \label{sec:methods}
 
-We ran a randomised field experiment at the individual level in the municipality
-of Rio Verde, Brazil, which had experienced a major dengue outbreak one year
-prior to our experiment (2017). We used Facebook advertisements to recruit
-potential participants. The advertisements directed applicants to a Google Forms
-web page that requested their contact information, and we sent a pre-treatment
-demographic questionnaire to every applicant who provided a valid email address.
-At this stage, we excluded all individuals under 18 years old. We invited the
-remaining applicants to our training session, which we ran on the 4^th^ of May,
-2018. The meeting consisted of a lecture on *A. aegypti* vector biology and
-practical instructions on how to find and exterminate mosquito breeding sites.
-Those who did not attend the session were also excluded from the study. 
+We conducted a randomised field trial in Rio Verde, a municipality in the
+Brazilian Midwestern state of Goiás. Rio Verde had 229,000 inhabitants and 1,156
+confirmed dengue cases, one of highest counts in the state [@goias2020]. We used
+Facebook advertisements to recruit potential participants. The advertisements
+directed applicants to Google Forms, where we asked for their contact
+information. We sent a pre-treatment demographic survey to every applicant who
+provided a valid email address. At this stage, we excluded all individuals under
+18 years old. We invited the remaining applicants to our training session, which
+we ran on the 4^th^ of May, 2018. The meeting consisted of a lecture on *A.
+aegypti* vector biology and practical instructions on how to find and
+exterminate mosquito breeding sites. Those who did not attend the session were
+also excluded from the study. 
 
 Table \ref{tab:covbal} displays the attrition tests, the covariate balance
-tests, and the territorial assignment before and after applying propensity
-score matching [@dehejia2002propensity; @rosenbaum1985constructing] on census
-tract characteristics. We observe no significant differences regarding
-attrition rates, reinforcing that the treatment was correctly randomised.
-Participants' demographics are also similar across all groups, and the matching
-technique successfully balanced the territorial assignment.
+tests, and the territorial assignment before and after applying propensity score
+matching [@rosenbaum1985constructing] on census tract characteristics. We
+observe no significant differences regarding attrition rates, indicating that
+the treatment was correctly randomised. Participants' demographics are also
+similar across all groups, and the matching technique successfully balanced the
+territorial assignment.
 
 \begin{table}[ht] \centering 
 \small
@@ -193,63 +196,64 @@ N & 68 & 68 & 70 &  &  \\
 \normalsize
 
 The intervention took place on the 5^th^ of May, 2018. We randomly assigned
-subjects to three groups. To avoid spillovers, we directed each group to
-separate headquarters before the intervention began. Participants worked in
-pairs and were aware of other groups, but they did not know about the different
-treatment conditions. In the control group ($n = 68$), we told participants
+subjects into three groups and directed each group to separate headquarters in
+order to avoid spillovers. In the control group ($n = 68$), we told participants
 that they would receive a flat payment regardless of their performance (BRL 110
-/ USD 20 per subject). In the individual treatment group ($n = 68$), we
-informed subjects that we would rank individual performances, and that we would
-double the compensation for all of those who performed above the sample median
-(BRL 220 / USD 50 per subject). In the collective treatment group ($n = 70$),
-we explained that we would rank the pair performance and double the payment for
-teams who presented results better than the sample median (BRL 220 / USD 50 per
-subject). The teams received a leaflet with a map of the area they should
-cover. The route comprised of two to three blocks and contained around 120
-houses.
+/ USD 20 per subject). In the individual treatment group ($n = 68$), we informed
+subjects that we would rank individual performances and double the compensation
+for those who performed above the sample median (BRL 220 / USD 50 per subject).
+In the collective treatment group ($n = 70$), we explained that we would rank
+the pair performance and double the payment for teams who presented results
+better than the sample median (BRL 220 / USD 50 per subject). Participants
+worked in pairs and were aware of other groups, but they did not know about the
+different treatment conditions. The teams received a leaflet with a map of the
+area they should cover. The route comprised of two to three blocks and contained
+around 120 houses.
 
 A typical visit to a household consisted of the following steps. First,
-participants rang the doorbell in a house and explained that the municipality
-had experienced a dengue fever outbreak. They instructed dwellers on how to
-lower dengue incidence and handed them a leaflet with information about dengue
-prevention practices. Our subjects then requested whether they could inspect
-the person's yard. If granted permission, they entered the household and
-searched for clean breeding sites, such as pots filled with clear water, and
-recipients containing larvae. Upon exterminating a breeding site (pouring out
-the accumulated water, for example), subjects had to report their task by
-taking a photo on their cellphones. When they discovered larvae, they had to
-record a video showing the larvae before exterminating it. At the end of their
-visit, they had to take a picture of the household to account for their
-presence in the location.
+participants rang the doorbell and explained that the municipality had
+experienced a dengue fever outbreak. They instructed dwellers on how to lower
+dengue incidence and handed them a leaflet with information about dengue
+prevention practices. Then, subjects asked whether they were allowed to inspect
+house yard. If granted permission, they entered the household and searched for
+clean breeding sites, such as pots filled with clear water, and recipients
+containing larvae. Upon exterminating a breeding site (pouring out the
+accumulated water, for example), subjects had to report their task by taking a
+photo on their cellphones. When they discovered larvae, they had to record a
+video showing the larvae before exterminating it. At the end of their visit,
+they had to take a picture of the household to account for their presence in the
+location.
 
-The primary outcome in this study is field productivity of the health care
-workers. We measure worker productivity by coding cellphone data collected
-during the intervention into four indicators: 1) the number of houses visited;
-2) the number of houses visited within less than two minutes; 3) the number of
-breeding sites removed and cleaned; 4) the number of exterminated larvae. We
-employed ordinary least squares with robust standard errors [@imbens2016robust].
-We estimated the statistical power of the study assuming a treatment effect of
-0.15 standard deviations. 
+This study evaluates two outcomes. The first outcome is field productivity of
+the health care workers. We measure worker productivity by coding cellphone data
+collected during the intervention into four indicators: 1) the number of houses
+visited; 2) the number of houses visited within less than two minutes; 3) the
+number of breeding sites removed and cleaned; 4) the number of exterminated
+larvae. We analyse the data using ordinary least squares with robust standard
+errors [@imbens2016robust]. We estimate the statistical power of the study
+assuming a treatment effect of 0.15 standard deviations. 
 
 The second outcome of interest is dengue incidence in the municipality of Rio
-Verde. The Rio Verde Mayor's Office provided us with its annual health care
-report, which contains the dates and personal information of patients who had
-dengue fever and received hospital treatment from January to September 2018. We
-georeferenced the home addresses of the patients and compared the incidence map
-with the distribution of our intervention. We use a differences-in-differences
-estimator to assess the impact of our experiment [@angrist2008mostly;
-@card1994minimum]. 
+Verde measured 4, 8, 12, and 16 days after the intervention. The Rio Verde
+Mayor's Office provided us with its annual health care report, which contains
+the dates and personal information of patients who had dengue fever and received
+hospital treatment from January to September 2018. We georeferenced the home
+addresses of the patients and compared the incidence map with the distribution
+of our intervention. We also compare dengue incidence in each of the treatment
+statuses with incidence figures in the control group. The unit of analysis is
+the census tract in both models. We employ a differences-in-differences
+estimator to assess the treatment effects. [@angrist2008mostly]. 
 
-We pre-registered the experiment on the Evidence in Governance and Policy
-(EGAP) website (<https://osf.io/6q8vu/>) and received IRB approval from New
-York University (IRB-FY2017-17) and Fundação Getulio Vargas (IRB-01/2017). The
+We pre-registered the experiment on the Evidence in Governance and Policy (EGAP)
+website (<https://osf.io/6q8vu/>) and received IRB approval from New York
+University (IRB-FY2017-17) and Fundação Getulio Vargas (IRB-01/2017). The
 funders of this study had no influence over the formulation, organisation,
 analysis, and interpretation of the outcomes. Health care workers gave written
 consent upon filling the Qualtrics questionnaire. During the intervention, the
 occupants of households inspected for breeding sites and larvae gave oral
 consent. For more information on the experimental design, sample
-characteristics, exclusion criteria, and estimation methods, please refer to
-the Supplementary Material.
+characteristics, exclusion criteria, and estimation methods, please refer to the
+Supplementary Material.
 
 # Results
 \label{sec:results}
