@@ -196,18 +196,18 @@ N & 68 & 68 & 70 &  &  \\
 
 The intervention took place on the 5^th^ of May, 2018. We randomly assigned
 subjects into three groups and directed each group to separate headquarters in
-order to avoid spillovers. In the control group ($n = 68$), we told participants
-that they would receive a flat payment regardless of their performance (BRL 110
-/ USD 20 per subject). In the individual treatment group ($n = 68$), we informed
-subjects that we would rank individual performances and double the compensation
-for those who performed above the sample median (BRL 220 / USD 50 per subject).
-In the collective treatment group ($n = 70$), we explained that we would rank
-the pair performance and double the payment for teams who presented results
-better than the sample median (BRL 220 / USD 50 per subject). Participants
-worked in pairs and were aware of other groups, but they did not know about the
-different treatment conditions. The teams received a leaflet with a map of the
-area they should cover. The route comprised of two to three blocks and contained
-around 120 houses.
+order to avoid spillovers. In the control group ($n = 68$), we told
+participants that they would receive a flat payment regardless of their
+performance (BRL 110 / USD 20 per subject). In the individual treatment group
+($n = 68$), we informed subjects that we would rank individual performances and
+double the compensation for those who performed above the sample median (BRL
+220 / USD 50 per subject). In the collective treatment group ($n = 70$), we
+explained that we would rank the pair performance and double the payment for
+teams who presented results better than the sample median (BRL 220 / USD 50 per
+subject). Participants worked in pairs and were aware of other groups, but they
+did not know about the different treatment conditions. The teams received a
+leaflet with a map of the area they should cover. The route comprised of two to
+three blocks and contained around 120 houses.
 
 A typical visit to a household consisted of the following steps. First,
 participants rang the doorbell and explained that the municipality had
@@ -220,39 +220,40 @@ containing larvae. Upon exterminating a breeding site (pouring out the
 accumulated water, for example), subjects had to report their task by taking a
 photo on their cellphones. When they discovered larvae, they had to record a
 video showing the larvae before exterminating it. At the end of their visit,
-they had to take a picture of the household to account for their presence in the
-location.
+they had to take a picture of the household to account for their presence in
+the location.
 
 This study evaluates two outcomes. The first outcome is field productivity of
-the health care workers. We measure worker productivity by coding cellphone data
-collected during the intervention into four indicators: 1) the number of houses
-visited; 2) the number of houses visited within less than two minutes; 3) the
-number of breeding sites removed and cleaned; 4) the number of exterminated
-larvae. We analyse the data using ordinary least squares with robust standard
-errors [@imbens2016robust]. We estimate the statistical power of the study
-assuming a treatment effect of 0.15 standard deviations. 
+the health care workers. We measure worker productivity by coding cellphone
+data collected during the intervention into four indicators: 1) the number of
+houses visited; 2) the number of houses visited within less than two minutes;
+3) the number of breeding sites removed and cleaned; 4) the number of
+exterminated larvae. We analyse the data using ordinary least squares with
+robust standard errors [@imbens2016robust]. We estimate the statistical power
+of the study assuming a treatment effect of 0.15 standard deviations. 
 
 The second outcome of interest is dengue incidence in the municipality of Rio
 Verde measured 4, 8, 12, and 16 days after the intervention. The Rio Verde
 Mayor's Office provided us with its annual health care report, which contains
-the dates and personal information of patients who had dengue fever and received
-hospital treatment from January to September 2018. We georeferenced the home
-addresses of the patients and compared the incidence map with the distribution
-of our intervention. We also compare dengue incidence in each of the treatment
-statuses with incidence figures in the control group. The unit of analysis is
-the census tract in both models. We employ a differences-in-differences
-estimator to assess the treatment effects [@angrist2008mostly]. 
+the dates and personal information of patients who had dengue fever and
+received hospital treatment from January to September 2018. We georeferenced
+the home addresses of the patients and compared the incidence map with the
+distribution of our intervention. We also compare dengue incidence in each of
+the treatment statuses with incidence figures in the control group. The unit of
+analysis is the census tract in both models. We employ a
+differences-in-differences estimator to assess the treatment effects
+[@angrist2008mostly]. 
 
-We pre-registered the experiment on the Evidence in Governance and Policy (EGAP)
-website (<https://osf.io/6q8vu/>) and received IRB approval from New York
-University (IRB-FY2017-17) and Fundação Getulio Vargas (IRB-01/2017). The
+We pre-registered the experiment on the Evidence in Governance and Policy
+(EGAP) website (<https://osf.io/6q8vu/>) and received IRB approval from New
+York University (IRB-FY2017-17) and Fundação Getulio Vargas (IRB-01/2017). The
 funders of this study had no influence over the formulation, organisation,
 analysis, and interpretation of the outcomes. Health care workers gave written
 consent upon filling the Qualtrics questionnaire. During the intervention, the
 occupants of households inspected for breeding sites and larvae gave oral
 consent. For more information on the experimental design, sample
-characteristics, exclusion criteria, and estimation methods, please refer to the
-Supplementary Material.
+characteristics, exclusion criteria, and estimation methods, please refer to
+the Supplementary Material.
 
 # Results
 \label{sec:results}
@@ -309,39 +310,123 @@ Residual SE & 27.301 & 22.153 & 30.545 & 0.425 \\
 
 Subjects who received monetary incentives, either alone or in pairs, visited
 fewer houses than those who did not earn financial rewards. While the result
-may seem counter-intuitive, it actually attests the effectiveness of the
+seems counter-intuitive, it actually attests the effectiveness of the
 treatment. This is because we offered incentives for subjects to exterminate
-larvae and find breeding sites, but not to visit a greater number of
-households. As a result, participants in the two treatment groups did a
-thorough job in each household, which explains the lower number of visits
-during the allotted time. We find that subjects in the individual and in the
-collective bonus groups visited $-9.879$ (CI: [XXX, XXX], $p-$value $= 0.XXX$)
-and $-7.554$ (CI: [XXX, XXX], $p-$value $= 0.XXX$) households, respectively.
+larvae and find breeding sites, not to visit a greater number of households. As
+a result, participants in the two treatment groups did a thorough job in each
+household, which explains the lower number of visits during the allotted time.
+We find that subjects in the individual and in the collective bonus groups
+visited $-9.879$ (CI: [XXX, XXX], $p-$value $= 0.XXX$) and $-7.554$ (CI: [XXX,
+XXX], $p-$value $= 0.XXX$) households, respectively.
 
 Our second indicator provides further evidence in favour of our argument. We
 see that the two groups which earned performance bonuses spent more time in the
 households, as their number of houses visited for less than two minutes is
 significantly lower than those of the control condition. On average,
 participants in the individual bonus treatment arm visited $-8.044$ (CI: [XXX,
-XXX], $p-$value $= 0.XXX$) fewer houses than the control, and those in the
-collective bonus group visited $-6.479$ (CI: [XXX, XXX], $p-$value $= 0.XXX$).
+XXX], $p-$value $= 0.XXX$) houses than the control, and those in the collective
+bonus group visited $-6.479$ (CI: [XXX, XXX], $p-$value $= 0.XXX$).
 
 Incentivised teams find and clean more breeding sites than non-incentivised
 ones. Individually incentivised health workers find 25.118 (CI: [XXX, XXX],
 $p-$value $= 0.XXX$) more breeding sites than the non-incentivised control
 group. The effect for those in the collective bonus group is 21.512 (CI: [XXX,
-XXX], $p-$value $= 0.XXX$), slightly smaller than for the first treatment.
+XXX], $p-$value $= 0.XXX$), slightly smaller than for the individual treatment.
 
-Collective incentivized teams are more effective in finding larvae. In our
-study, collectively incentivized subjects have 16.3\% more chance to find
-larvae than non incentivized workers. Finding larvae is harder, and the
-detection chances profit from teamwork. If teams are cooperating, searching the
-house becomes more natural, and they can coordinate to do a more thorough job.
-Additionally, the detection tends to be excludable: one individual finding
-larvae makes the chances of keep finding larvae in the household considerably
-smaller. Collective bonus is not excludable within the teams, making them
-cooperate more to get the reward.
+Teams which received collective bonuses are the most effective in finding
+larvae. Subjects who worked in pairs have a 16.3% (CI: [XXX, XXX], $p-$value =
+$0.XXX$) higher likelihood of finding larvae than those in the control group.
+Locating mosquito larvae is a difficult task, thus the probability of
+successfully completing the task increases when subjects work in teams.
+Furthermore, our collective bonus scheme was not excludable within the teams,
+thus health care workers had an incentive to cooperate and receive higher
+rewards.
 
+## Disease Incidence
+\label{sub:incidence}
+
+We evaluate the effect of the treatment on the disease incidence with two
+models. The first is a differences-in-differences model that assesses whether
+the intervention _per se_ had any effect on dengue hospitalisations in the city
+of Rio Verde. The second model compares disease incidence in each of the
+treatment statuses with disease incidence in the control group. The unit of
+analysis is the census tract. Table \ref{tab:incidence} displays the results
+for our first model, in which we test the impact of our intervention after 4,
+8, 12, and 16 weeks. The last column shows how collective incentives compare
+with individual bonuses, with the latter considered as the control group.
+
+\begin{table}[!htbp] \centering 
+  \caption{Disease Incidence -- Differences in Differences Model} 
+  \label{difindifdiseases} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{5}{c}{\textit{Dependent Variable:}} \\ 
+\cline{2-6} 
+\\[-1.8ex] & N Infected & N Infected & N Infected & N Infected & N Infected \\
+& (full) & (12 weeks) & (8 weeks) & (4 weeks) & (Indv. x Collect.) \\ 
+\hline \\[-1.8ex] 
+ DID & $-$0.103$^{*}$ & $-$0.130 & $-$0.167 & $-$0.097 & $-$0.029 \\ 
+  & (0.053) & (0.091) & (0.118) & (0.166) & (0.035) \\ 
+  & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 7,452 & 3,312 & 1,656 & 828 & 2,201 \\ 
+Residual SE & 1.004 & 1.319 & 1.442 & 1.513 & 0.381 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:} & \multicolumn{5}{r}{DID stands for the differences-in-differences estimator.}
+& \multicolumn{5}{r}{Robust standard errors clustered at the census tract level in parenthesis.} \\ 
+& \multicolumn{5}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+The intervention lowered dengue incidence in 10.3\% (CI: [XXX, XXX], $p-$value
+= $0.XXX$) if we take both treatments and compare them with the control group.
+The result is consistent around fewer weeks before and after the intervention,
+but it does not reach conventional levels of statistical significance. This
+suggests that the treatment effect is probably small. The comparison between
+the two treatment statuses show an impact of 2.9\% fewer infections in the
+collective bonus group. However, the result is also not statistically
+significant.
+
+In our second model, we measure the effect of the reward schemes on the number
+of hospitalisations per census tract. Table \ref{fig:census} shows
+hospitalisation counts before the intervention, and then 15, 30, 60, 90, and
+between 15 to 30 days after the treatment.
+
+\begin{table}[!htbp]
+  \caption{Disease Incidence in Rio Verde Census Tracts} \centering 
+  \label{regdiseaseinc1} 
+\begin{tabular}{@{\extracolsep{5pt}}lcccccc}
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{6}{c}{\textit{Dependent Variable:}} \\ 
+\cline{2-7} 
+\\[-1.8ex] & Before & 15 Days & 30 Days & 60 Days & 90 Days & 30-60 Days \\ 
+& Intv. & After Intv. & After Intv. & After Intv. & After Intv. & After Intv. \\
+\hline \\[-1.8ex] 
+ Individual & $-$3.534 & 0.116 & 0.551 & 1.551 & 1.534 & 0.936 \\ 
+  & (2.919) & (1.338) & (2.193) & (3.260) & (3.258) & (1.188) \\ 
+  & & & & & & \\ 
+ Collective & $-$3.008 & $-$1.329 & $-$0.826 & 0.344 & 1.091 & 1.068 \\ 
+  & (4.174) & (1.440) & (1.971) & (3.233) & (3.610) & (1.582) \\ 
+  & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 139 & 139 & 139 & 139 & 139 & 139 \\ 
+Residual Std. Error & 9.442 & 4.076 & 6.095 & 8.896 & 9.341 & 3.536 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{6}{r}{Robust standard errors clustered at the census tract level in parenthesis. $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular} 
+\end{table} 
+
+Compared to the control group, neither treatment had an impact on disease
+incidence in the Rio Verde census tracts. Yet, the coefficients are negative,
+what indicates that should an impact have occurred, the intervention would
+have lowered dengue incidence in the treated areas.
+
+# Discussion
+\label{sec:discussion}
 
 
 
