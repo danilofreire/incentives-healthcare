@@ -1,16 +1,14 @@
 ---
 title:  |
-        | Long Article Title:
-        | A Very Long Subtitle
+        | Financial Incentives and Health Care Prevention: Evidence from an Experimental *Aedes Aegypti* Control Programme in Brazil
 author: 
   - Danilo Freire[^freire]
   - Umberto Mignozzetti[^mignozzetti]
 date: \today
-thanks: "The authors thank Professors John and Jane Doe for their helpful comments."
-abstract: "This is a personal article template for RMarkdown. It uses Linux Libertine and Inconsolata fonts, British English, double-spaced text and numbered sections. The colours are personalised too: URLs are in dark blue, internal links are in mahogany and the table of contents is in black. The template also has pre-formatted entries for the abstract, keywords and JEL classification codes. You need to install `R` (and the `rmarkdown` package), `pandoc` and a `TeX` system to compile the pdf. In case you don't want to download large `TeX` binaries, I recommend you to install the great `TinyTeX R` package. A quick note: if you want to use colons in the abstract or the `thanks` entry, please don't forget to put the whole text in quotes. Otherwise, YAML might not parse it correctly. I hope you find this template useful and feel free to send me a message if you have any suggestions."
+thanks: "We thank Louise Araújo, Catarina Roman, David Skarbek, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Special thanks to XXXX for their excellent research assistance. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
+abstract: ""
 abstractspacing: double
-keywords: R Markdown; pandoc; template
-jelcodes: A00, B11, C22
+keywords: Aedes aegypti, dengue, financial incentives, mosquito control, randomised field trial, preventive health care
 fontsize: 12pt
 margin: 2cm
 urlcolor: darkblue
@@ -48,7 +46,7 @@ if (!require("kableExtra")) {
 Department, Emory University, 532 North Kilgo Circle, 4^th^ Floor, Atlanta, GA
 30322, USA,
 [`umberto.mignozzetti@emory.edu`](mailto:umberto.mignozzetti@emory.edu),
-<http://umbertomig.com>.
+<http://umbertomig.com>. Corresponding author.
 
 \newpage
 
@@ -264,8 +262,8 @@ individual and the collective bonus groups locate more mosquito breeding sites
 and exterminate more larvae than participants in the control condition. Our
 results also show the intervention decreases city-wide levels of dengue
 incidence, but the coefficients only reach statistical significance when we
-combine the two treatments together and contrast them with the control group.
-Overall, the findings suggest that monetary payments are an effective method of
+combine the two treatments and contrast them with the control group. Overall,
+the findings suggest that monetary payments are an effective method of
 improving health worker performance, yet more research is needed to assess
 whether higher labour productivity leads to fewer dengue-related
 hospitalisations.
@@ -280,9 +278,7 @@ third dependent variable is the number of *A. aegypti* breeding sites removed
 and cleaned. Our fourth variable indicates the number of mosquito larvae
 exterminated. Table \ref{tab:productivity} summarises the experimental results.
 
-\begin{table}[ht] 
-  \centering 
-  \small
+\begin{table}[ht] \centering 
   \caption{Field Productivity} 
   \label{tab:productivity} 
 \begin{tabular}{@{\extracolsep{5pt}}lcccc} 
@@ -303,8 +299,10 @@ exterminated. Table \ref{tab:productivity} summarises the experimental results.
 Observations & 197 & 197 & 197 & 197 \\ 
 Residual SE & 27.301 & 22.153 & 30.545 & 0.425 \\ 
 \hline 
-\hline \\[-1.8ex] 
-\textit{Note:}  & \multicolumn{4}{r}{Robust standard errors in parentheses. $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\hline\\[-1.8ex]
+\multicolumn{5}{l}{\footnotesize \textbf{Note}: Robust standard errors
+clustered at the census tract level in parentheses. $^{*}$p$<$0.1;
+$^{**}$p$<$0.05; $^{***}$p$<$0.01.} 
 \end{tabular} 
 \end{table}
 
@@ -345,28 +343,28 @@ rewards.
 ## Disease Incidence
 \label{sub:incidence}
 
-We evaluate the effect of the treatment on the disease incidence with two
-models. The first is a differences-in-differences model that assesses whether
-the intervention _per se_ had any effect on dengue hospitalisations in the city
-of Rio Verde. The second model compares disease incidence in each of the
-treatment statuses with disease incidence in the control group. The unit of
+We employ two models to evaluate the effect of the treatment on dengue
+incidence. The first is a differences-in-differences model that assesses
+whether the intervention _per se_ had any effect on dengue hospitalisations in
+the city of Rio Verde. The second model compares dengue incidence in each of
+the treatment statuses with incidence figures in the control group. The unit of
 analysis is the census tract. Table \ref{tab:incidence} displays the results
 for our first model, in which we test the impact of our intervention after 4,
 8, 12, and 16 weeks. The last column shows how collective incentives compare
 with individual bonuses, with the latter considered as the control group.
 
-\begin{table}[!htbp] \centering 
+\begin{table}[ht] \centering 
   \caption{Disease Incidence -- Differences in Differences Model} 
-  \label{difindifdiseases} 
-\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+  \label{tab:incidence} 
+\begin{tabular}{@{\extracolsep{1pt}}lccccc} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
  & \multicolumn{5}{c}{\textit{Dependent Variable:}} \\ 
 \cline{2-6} 
 \\[-1.8ex] & N Infected & N Infected & N Infected & N Infected & N Infected \\
-& (full) & (12 weeks) & (8 weeks) & (4 weeks) & (Indv. x Collect.) \\ 
+& (Full) & (12 Weeks) & (8 Weeks) & (4 Weeks) & (Indv. x Collect.) \\ 
 \hline \\[-1.8ex] 
- DID & $-$0.103$^{*}$ & $-$0.130 & $-$0.167 & $-$0.097 & $-$0.029 \\ 
+ Diff-in-diff & $-$0.103$^{*}$ & $-$0.130 & $-$0.167 & $-$0.097 & $-$0.029 \\ 
   & (0.053) & (0.091) & (0.118) & (0.166) & (0.035) \\ 
   & & & & & \\ 
 \hline \\[-1.8ex] 
@@ -374,30 +372,25 @@ Observations & 7,452 & 3,312 & 1,656 & 828 & 2,201 \\
 Residual SE & 1.004 & 1.319 & 1.442 & 1.513 & 0.381 \\ 
 \hline 
 \hline \\[-1.8ex] 
-\textit{Note:} & \multicolumn{5}{r}{DID stands for the differences-in-differences estimator.}
-& \multicolumn{5}{r}{Robust standard errors clustered at the census tract level in parenthesis.} \\ 
-& \multicolumn{5}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\multicolumn{6}{l}{\footnotesize \textbf{Note}: Robust standard errors
+clustered at the census tract level in parentheses. $^{*}$p$<$0.1;
+$^{**}$p$<$0.05; $^{***}$p$<$0.01.} 
 \end{tabular} 
 \end{table}
 
 The intervention lowered dengue incidence in 10.3\% (CI: [XXX, XXX], $p-$value
-= $0.XXX$) if we take both treatments and compare them with the control group.
+$= 0.XXX$) if we take both treatments and compare them with the control group.
 The result is consistent around fewer weeks before and after the intervention,
 but it does not reach conventional levels of statistical significance. This
 suggests that the treatment effect is probably small. The comparison between
-the two treatment statuses show an impact of 2.9\% fewer infections in the
-collective bonus group. However, the result is also not statistically
-significant.
+the two treatment statuses show an impact of 2.9\% (CI: [XXX, XXX], $p-$ value
+$= 0.XXX$) fewer infections in the collective bonus group. However, the result
+is also not statistically significant.
 
-In our second model, we measure the effect of the reward schemes on the number
-of hospitalisations per census tract. Table \ref{fig:census} shows
-hospitalisation counts before the intervention, and then 15, 30, 60, 90, and
-between 15 to 30 days after the treatment.
-
-\begin{table}[!htbp]
+\begin{table}[ht]
   \caption{Disease Incidence in Rio Verde Census Tracts} \centering 
-  \label{regdiseaseinc1} 
-\begin{tabular}{@{\extracolsep{5pt}}lcccccc}
+  \label{tab:census} 
+\begin{tabular}{@{\extracolsep{1pt}}lcccccr}
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
  & \multicolumn{6}{c}{\textit{Dependent Variable:}} \\ 
@@ -416,19 +409,90 @@ Observations & 139 & 139 & 139 & 139 & 139 & 139 \\
 Residual Std. Error & 9.442 & 4.076 & 6.095 & 8.896 & 9.341 & 3.536 \\ 
 \hline 
 \hline \\[-1.8ex] 
-\textit{Note:}  & \multicolumn{6}{r}{Robust standard errors clustered at the census tract level in parenthesis. $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\multicolumn{7}{l}{\footnotesize \textbf{Note}: Robust standard errors
+clustered at the census tract level in parentheses. $^{*}$p$<$0.1;
+$^{**}$p$<$0.05; $^{***}$p$<$0.01.}\\
 \end{tabular} 
 \end{table} 
 
+In our second model, we measure the effect of reward schemes on the number of
+hospitalisations per census tract. Table \ref{tab:census} shows hospitalisation
+counts before the intervention, and then 15, 30, 60, 90, and between 30 to 60
+days after the treatment.
+
 Compared to the control group, neither treatment had an impact on disease
-incidence in the Rio Verde census tracts. Yet, the coefficients are negative,
-what indicates that should an impact have occurred, the intervention would
-have lowered dengue incidence in the treated areas.
+incidence in the Rio Verde census tracts. The treatment effect is not
+statistically different from zero in any model specification. Yet, the
+coefficients are negative, what indicates that should an impact have occurred,
+the intervention would have lowered dengue incidence in the treated areas.
 
 # Discussion
 \label{sec:discussion}
 
+We show that monetary incentives increase the productivity of community health
+care workers in Brazil. We contrast a control group (which received a flat
+performance fee) with two treatment groups, one which received an individual
+performance bonus, and second one that received a collective performance
+incentive. We find that both treatments increase the number of breeding sites
+encountered, and that collective incentives outperform individual performance
+rewards when the task is more laborious and excludable (exterminating larvae).
+Finally, the control group presented a high incidence of houses visited in less
+than two minutes apart from each other, which suggests that the workers may
+not carry their tasks as intended in the absence of incentives. In a nutshell,
+monetary incentives work.
 
+Our conclusions are consistent with the results of comparable studies conducted
+in other settings, such as education [@duflo2012incentives] and private firms
+[@bandiera2013team]. They also provide further evidence that incentivising team
+work is more effective for labour-intensive tasks, which opens a new avenue for
+research in preventive health care.
+
+Regarding the effect of incentives on city-level dengue incidence, we find only
+mixed results. Why did the treatment not work as we planned? We believe the
+treatment was not strong enough. Our treatment probably did not cover enough
+areas to ensure there was no mosquitos around the assigned blocks. As mosquitos
+can travel for long distances, the treatment might not have been sufficient.
+Also, Rio Verde had significant rates of dengue incidence during our
+experiment, reaching 3,411 reported infections from January to September 2018
+[@goias2020]. Therefore, maybe the treatment works only when applied for
+longer periods of time or in more neighbourhoods. 
+
+In this respect, our study suggests is that even though health care workers may
+be motivated, their efforts do not necessarily lead to a reduction in mosquito
+infections. Higher field productivity does not guarantee that the *Aedes
+aegypti* can be eradicated. To our knowledge, we are one of the first studies
+to highlight this issue. Future research may explore the reasons why this is
+the case and if the disconnect between the two can also be identified in other
+areas.
+
+## Limitations
+\label{sub:limitations}
+
+The study has important limitations. First, we ran our experiment for a small
+period of time and in a particular Brazilian city, thus the findings may not
+generalise to other locations. Second, our experiment needed a longer and wider
+coverage to measure whether the treatment has a significant impact on dengue
+incidence, as the effect seems smaller than expected. Third, we included a
+post-treatment adjustment to ensure the balance of our territorial variables.
+Although using matching estimators to improve balance is in line with the best
+statistical practices, it requires additional assumptions. Finally, the
+experiment only measures the impact of financial rewards on worker performance,
+and it does not assess the effect of non-monetary incentives, such as
+motivational messages or constant feedback, which may be useful alternatives in
+jurisdictions where legal or financial constraints may prevent the government
+from distributing financial bonuses to civil servants.
+
+## Public Health Implications
+\label{sub:implications}
+
+The experiment has important lessons for policy-making. *Aedes aegypti*-borne
+diseases are a significant public health concern, especially in developing
+nations. Results of this study indicate that monetary rewards play a major role
+in motivating civil servants, and that peer incentives are more cost-effective
+than individual bonuses. Finally, the article shows anti-mosquito campaigns
+require a sustained effort to guarantee their success, and we still have no
+robust evidence that worker productivity alone is sufficient to reduce dengue
+infections.
 
 \newpage
 \setlength{\parindent}{0cm}
