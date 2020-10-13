@@ -1,14 +1,19 @@
 ---
 title:  |
-        | Financial Incentives and Health Care Prevention: Evidence from an Experimental *Aedes Aegypti* Control Programme in Brazil
+        | Financial Incentives and Health Care Prevention: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
 author: 
   - Danilo Freire[^freire]
   - Umberto Mignozzetti[^mignozzetti]
 date: \today
-thanks: "We thank Louise Araújo, Catarina Roman, David Skarbek, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Special thanks to XXXX for their excellent research assistance. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
-abstract: ""
-abstractspacing: double
-keywords: Aedes aegypti, dengue, financial incentives, mosquito control, randomised field trial, preventive health care
+thanks: "We thank Louise Araújo, Livio DiLonardo, Saad Gulzar, Cathy Hafer, Carlo Holz, Dimitri Landa, Guisela Pereira, Adam Przeworski, Catarina Roman, David Skarbek, Denis Stukal, Marcos Tourinho, Scott Tyson, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Special thanks to XXXX for their excellent research assistance. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
+abstract:    |
+    | __Objectives.__ To quantify the impact of individual and collective monetary rewards on the performance of health care workers assigned to find and exterminate *Aedes aegypti*, as well as their effect on dengue hospitalisations. 
+    | __Methods.__ We hired and trained subjects to visit households, find *A. aegypti* breeding sites, and exterminate mosquito larvae in the city of Rio Verde, Brazil, in May 2018. We provided individual and team bonuses to the two treatment groups, whereas the control group received a flat compensation for completing their tasks.
+    | __Results.__ Financial bonuses increased the number of cleaned breeding sites in both treatment status (individual and team bonuses) and team bonuses also improved larvae extermination. The intervention decreased the disease incidence in 10.3%, but the findings are not statistically significant across all model specifications.
+    | __Conclusions.__ Performance bonuses improve productivity in public service provision, yet more research is needed to asssess whether higher health care worker performance decreases dengue hospitalisations.
+    | __Public Health Implications.__ *A. aegypti* control programmes may benefit from alternative compensation schemes, specially when provided to teams. For this strategy to succeed, financial incentives have to be distributed widely as their aggregate effect is limited.
+abstractspacing: onehalf
+keywords: Aedes aegypti, dengue, financial incentives, mosquito control, randomised field experiment, preventive health care
 fontsize: 12pt
 margin: 2cm
 urlcolor: darkblue
@@ -314,31 +319,30 @@ larvae and find breeding sites, not to visit a greater number of households. As
 a result, participants in the two treatment groups did a thorough job in each
 household, which explains the lower number of visits during the allotted time.
 We find that subjects in the individual and in the collective bonus groups
-visited $-9.879$ (CI: [XXX, XXX], $p-$value $= 0.XXX$) and $-7.554$ (CI: [XXX,
-XXX], $p-$value $= 0.XXX$) households, respectively.
+visited $-9.879$ (CI: [XXX, XXX]) and $-7.554$ (CI: [XXX, XXX]) households,
+respectively.
 
 Our second indicator provides further evidence in favour of our argument. We
 see that the two groups which earned performance bonuses spent more time in the
 households, as their number of houses visited for less than two minutes is
 significantly lower than those of the control condition. On average,
 participants in the individual bonus treatment arm visited $-8.044$ (CI: [XXX,
-XXX], $p-$value $= 0.XXX$) houses than the control, and those in the collective
-bonus group visited $-6.479$ (CI: [XXX, XXX], $p-$value $= 0.XXX$).
+XXX]) houses than the control, and those in the collective bonus group visited
+$-6.479$ (CI: [XXX, XXX]).
 
 Incentivised teams find and clean more breeding sites than non-incentivised
-ones. Individually incentivised health workers find 25.118 (CI: [XXX, XXX],
-$p-$value $= 0.XXX$) more breeding sites than the non-incentivised control
-group. The effect for those in the collective bonus group is 21.512 (CI: [XXX,
-XXX], $p-$value $= 0.XXX$), slightly smaller than for the individual treatment.
+ones. Individually incentivised health workers find 25.118 (CI: [XXX, XXX])
+more breeding sites than the non-incentivised control group. The effect for
+those in the collective bonus group is 21.512 (CI: [XXX, XXX]), slightly
+smaller than for the individual treatment.
 
 Teams which received collective bonuses are the most effective in finding
-larvae. Subjects who worked in pairs have a 16.3% (CI: [XXX, XXX], $p-$value =
-$0.XXX$) higher likelihood of finding larvae than those in the control group.
-Locating mosquito larvae is a difficult task, thus the probability of
-successfully completing the task increases when subjects work in teams.
-Furthermore, our collective bonus scheme was not excludable within the teams,
-thus health care workers had an incentive to cooperate and receive higher
-rewards.
+larvae. Subjects who worked in pairs have a 16.3% (CI: [XXX, XXX]) higher
+likelihood of finding larvae than those in the control group. Locating mosquito
+larvae is a difficult task, thus the probability of successfully completing the
+task increases when subjects work in teams. Furthermore, our collective bonus
+scheme was not excludable within the teams, thus health care workers had an
+incentive to cooperate and receive higher rewards.
 
 ## Disease Incidence
 \label{sub:incidence}
@@ -378,14 +382,14 @@ $^{**}$p$<$0.05; $^{***}$p$<$0.01.}
 \end{tabular} 
 \end{table}
 
-The intervention lowered dengue incidence in 10.3\% (CI: [XXX, XXX], $p-$value
-$= 0.XXX$) if we take both treatments and compare them with the control group.
-The result is consistent around fewer weeks before and after the intervention,
-but it does not reach conventional levels of statistical significance. This
-suggests that the treatment effect is probably small. The comparison between
-the two treatment statuses show an impact of 2.9\% (CI: [XXX, XXX], $p-$ value
-$= 0.XXX$) fewer infections in the collective bonus group. However, the result
-is also not statistically significant.
+The intervention lowered dengue incidence in 10.3\% (CI: [XXX, XXX]) if we take
+both treatments and compare them with the control group. The result is
+consistent around fewer weeks before and after the intervention, but it does
+not reach conventional levels of statistical significance. This suggests that
+the treatment effect is probably small. The comparison between the two
+treatment statuses show an impact of 2.9\% (CI: [XXX, XXX]) fewer infections in
+the collective bonus group. However, the result is also not statistically
+significant.
 
 \begin{table}[ht]
   \caption{Disease Incidence in Rio Verde Census Tracts} \centering 
