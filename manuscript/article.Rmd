@@ -7,8 +7,8 @@ author:
 date: \today
 thanks: "We thank Louise Araújo, Livio DiLonardo, Saad Gulzar, Cathy Hafer, Carlo Holz, Dimitri Landa, Guisela Pereira, Adam Przeworski, Catarina Roman, David Skarbek, Denis Stukal, Marcos Tourinho, Scott Tyson, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Special thanks to XXXX for their excellent research assistance. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
 abstract:    |
-    | __Objectives.__ To quantify the impact of individual and collective monetary rewards on the performance of health care workers assigned to find and exterminate *Aedes aegypti*, as well as their effect on dengue hospitalisations. 
-    | __Methods.__ We hired and trained subjects to visit households, find *A. aegypti* breeding sites, and exterminate mosquito larvae in the city of Rio Verde, Brazil, in May 2018. We provided individual and team bonuses to the two treatment groups, whereas the control group received a flat compensation for completing their tasks.
+    | __Objectives.__ To quantify the impact of monetary incentives on the performance of health care workers assigned to exterminate *Aedes aegypti*, as well as their effect on dengue hospitalisations. 
+    | __Methods.__ We hired and trained subjects to visit households, find *A. aegypti* breeding sites, and kill mosquito larvae in the city of Rio Verde, Brazil, in May 2018. We provided individual and team bonuses to the two treatment groups, while the control group received a flat compensation for completing their tasks.
     | __Results.__ Financial bonuses increased the number of cleaned breeding sites in both treatment status (individual and team bonuses) and team bonuses also improved larvae extermination. The intervention decreased the disease incidence in 10.3%, but the findings are not statistically significant across all model specifications.
     | __Conclusions.__ Performance bonuses improve productivity in public service provision, yet more research is needed to asssess whether higher health care worker performance decreases dengue hospitalisations.
     | __Public Health Implications.__ *A. aegypti* control programmes may benefit from alternative compensation schemes, specially when provided to teams. For this strategy to succeed, financial incentives have to be distributed widely as their aggregate effect is limited.
@@ -86,7 +86,7 @@ programmes.
 
 Research shows that financial incentives may increase the productivity of
 health care workers [@clemens2014physicians; @muthmainnah2017improving;
-@ulrich2005does]. However, systematic reviews indicate that the available
+@ulrich2005does]. Nevertheless, systematic reviews indicate that the available
 evidence has serious methodological shortcomings, such as selection bias and
 inadequate experimental blinding, what limits the generalisability of current
 findings [@bassani2013financial; @flodgren2011overview; @scott2011effect].
@@ -123,17 +123,17 @@ patient outcomes and reduce hospitalisations in *Aedes*-endemic countries.
 \label{sec:methods}
 
 We conducted a randomised field trial in Rio Verde, a municipality in the
-Brazilian Midwestern state of Goiás. Rio Verde had 229,000 inhabitants and
-1,156 confirmed dengue cases, one of highest counts in the state [@goias2020].
-We used Facebook advertisements to recruit potential participants. The
-advertisements directed applicants to Google Forms, where we asked for their
-contact information. We sent a pre-treatment demographic survey to every
-applicant who provided a valid email address. At this stage, we excluded all
-individuals under 18 years old and invited the remaining applicants to our
-training session, which we ran on the 4^th^ of May, 2018. The meeting consisted
-of a lecture on *A. aegypti* vector biology and practical instructions on how
-to find and exterminate mosquito breeding sites. Those who did not attend the
-session were also excluded from the study. 
+Brazilian Midwestern state of Goiás. In 2017, Rio Verde had 229,000 inhabitants
+and 1,156 confirmed dengue cases, one of highest counts in the state
+[@goias2020]. We used Facebook advertisements to recruit potential
+participants. The advertisements directed applicants to Google Forms, where we
+asked for their contact information. We sent a pre-treatment demographic survey
+to every applicant who provided a valid email address. At this stage, we
+excluded all individuals under 18 years old and invited the remaining
+applicants to our training session, which we ran on the 4^th^ of May, 2018. The
+meeting consisted of a lecture on *A. aegypti* vector biology and practical
+instructions on how to find and exterminate mosquito breeding sites. Those who
+did not attend the session were also excluded from the study. 
 
 Table \ref{tab:covbal} displays the attrition tests, the covariate balance
 tests, and the territorial assignment before and after applying propensity score
@@ -198,19 +198,19 @@ N & 68 & 68 & 70 &  &  \\
 \normalsize
 
 The intervention took place on the 5^th^ of May, 2018. We randomly assigned
-subjects into three groups and directed each group to separate headquarters in
-order to avoid spillovers. In the control group ($n = 68$), we told
-participants that they would receive a flat payment regardless of their
-performance (BRL 110 / USD 25 per subject). In the individual treatment group
-($n = 68$), we informed subjects that we would rank individual performances and
-double the compensation for those who performed above the sample median (BRL
-220 / USD 50 per subject). In the collective treatment group ($n = 70$), we
-explained that we would rank the pair performance and double the payment for
-teams who presented results better than the sample median (BRL 220 / USD 50 per
-subject). Participants worked in pairs and were aware of other groups, but they
-did not know about the different treatment conditions. The teams received a
-leaflet with a map of the area they should cover. The route comprised of two to
-three blocks and contained around 120 houses.
+subjects into three groups and directed each group to separate headquarters to
+avoid spillovers. In the control group ($n = 68$), we told participants that
+they would receive a flat payment regardless of their performance (BRL 110 /
+USD 25 per subject). In the individual treatment group ($n = 68$), we informed
+subjects that we would rank individual performances and double the compensation
+for those who performed above the sample median (BRL 220 / USD 50 per subject).
+In the collective treatment group ($n = 70$), we explained that we would rank
+the pair performance and double the payment for teams who presented results
+better than the sample median (BRL 220 / USD 50 per subject). Participants
+worked in pairs and were aware of other groups, but they did not know about the
+different treatment conditions. The teams received a leaflet with a map of the
+area they should cover. The route comprised of two to three blocks and
+contained around 120 houses.
 
 A typical visit to a household consisted of the following steps. First,
 participants rang the doorbell and explained that the municipality had
