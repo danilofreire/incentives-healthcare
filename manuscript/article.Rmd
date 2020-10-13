@@ -440,7 +440,7 @@ performance bonus, and second one that received a collective performance
 incentive. We find that both treatments increase the number of breeding sites
 encountered, and that collective incentives outperform individual performance
 rewards when the task is more laborious and excludable (exterminating larvae).
-Finally, the control group presented a high incidence of houses visited in less
+Lastly, the control group presented a high incidence of houses visited in less
 than two minutes apart from each other, which suggests that the workers may
 not carry their tasks as intended in the absence of incentives. In a nutshell,
 monetary incentives work.
@@ -483,8 +483,8 @@ statistical practices, it requires additional assumptions. Finally, the
 experiment only measures the impact of financial rewards on worker performance,
 and it does not assess the effect of non-monetary incentives, such as
 motivational messages or constant feedback, which may be useful alternatives in
-jurisdictions where legal or financial constraints may prevent the government
-from distributing financial bonuses to civil servants.
+jurisdictions where legal or financial constraints prevent the government from
+distributing financial bonuses to civil servants.
 
 ## Public Health Implications
 \label{sub:implications}
