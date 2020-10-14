@@ -2,22 +2,37 @@
 
 This GitHub repository contains data and documented R code for ["Incentives for Health Care Provision"](), authored by [Danilo Freire](http://danilofreire.github.io) and [Umberto Mignozzetti](http://umbertomig.com). 
 
-> **Abstract**: Why do citizens resort to extrajudicial violence? While vigilantism has significantly decreased in advanced democracies, lynchings continue to be common practice in many developing nations. In this pre-analysis plan, we propose three survey experiments to investigate (i) who are the potential lynching victims, (ii) how citizens justify mob violence, and (iii) whether information provision can reduce support for vigilantism. First, we will run aconjoint experiment to assess which victim characteristics are associated with higher likelihood of lynching. Then we will show respondents a short news article about a real lynching episode and ask them whether they perceive the motivations of the lynch mob as legitimate. Lastly, we test whether providing information about legal punishment for lynching perpetrators, human rights guarantees, and the risk of retribution makes respondents less likely to endorse extralegal violence. We will run the experiments in Brazil, a country which has seen a sharp rise in vigilante attacks and currently experiences one lynching attempt per day. Our survey will be conducted online and include 1,000 participants.
+> **Objectives.** To quantify the impact of financial incentives on the productivity of health personnel combating *Aedes aegypti* and on city-level numbers of dengue hospitalisations. <br>
+> **Methods.** We hired and trained subjects to visit households, find *A. aegypti* breeding sites, and kill mosquito larvae in the city of Rio Verde, Brazil, in May 2018. We provided individual and team bonuses to two treatment groups, while the control group received a flat compensation for completing their tasks. <br>
+> **Results.** Financial bonuses increased the number of cleaned breeding sites in both treatment groups (individual and team bonuses) and the collective treatment also improved larvae extermination. The intervention lowered dengue hospitalisations in 10.3%, but the result is not consistent across all model specifications. <br>
+> **Conclusions.** Performance bonuses improve the performance of health personnel, yet more research is needed to assess whether higher worker productivity decreases dengue hospitalisations. <br>
+> **Public Health Implications.** *A. aegypti* control programmes may benefit from alternative compensation schemes, specially when provided to teams. For this strategy to succeed, financial incentives have to be distributed widely as their aggregate effect is limited. <br>
 >
-> **Keywords**: Brazil, crime, extralegal violence, lynching, vigilantism
+> **Keywords**: Aedes aegypti, dengue, financial incentives, mosquito control, preventive health care, randomised field experiment, worker productivity
 
 You can cite the article as: 
 
-> Freire, D. and Mignozzetti, U. 2020. "Incentives for Health Care Provision", _SocArXiv_, DOI: <https://doi.org/10.31235/osf.io/9a6ch>.
+> Freire, D. and Mignozzetti, U. 2020. "Financial Incentives and Health Care Prevention: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil", _SocArXiv_, DOI: <https://doi.org/10.31235/osf.io/9a6ch>.
 
 BibTeX entry:
 
 ```
 @misc{freire-mignozzetti2020incentives,
-  title        = {{Incentives for Health Care Provision}},
+  title        = {{Financial Incentives and Health Care Prevention: Evidence from an Experimental \textit{Aedes aegypti} Control Programme in Brazil}},
   author       = {Freire, Danilo and Mignozzetti, Umberto},
   pages        = {1--17},
   year         = {2020},
   howpublished = {\url{https://doi.org/10.31235/osf.io/9a6ch}}
 }
 ``` 
+
+
+## TO DO
+
+* Explicar porque temos 2 tabelas diferentes na parte de _Disease Incidence_, e em qual sentido elas são distintas. A seção _Results_ ainda me parece ter um pouco de imprecisão.
+
+* Colocar os intervalos de confiança nas estimações citadas no texto.
+
+* Checar o _n_ dos participantes em cada grupo.
+
+* Revisar a nova versão do apêndice. A que está no repositório não contém o modelo formal e está incompleta.

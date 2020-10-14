@@ -7,13 +7,13 @@ author:
 date: \today
 thanks: "We thank Louise Araújo, Livio DiLonardo, Saad Gulzar, Cathy Hafer, Carlo Holz, Dimitri Landa, Guisela Pereira, Adam Przeworski, Catarina Roman, David Skarbek, Denis Stukal, Marcos Tourinho, Scott Tyson, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Special thanks to XXXX for their excellent research assistance. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
 abstract:    |
-    | __Objectives.__ To quantify the impact of monetary incentives on the performance of health care workers assigned to exterminate *Aedes aegypti*, as well as their effect on dengue hospitalisations. 
-    | __Methods.__ We hired and trained subjects to visit households, find *A. aegypti* breeding sites, and kill mosquito larvae in the city of Rio Verde, Brazil, in May 2018. We provided individual and team bonuses to the two treatment groups, while the control group received a flat compensation for completing their tasks.
-    | __Results.__ Financial bonuses increased the number of cleaned breeding sites in both treatment status (individual and team bonuses) and team bonuses also improved larvae extermination. The intervention decreased the disease incidence in 10.3%, but the findings are not statistically significant across all model specifications.
-    | __Conclusions.__ Performance bonuses improve productivity in public service provision, yet more research is needed to asssess whether higher health care worker performance decreases dengue hospitalisations.
+    | __Objectives.__ To quantify the impact of financial incentives on the productivity of health personnel combating *Aedes aegypti* and on city-level numbers of dengue hospitalisations.
+    | __Methods.__ We hired and trained subjects to visit households, find *A. aegypti* breeding sites, and kill mosquito larvae in the city of Rio Verde, Brazil, in May 2018. We provided individual and team bonuses to two treatment groups, while the control group received a flat compensation for completing their tasks.
+    | __Results.__ Financial bonuses increased the number of cleaned breeding sites in both treatment groups (individual and team bonuses) and the collective treatment also improved larvae extermination. The intervention lowered dengue hospitalisations in 10.3%, but the result is not consistent across all model specifications.
+    | __Conclusions.__ Performance bonuses improve the performance of health personnel, yet more research is needed to assess whether higher worker productivity decreases dengue hospitalisations.
     | __Public Health Implications.__ *A. aegypti* control programmes may benefit from alternative compensation schemes, specially when provided to teams. For this strategy to succeed, financial incentives have to be distributed widely as their aggregate effect is limited.
 abstractspacing: single
-keywords: Aedes aegypti, dengue, financial incentives, mosquito control, randomised field experiment, preventive health care
+keywords: Aedes aegypti, dengue, financial incentives, mosquito control, preventive health care, randomised field experiment, worker productivity
 fontsize: 12pt
 margin: 2cm
 urlcolor: darkblue
@@ -65,12 +65,11 @@ diseases, including dengue, yellow fever, Zika, and chikungunya
 increased exponentially, with estimates suggesting that dengue is endemic in
 around 100 countries and causes 400 million infections and 22 thousands deaths
 each year [@bhatt2013global; @cdc2020dengue]. Since there are no safe vaccines
-for most *Aedes*-transmitted diseases [@sridhar2018effect;
-@world2017dengue], we have seen a number of dengue and Zika outbreaks in Asia,
-the Caribbean, South America, and the United States [@carlson2016ecological;
-@leta2018global]. Chikungunya virus, which was endemic only to Africa, has
-already been reported in every region of the world [@grandadam2011chikungunya;
-@kraemer2015global; @mayer2017emergence].
+for most *Aedes*-transmitted diseases [@world2017dengue], we have seen a number
+of dengue and Zika outbreaks in Asia, the Caribbean, South America, and the
+United States [@carlson2016ecological; @leta2018global]. Chikungunya virus,
+previously endemic only to Africa, has already been reported in every region of
+the world [@grandadam2011chikungunya; @kraemer2015global; @mayer2017emergence].
 
 Mosquito control is the primary strategy to prevent *Aedes*-borne infections
 [@beatty2010best; @eisen2009proactive]. The World Health Organization
@@ -86,14 +85,14 @@ programmes.
 
 Research shows that financial incentives may increase the productivity of
 health care workers [@clemens2014physicians; @muthmainnah2017improving;
-@ulrich2005does]. Nevertheless, systematic reviews indicate that the available
-evidence has serious methodological shortcomings, such as selection bias and
-inadequate experimental blinding, what limits the generalisability of current
-findings [@bassani2013financial; @flodgren2011overview; @scott2011effect].
-Moreover, it remains unclear which rewarding schemes have a stronger effect on
-health care worker performance [@fainman2020design], and whether monetary
-incentives have a sustained effect on patient outcomes [@jha2012long;
-@langdown2014use].
+@ulrich2005does]. Nevertheless, systematic reviews indicate that the
+generalisability of the available evidence is limited due to methodological
+shortcomings, as several studies suffer from selection bias and inadequate
+experimental blinding [@bassani2013financial; @flodgren2011overview;
+@scott2011effect]. Moreover, it remains unclear which rewarding schemes have a
+stronger effect on health care worker performance [@fainman2020design], and
+whether monetary incentives have a sustained effect on patient outcomes
+[@jha2012long; @langdown2014use].
 
 In this paper, we explore how financial incentives affect the productivity of
 health care personnel involved in *A. aegypti* control and measure how monetary
@@ -217,23 +216,23 @@ participants rang the doorbell and explained that the municipality had
 experienced a dengue fever outbreak. They instructed dwellers on how to lower
 dengue incidence and handed them a leaflet with information about dengue
 prevention practices. Then, subjects asked whether they were allowed to inspect
-house yard. If granted permission, they entered the household and searched for
-clean breeding sites, such as pots filled with clear water, and recipients
-containing larvae. Upon exterminating a breeding site (pouring out the
-accumulated water, for example), subjects had to report their task by taking a
-photo on their cellphones. When they discovered larvae, they had to record a
-video showing the larvae before exterminating it. At the end of their visit,
-they had to take a picture of the household to account for their presence in
-the location.
+the resident's house yard. If granted permission, they entered the household
+and searched for clean breeding sites, such as pots filled with clear water,
+and for recipients containing larvae. Upon exterminating a breeding site
+(pouring out the accumulated water, for example), subjects had to report their
+task by taking a photo on their cellphones. When they discovered larvae,
+participants had to record a video showing the larvae before exterminating
+them. At the end of their visit, subjects had to take a picture of the household to
+account for their presence in the location.
 
-This study evaluates two outcomes. The first outcome is field productivity of
-the health care workers. We measure worker productivity by coding cellphone
+This study evaluates two outcomes. The first outcome is the field productivity
+of health care providers. We measure worker productivity by coding cellphone
 data collected during the intervention into four indicators: 1) the number of
 houses visited; 2) the number of houses visited within less than two minutes;
 3) the number of breeding sites removed and cleaned; 4) the number of
 exterminated larvae. We analyse the data using ordinary least squares with
-robust standard errors [@imbens2016robust]. We estimate the statistical power
-of the study assuming a treatment effect of 0.15 standard deviations. 
+robust standard errors [@imbens2016robust]. We estimate the statistical
+power of the study assuming a treatment effect of 0.15 standard deviations. 
 
 The second outcome of interest is dengue incidence in the municipality of Rio
 Verde measured 4, 8, 12, and 16 days after the intervention. The Rio Verde
@@ -242,9 +241,9 @@ the dates and personal information of patients who had dengue fever and
 received hospital treatment from January to September 2018. We georeferenced
 the home addresses of the patients and compared the incidence map with the
 distribution of our intervention. We also compare dengue incidence in each of
-the treatment statuses with incidence figures in the control group. The unit of
-analysis is the census tract in both models. We employ a
-differences-in-differences estimator to assess the treatment effects
+the treatment statuses with incidence figures in the control group. In both
+models, the unit of analysis is the census tract. We employ a
+differences-in-differences estimator to measure the treatment effects
 [@angrist2008mostly]. 
 
 We pre-registered the experiment on the Evidence in Governance and Policy
@@ -357,6 +356,8 @@ for our first model, in which we test the impact of our intervention after 4,
 8, 12, and 16 weeks. The last column shows how collective incentives compare
 with individual bonuses, with the latter considered as the control group.
 
+\vspace{.3cm}
+
 \begin{table}[ht] \centering 
   \caption{Disease Incidence -- Differences in Differences Model} 
   \label{tab:incidence} 
@@ -390,6 +391,8 @@ the treatment effect is probably small. The comparison between the two
 treatment statuses show an impact of 2.9\% (CI: [XXX, XXX]) fewer infections in
 the collective bonus group. However, the result is also not statistically
 significant.
+
+\vspace{.3cm}
 
 \begin{table}[ht]
   \caption{Disease Incidence in Rio Verde Census Tracts} \centering 
