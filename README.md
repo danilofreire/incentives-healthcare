@@ -1,6 +1,6 @@
 ## Financial Incentives and Health Care Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
 
-This GitHub repository contains data and documented R code for ["Incentives for Health Care Provision"](), authored by [Danilo Freire](http://danilofreire.github.io) and [Umberto Mignozzetti](http://umbertomig.com). 
+This GitHub repository contains data and documented R code for ["Financial Incentives and Health Care Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil"](), authored by [Danilo Freire](http://danilofreire.github.io) and [Umberto Mignozzetti](http://umbertomig.com). 
 
 > **Objectives.** To quantify the impact of financial incentives on the productivity of health personnel combating *Aedes aegypti* and on city-level numbers of dengue hospitalisations. <br>
 > **Methods.** We hired and trained subjects to visit households, find *A. aegypti* breeding sites, and kill mosquito larvae in the city of Rio Verde, Brazil, in May 2018. We provided individual and team bonuses to two treatment groups, while the control group received a flat compensation for completing their tasks. <br>

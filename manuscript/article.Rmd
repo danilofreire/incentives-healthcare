@@ -130,7 +130,7 @@ asked for their contact information. We sent a pre-treatment demographic survey
 to every applicant who provided a valid email address. At this stage, we
 excluded all individuals under 18 years old and invited the remaining
 applicants to our training session, which we ran on the 4^th^ of May, 2018. The
-meeting consisted of a lecture on *A. aegypti* vector biology and practical
+meeting involved a lecture on *A. aegypti* vector biology and practical
 instructions on how to find and exterminate mosquito breeding sites. Those who
 did not attend the session were also excluded from the study. 
 
@@ -346,13 +346,13 @@ incentive to cooperate and receive higher rewards.
 ## Disease Incidence
 \label{sub:incidence}
 
-We employ two models to evaluate the effect of the treatment on dengue
-incidence. The first is a differences-in-differences model that assesses
+We employ two models to evaluate the effect of monetary incentives on dengue
+incidence. The first is a differences-in-differences model that tests
 whether the intervention _per se_ had any effect on dengue hospitalisations in
 the city of Rio Verde. The second model compares dengue incidence in each of
 the treatment statuses with incidence figures in the control group. The unit of
 analysis is the census tract. Table \ref{tab:incidence} displays the results
-for our first model, in which we test the impact of our intervention after 4,
+for our first model, in which we measure the impact of our intervention after 4,
 8, 12, and 16 weeks. The last column shows how collective incentives compare
 with individual bonuses, with the latter considered as the control group.
 
