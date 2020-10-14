@@ -1,4 +1,4 @@
-## Incentives for Health Care Provision (Working Title)
+## Financial Incentives and Health Care Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
 
 This GitHub repository contains data and documented R code for ["Incentives for Health Care Provision"](), authored by [Danilo Freire](http://danilofreire.github.io) and [Umberto Mignozzetti](http://umbertomig.com). 
 
@@ -12,13 +12,13 @@ This GitHub repository contains data and documented R code for ["Incentives for 
 
 You can cite the article as: 
 
-> Freire, D. and Mignozzetti, U. 2020. "Financial Incentives and Health Care Prevention: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil", _SocArXiv_, DOI: <https://doi.org/10.31235/osf.io/9a6ch>.
+> Freire, D. and Mignozzetti, U. 2020. "Financial Incentives and Health Care Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil", _SocArXiv_, DOI: <https://doi.org/10.31235/osf.io/9a6ch>.
 
 BibTeX entry:
 
 ```
 @misc{freire-mignozzetti2020incentives,
-  title        = {{Financial Incentives and Health Care Prevention: Evidence from an Experimental \textit{Aedes aegypti} Control Programme in Brazil}},
+  title        = {{Financial Incentives and Health Care Provision: Evidence from an Experimental \textit{Aedes aegypti} Control Programme in Brazil}},
   author       = {Freire, Danilo and Mignozzetti, Umberto},
   pages        = {1--17},
   year         = {2020},

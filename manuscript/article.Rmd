@@ -1,6 +1,6 @@
 ---
 title:  |
-        | Financial Incentives and Health Care Prevention: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
+        | Financial Incentives and Health Care Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
 author: 
   - Danilo Freire[^freire]
   - Umberto Mignozzetti[^mignozzetti]
