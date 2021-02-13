@@ -30,6 +30,9 @@ $endif$
 \usepackage{etoolbox}
 \usepackage{tocloft}
 
+% Line numbers
+\usepackage{lineno}
+
 % Dots in toc
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
@@ -155,46 +158,9 @@ $endif$
 
 % Bibliography
 $if(natbib)$
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$apalike$endif$}
 \makeatletter
-% Remove comma after author
-\setcitestyle{aysep={}}
-\patchcmd{\NAT@citex}
-	  {\@citea\NAT@hyper@{%
-		 \NAT@nmfmt{\NAT@nm}%
-		 \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
-		 \NAT@date}}
-	  {\@citea\NAT@nmfmt{\NAT@nm}%
-	   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
-	\patchcmd{\NAT@citex}
-	  {\@citea\NAT@hyper@{%
-		 \NAT@nmfmt{\NAT@nm}%
-		 \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
-		   {\@citeb\@extra@b@citeb}%
-		 \NAT@date}}
-	  {\@citea\NAT@nmfmt{\NAT@nm}%
-	   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
-	  {}{}
-% Patch case where name and year are separated by aysep
-\patchcmd{\NAT@citex}
-  {\@citea\NAT@hyper@{%
-     \NAT@nmfmt{\NAT@nm}%
-     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
-     \NAT@date}}
-  {\@citea\NAT@nmfmt{\NAT@nm}%
-   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
-% Patch case where name and year are separated by opening bracket
-\patchcmd{\NAT@citex}
-  {\@citea\NAT@hyper@{%
-     \NAT@nmfmt{\NAT@nm}%
-     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
-       {\@citeb\@extra@b@citeb}%
-     \NAT@date}}
-  {\@citea\NAT@nmfmt{\NAT@nm}%
-   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
-  {}{}
-\makeatother
 $endif$
 $if(biblatex)$
 \usepackage$if(biblio-style)$[style=$biblio-style$]$endif${biblatex}
@@ -318,6 +284,7 @@ $endif$
 \date{$date$}
 
 % Begin document
+\linenumbers
 \begin{document}
 $if(title)$
 \maketitle

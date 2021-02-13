@@ -5,15 +5,7 @@ author:
   - Danilo Freire[^freire]
   - Umberto Mignozzetti[^mignozzetti]
 date: \today
-thanks: "We thank Louise Araújo, Livio DiLonardo, Saad Gulzar, Cathy Hafer, Carlo Holz, Dimitri Landa, Guisela Pereira, Adam Przeworski, Catarina Roman, David Skarbek, Denis Stukal, Marcos Tourinho, Scott Tyson, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Special thanks to XXXX for their excellent research assistance. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
-abstract:    |
-    | __Objectives.__ To quantify the impact of financial incentives on the productivity of health personnel combating *Aedes aegypti* and on city-level numbers of dengue hospitalisations.
-    | __Methods.__ We hired and trained subjects to visit households, find *A. aegypti* breeding sites, and kill mosquito larvae in the city of Rio Verde, Brazil, in May 2018. We provided individual and team bonuses to two treatment groups, while the control group received a flat compensation for completing their tasks.
-    | __Results.__ Financial bonuses increased the number of cleaned breeding sites in both treatment groups (individual and team bonuses) and the collective treatment also improved larvae extermination. The intervention lowered dengue hospitalisations in 10.3%, but the result is not consistent across all model specifications.
-    | __Conclusions.__ Performance bonuses improve the performance of health personnel, yet more research is needed to assess whether higher worker productivity decreases dengue hospitalisations.
-    | __Public Health Implications.__ *A. aegypti* control programmes may benefit from alternative compensation schemes, specially when provided to teams. For this strategy to succeed, financial incentives have to be distributed widely as their aggregate effect is limited.
-abstractspacing: single
-keywords: Aedes aegypti, dengue, financial incentives, mosquito control, preventive health care, randomised field experiment, worker productivity
+thanks: "We thank Livio DiLonardo, Saad Gulzar, Cathy Hafer, Carlo Holz, Dimitri Landa, Guisela Pereira, Adam Przeworski, Catarina Roman, David Skarbek, Denis Stukal, Marcos Tourinho, Scott Tyson, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Special thanks to XXXX for their excellent research assistance. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
 fontsize: 12pt
 margin: 2cm
 urlcolor: darkblue
@@ -22,6 +14,7 @@ citecolor: Mahogany
 spacing: double
 papersize: a4paper
 bibliography: references.bib
+biblio-style: unsrtnat
 output:
   pdf_document:
     citation_package: natbib
@@ -55,6 +48,72 @@ Department, Emory University, 532 North Kilgo Circle, 4^th^ Floor, Atlanta, GA
 
 \newpage
 
+\begin{abstract}
+
+\footnotesize 
+
+\noindent \textbf{Background}. Mosquito control strategies are the primary
+means to reduce \textit{Aedes aegypti} infections worldwide. However,
+insecticide spraying is conducted inconsistently across the developing world.
+Recent studies indicate that financial incentives may increase the productivity
+of health personnel, yet there is little evidence on the impact of monetary
+rewards on \textit{A. aegypti}-reduction programmes. We evaluated whether
+individual and collective financial incentives improves the performance of
+healthcare workers fighting \textit{A. aegypti}, as well as their effect on
+city-level numbers of dengue hospitalisations.
+
+\noindent \textbf{Methodology/Principal findings}. We hired and trained
+subjects to visit households, find \textit{A. aegypti} breeding sites, and kill
+mosquito larvae in the city of Rio Verde, Brazil. In our randomised field
+trial, we provided individual and team bonuses to two treatment groups, while
+the control group received a flat compensation for completing their tasks.
+Financial bonuses increased the number of cleaned breeding sites in both
+treatment groups (individual and team bonuses) and the collective treatment
+also improved larvae extermination. The intervention lowered dengue
+hospitalisations in 10.3\%, but the result was not consistent across all model
+specifications.
+
+\noindent \textbf{Conclusions/Significance}. \textit{A. aegypti} control
+programmes may benefit from alternative compensation schemes, specially when
+provided to teams. For this strategy to succeed, financial incentives have to
+be distributed widely as their aggregate effect is limited. More research is
+needed to assess whether higher worker productivity decreases dengue
+hospitalisations.
+
+\end{abstract}
+
+\renewcommand{\abstractname}{Author Summary}
+\begin{abstract}
+
+\footnotesize 
+
+\noindent Diseases transmitted by the \textit{Aedes aegypti} mosquito, such as
+chikungunya, dengue, yellow fever, and Zika, continue to kill thousands of
+people per year. As there is no safe vaccine for many of these infections,
+insecticide spraying and breeding site cleaning are the best means to fight the
+mosquito. In several developing countries, which host the majority of cases of
+\textit{A. aegypti} infections, anti-mosquito campaigns are carried out
+inconsistently, thus it is crucial to find ways to improve the productivity of
+healthcare workers in charge of these tasks. We designed a randomised field
+experiment that provided individual and collective financial incentives to
+healthcare agents in a Brazilian city and tested the effect of monetary rewards
+on their productivity and on the number of dengue hospitalisations. We find
+that financial bonuses improved the number of cleaned breeding sites in both
+treatment groups (individual and team incentives) and that the collective
+treatment also improved larvae extermination. The impact of our treatment on
+city-level hospitalisations was not consistent across all specifications. In
+sum, financial incentives may be used to boost field productivity in
+anti-\textit{A. aegypti} programmes, but we suggest that further research is
+required to evaluate how healthcare worker productivy relates to aggregate
+disease outcomes.
+
+\vspace{.3cm}
+\noindent \textbf{Keywords}: Aedes aegypti, dengue, financial incentives, mosquito control, preventive health care, randomised field experiment, worker productivity
+\end{abstract}
+
+\normalsize
+
+\newpage
 # Introduction
 \label{sec:intro}
 
@@ -95,24 +154,24 @@ whether monetary incentives have a sustained effect on patient outcomes
 [@jha2012long; @langdown2014use].
 
 In this paper, we explore how financial incentives affect the productivity of
-health care personnel involved in *A. aegypti* control and measure how monetary
-rewards impact dengue hospitalisations. We run a randomised field experiment in
-the city of Rio Verde, Brazil, which has experienced a peak in dengue
-infections in the last years. We hired and trained teams of health care workers
-to perform simplified procedures designed to exterminate *A. aegypti* breeding
-sites. Our experiment consisted of two treatment arms plus a control condition.
-The control group received a fixed compensation for completing their tasks, and
-we offered individual or collective bonuses to those allocated in the two
-treatment groups. We then measured how the different compensations schemes
-affect the number of breeding sites discovered, larvae exterminated, and
-city-level dengue incidence. 
+health care personnel involved in *A. aegypti* control and how they impact
+dengue hospitalisations. We run a randomised field experiment in the city of
+Rio Verde, Brazil, which has experienced a peak in dengue infections in the
+last years. We hired and trained teams of health care workers to perform
+simplified procedures designed to exterminate *A. aegypti* breeding sites. Our
+experiment consisted of two treatment arms plus a control condition. We offered
+individual or collective bonuses to those allocated in the two treatment
+groups, while the control group received a fixed compensation for completing
+their tasks. We then measured how the different reward schemes affect the
+number of breeding sites discovered, larvae exterminated, and city-level dengue
+incidence. 
 
 We find that monetary rewards increase the number of cleaned breeding sites in
 both treatment conditions (individual and team bonuses), and that collective
 financial incentives also improve larvae extermination. Our results show that
 the control group has a high number of houses visited in less than two minutes
 apart from each other, which suggests that workers may cheat in the absence of
-financial incentives. When we combine both treatments, we also find that the
+monetary incentives. When we combine both treatments, we also find that the
 intervention decreases dengue incidence in 10.3%, but the results are not
 robust. In summary, we provide experimental evidence that performance bonuses
 enhance public service delivery and that small financial incentives may improve
@@ -123,7 +182,7 @@ patient outcomes and reduce hospitalisations in *Aedes*-endemic countries.
 
 We conducted a randomised field trial in Rio Verde, a municipality in the
 Brazilian Midwestern state of Goiás. In 2017, Rio Verde had 229,000 inhabitants
-and 1,156 confirmed dengue cases, one of highest counts in the state
+and 1,156 confirmed dengue cases, one of highest counts in Goiás
 [@goias2020]. We used Facebook advertisements to recruit potential
 participants. The advertisements directed applicants to Google Forms, where we
 asked for their contact information. We sent a pre-treatment demographic survey
@@ -134,13 +193,13 @@ meeting involved a lecture on *A. aegypti* vector biology and practical
 instructions on how to find and exterminate mosquito breeding sites. Those who
 did not attend the session were also excluded from the study. 
 
-Table \ref{tab:covbal} displays the attrition tests, the covariate balance
-tests, and the territorial assignment before and after applying propensity score
-matching [@rosenbaum1985constructing] on census tract characteristics. We
-observe no significant differences regarding attrition rates, indicating that
-the treatment was correctly randomised. Participants' demographics are also
-similar across all groups, and the matching technique successfully balanced the
-territorial assignment.
+Table \ref{tab:covbal} displays the attrition and covariate balance tests for
+our experiment, and the territorial assignment before and after applying
+propensity score matching [@rosenbaum1985constructing] on census tract
+characteristics. We observe no significant differences regarding attrition
+rates, indicating that the treatment was correctly randomised. Participant 
+demographics are also similar across all groups, thus the matching technique
+successfully balanced the territorial assignment.
 
 \begin{table}[ht] \centering 
 \small
@@ -201,29 +260,29 @@ subjects into three groups and directed each group to separate headquarters to
 avoid spillovers. In the control group ($n = 68$), we told participants that
 they would receive a flat payment regardless of their performance (BRL 110 /
 USD 25 per subject). In the individual treatment group ($n = 68$), we informed
-subjects that we would rank individual performances and double the compensation
+subjects that we would rank each subject separately and double the compensation
 for those who performed above the sample median (BRL 220 / USD 50 per subject).
 In the collective treatment group ($n = 70$), we explained that we would rank
-the pair performance and double the payment for teams who presented results
-better than the sample median (BRL 220 / USD 50 per subject). Participants
-worked in pairs and were aware of other groups, but they did not know about the
-different treatment conditions. The teams received a leaflet with a map of the
-area they should cover. The route comprised of two to three blocks and
-contained around 120 houses.
+the performance of each group and double the payment for those teams whose
+results were higher than the sample median (BRL 220 / USD 50 per subject).
+Participants worked in pairs and were aware of other groups, but they did not
+know about the different treatment conditions. The teams received a leaflet
+with a map of the area they should cover. Each route included around 120 houses
+in two or three blocks.
 
-A typical visit to a household consisted of the following steps. First,
-participants rang the doorbell and explained that the municipality had
-experienced a dengue fever outbreak. They instructed dwellers on how to lower
-dengue incidence and handed them a leaflet with information about dengue
-prevention practices. Then, subjects asked whether they were allowed to inspect
-the resident's house yard. If granted permission, they entered the household
-and searched for clean breeding sites, such as pots filled with clear water,
-and for recipients containing larvae. Upon exterminating a breeding site
-(pouring out the accumulated water, for example), subjects had to report their
-task by taking a photo on their cellphones. When they discovered larvae,
-participants had to record a video showing the larvae before exterminating
-them. At the end of their visit, subjects had to take a picture of the household to
-account for their presence in the location.
+A typical household visit consisted of the following steps. First, participants
+rang the doorbell and explained that the municipality had experienced a dengue
+fever outbreak. They instructed dwellers on how to lower dengue incidence and
+handed them a leaflet with information about dengue prevention practices. Then,
+subjects asked whether they were allowed to inspect the resident's house yard.
+If granted permission, they entered the household and searched for clean
+breeding sites, such as pots filled with clear water, and for recipients
+containing larvae. Upon exterminating a breeding site (pouring out the
+accumulated water, for example), subjects had to report their task by taking a
+photo on their cellphones. When they discovered larvae, participants had to
+record a short video showing the larvae before exterminating them. At the end
+of each visit, subjects had to take a picture of the household to account for
+their presence in the location.
 
 This study evaluates two outcomes. The first outcome is the field productivity
 of health care providers. We measure worker productivity by coding cellphone
@@ -247,7 +306,7 @@ differences-in-differences estimator to measure the treatment effects
 [@angrist2008mostly]. 
 
 We pre-registered the experiment on the Evidence in Governance and Policy
-(EGAP) website (<https://osf.io/6q8vu/>) and received IRB approval from New
+(EGAP) website (<https://osf.io/6q8vu/>), and received IRB approval from New
 York University (IRB-FY2017-17) and Fundação Getulio Vargas (IRB-01/2017). The
 funders of this study had no influence over the formulation, organisation,
 analysis, and interpretation of the outcomes. Health care workers gave written
