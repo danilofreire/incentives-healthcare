@@ -89,9 +89,9 @@ hospitalisations.
 
 \noindent Diseases transmitted by the \textit{Aedes aegypti} mosquito, such as
 chikungunya, dengue, yellow fever, and Zika, continue to kill thousands of
-people per year. As there is no safe vaccine for many of these infections,
+people per year. As there are no safe vaccines for many of these infections,
 insecticide spraying and breeding site cleaning are the best means to fight the
-mosquito. In several developing countries, which host the majority of cases of
+mosquito. In several developing countries, which host the majority of
 \textit{A. aegypti} infections, anti-mosquito campaigns are carried out
 inconsistently, thus it is crucial to find ways to improve the productivity of
 healthcare workers in charge of these tasks. We designed a randomised field
@@ -104,7 +104,7 @@ treatment also improved larvae extermination. The impact of our treatment on
 city-level hospitalisations was not consistent across all specifications. In
 sum, financial incentives may be used to boost field productivity in
 anti-\textit{A. aegypti} programmes, but we suggest that further research is
-required to evaluate how healthcare worker productivy relates to aggregate
+required to evaluate how healthcare worker productivy impacts city-level
 disease outcomes.
 
 \vspace{.3cm}
