@@ -31,9 +31,24 @@ output:
 r <- getOption("repos")
 r["CRAN"] <- "https://cran.rstudio.com/"
 options(repos = r)
-if (!require("kableExtra")) {
-    install.packages("kableExtra")
-}
+# Install required packages
+pkgs <- c('tidyverse', 'magrittr', 'lmtest',
+          'estimatr', 'sandwich', 'stargazer',
+          'gridExtra', 'WeightIt', 'robustHD', 
+          'kableExtra', 'lfe')
+
+installIfNot <- function(x) {
+  if(x %in% rownames(installed.packages()) == FALSE) 
+    install.packages(x, dependencies = T)
+} 
+invisible(lapply(pkgs, installIfNot))
+
+# Load packages
+invisible(lapply(pkgs, require, character.only = T))
+rm(pkgs, installIfNot, r)
+
+# Load data
+load('../data/incentives_healthcare.RData')
 ```
 
 [^freire]: Independent Researcher,
@@ -212,10 +227,71 @@ Variable & Attrition & Control & Individual & Collective & F-Statistic & P-Value
 \hline \\[-1.8ex] 
 & & \multicolumn{5}{l}{Panel A: Attrition Pattern Test} \\
 \hline \\[-1.8ex]
-Age &  26.17 & 25.04 & 26.07 & 26.00 & 0.461 & 0.710 \\ 
-Female &   0.72 &  0.79 &  0.79 &  0.74 & 0.805 & 0.492 \\ 
-Has Vehicle &   0.35 &  0.27 &  0.37 &  0.37 & 0.651 & 0.582 \\ 
-N & 341 & 73 & 71 & 73 &  &  \\ 
+```{r, echo = FALSE, cache=TRUE, results='asis'}
+tabcov <- data.frame()
+pretreat$assign2 <- ifelse(is.na(pretreat$assignment)|
+                             pretreat$participating!='Participating', 
+                           'Attrition', pretreat$assignment)
+pretreat$assign2 <- factor(pretreat$assign2, levels = c('Attrition',
+                                                        'No bonus',
+                                                        'Individual',
+                                                        'Collective'))
+x = tapply(pretreat$Age, 
+           pretreat$assign2,
+           mean)
+y = summary(aov(Age~assign2, 
+                data = pretreat))
+tab <- data.frame(Var = 'Age',
+                  `Atrition` = round(x[1],2),
+                  `NoBonus` = round(x[2],2),
+                  `Individual` = round(x[3],2),
+                  `Collective` = round(x[4],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+x = tapply(pretreat$Female, 
+           pretreat$assign2,
+           mean)
+y = summary(aov(Female~assign2, 
+                data = pretreat))
+tab <- data.frame(Var = 'Female',
+                  `Atrition` = round(x[1],2),
+                  `NoBonus` = round(x[2],2),
+                  `Individual` = round(x[3],2),
+                  `Collective` = round(x[4],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+x = tapply(pretreat$HasVehicle, 
+           pretreat$assign2,
+           mean)
+y = summary(aov(HasVehicle~assign2, data = pretreat))
+tab <- data.frame(Var = 'Has Vehicle',
+                  `Atrition` = round(x[1],2),
+                  `NoBonus` = round(x[2],2),
+                  `Individual` = round(x[3],2),
+                  `Collective` = round(x[4],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+x = round(tapply(rep(1, length(pretreat$assign2)), 
+                 pretreat$assign2,
+                 sum), digits = 0)
+tab <- data.frame(Var = 'N',
+                  `Atrition` = round(x[1],2),
+                  `NoBonus` = round(x[2],2),
+                  `Individual` = round(x[3],2),
+                  `Collective` = round(x[4],2),
+                  FVal = NA,
+                  Pvalue = NA)
+tabcov <- rbind(tabcov, tab)
+row.names(tabcov) <- NULL
+for (i in 1:dim(tabcov)[1]) {
+  s <- paste(tabcov[i,], collapse = ' & ')
+  s <- gsub('NA', '', paste(tabcov[i,], collapse = ' & '))
+  cat(paste(s, ' \\\\ ', sep = ''), '\n')
+}
+```
 \hline \\[-1.8ex] 
 \end{tabular} 
 \begin{tabular}{@{\extracolsep{5pt}} lccccc} 
@@ -223,32 +299,316 @@ Variable & Control & Individual & Collective & F-Statistic & P-Value \\
 \hline \\[-1.8ex] 
 & \multicolumn{5}{l}{Panel B: Covariate Balance on Individual Characteristics} \\
 \hline \\[-1.8ex]
-Altruist &  0.63 &  0.68 &  0.62 & 0.239 & 0.788 \\ 
-Age & 25.01 & 26.00 & 26.90 & 0.754 & 0.472 \\ 
-Religiosity &  0.53 &  0.38 &  0.45 & 1.487 & 0.228 \\ 
-Pol. Engagement &  0.69 &  0.65 &  0.68 & 0.163 & 0.849 \\ 
-Soc. Engagement &  0.59 &  0.62 &  0.67 & 0.454 & 0.636 \\ 
-Above 2 Min. Wage &  0.34 &  0.35 &  0.29 & 0.336 & 0.715 \\ 
-FB Popularity &  0.53 &  0.56 &  0.58 & 0.175 & 0.840 \\ 
+```{r, echo = FALSE, cache=TRUE, results='asis'}
+tabcov <- data.frame()
+pretreat$assign3 <- ifelse(is.na(pretreat$assignment)|
+                             pretreat$participating!='Participating', 
+                           NA, pretreat$assignment)
+pretreat$assign3 <- factor(pretreat$assign3, levels = c('No bonus',
+                                                        'Individual',
+                                                        'Collective'))
+aux <- filter(pretreat, !is.na(assign3))
+# Age
+x = tapply(aux$Age, 
+           aux$assign3,
+           mean)
+y = summary(aov(Age~assign3, 
+                data = aux))
+tab <- data.frame(Var = 'Age',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Altruism
+x = tapply(aux$aboveMedianAltr, 
+           aux$assign3,
+           mean)
+y = summary(aov(aboveMedianAltr~assign3, 
+                data = aux))
+tab <- data.frame(Var = 'Altruist',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Religiosity
+x = tapply(aux$relig, 
+           aux$assign3,
+           mean)
+y = summary(aov(relig~assign3, 
+                data = aux))
+tab <- data.frame(Var = 'Religiosity',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Political Engagement
+x = tapply(aux$polengage, 
+           aux$assign3,
+           mean)
+y = summary(aov(polengage~assign3, 
+                data = aux))
+tab <- data.frame(Var = 'Pol. Engagement',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Social Engagement
+x = tapply(aux$socengage, 
+           aux$assign3,
+           mean)
+y = summary(aov(socengage~assign3, 
+                data = aux))
+tab <- data.frame(Var = 'Soc. Engagement',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Above Two Minimum Wage Family
+x = tapply(aux$aboveTwoMinWageFam, 
+           aux$assign3,
+           mean)
+y = summary(aov(aboveTwoMinWageFam~assign3, 
+                data = aux))
+tab <- data.frame(Var = 'Above Two Min. Wage',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Above Median Facebook popularity
+x = tapply(aux$FBpop, 
+           aux$assign3,
+           mean)
+y = summary(aov(FBpop~assign3, 
+                data = aux))
+tab <- data.frame(Var = 'Facebook Popularity',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# N
+x = round(tapply(rep(1, length(aux$assign3)), 
+                 aux$assign3,
+                 sum), digits = 0)
+tabcov <- rbind(tabcov, tab)
+row.names(tabcov) <- NULL
+for (i in 1:dim(tabcov)[1]) {
+  s <- paste(tabcov[i,], collapse = ' & ')
+  s <- gsub('NA', '', paste(tabcov[i,], collapse = ' & '))
+  cat(paste(s, ' \\\\ ', sep = ''), '\n')
+}
+```
 \hline \\[-1.8ex] 
 & \multicolumn{5}{l}{Panel C: Unmatched Covariate Balance on Territorial Assignment} \\
 \hline \\[-1.8ex] 
-Number of Houses & 276.41 & 243.58 & 255.20 &  2.368 & 0.098 \\ 
-Number of Households & 885.67 & 750.34 & 785.18 &  3.765 & 0.026 \\ 
-Avg. Household Size &   3.21 &   3.07 &   3.07 &  6.566 & 0.002 \\ 
-Log Avg. Income &   6.47 &   6.86 &   6.85 &  9.213 & 0.000 \\ 
-Cases Before Treatment &  13.78 &   5.94 &   4.66 & 15.638 & 0.000 \\ 
+```{r, echo = FALSE, cache=TRUE, results='asis'}
+## Census Sectors characteristics
+tabcov <- data.frame()
+
+# Number of Houses
+x = tapply(dfr2$NHouses, 
+           dfr2$D1,
+           mean)
+y = summary(aov(NHouses~D1, data = dfr2))
+tab <- data.frame(Var = 'Number of Houses',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Age
+x = tapply(dfr2$NHouseholds, 
+           dfr2$D1,
+           mean)
+y = summary(aov(NHouseholds~D1, data = dfr2))
+tab <- data.frame(Var = 'Number of Households',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# AvgHouseholdSize
+x = tapply(dfr2$AvgHouseholdSize, 
+           dfr2$D1,
+           mean)
+y = summary(aov(AvgHouseholdSize~D1, data = dfr2))
+tab <- data.frame(Var = 'Avg. Household Size',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Avg. Income Households
+x = tapply(dfr2$logAvgIncomeHousehold, 
+           dfr2$D1,
+           mean)
+y = summary(aov(logAvgIncomeHousehold~D1, data = dfr2))
+tab <- data.frame(Var = 'Log Avg. Income',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Cases Before
+x = tapply(dfr2$plac, 
+           dfr2$D1,
+           mean)
+y = summary(aov(plac~D1, data = dfr2))
+tab <- data.frame(Var = 'Cases Before Treatment',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+row.names(tabcov) <- NULL
+## re-weighting
+dfr2$weightsD1 = weightit(D1~NHouses+
+                    NHouseholds+AvgHouseholdSize+
+                    logAvgIncomeHousehold+plac, 
+                  data = dfr2, focal = "No bonus", 
+                  method = 'cbps',
+                  estimand = "ATT")$weights
+
+dfr$weightsD1 <- weightit(D1~NHouses+
+                    NHouseholds+AvgHouseholdSize+
+                    logAvgIncomeHousehold+plac, 
+                  data = dfr, focal = "Control", 
+                  method = 'cbps',
+                  estimand = "ATT")$weights
+
+dfr$weightsD2 <- weightit(D2~NHouses+
+                            NHouseholds+AvgHouseholdSize+
+                            logAvgIncomeHousehold+plac, 
+                          data = dfr, focal = "No intervention", 
+                          method = 'cbps',
+                          estimand = "ATT")$weights
+for (i in 1:dim(tabcov)[1]) {
+  s <- paste(tabcov[i,], collapse = ' & ')
+  s <- gsub('NA', '', paste(tabcov[i,], collapse = ' & '))
+  cat(paste(s, ' \\\\ ', sep = ''), '\n')
+}
+```
 \hline \\[-1.8ex] 
 & \multicolumn{5}{l}{Panel D: Matched Covariate Balance on Territorial Assignment} \\
 \hline \\[-1.8ex] 
-Number of Houses & 276.41 & 282.04 & 281.19 & 0.068 & 0.935 \\ 
-Number of Households & 885.67 & 903.04 & 900.39 & 0.060 & 0.942 \\ 
-Avg. Household Size &   3.21 &   3.21 &   3.20 & 0.008 & 0.992 \\ 
-Log Avg. Income &   6.47 &   6.45 &   6.45 & 0.084 & 0.920 \\ 
-Cases Before Treatment &  13.78 &  10.24 &  10.77 & 1.443 & 0.240 \\ 
+```{r, echo = FALSE, cache=TRUE, results='asis'}
+tabcov <- data.frame()
+# Number of Houses
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(NHouses, weightsD1),
+            .groups = 'drop')
+x = x$x
+x
+y = summary(aov(NHouses~D1, data = dfr2, weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Number of Houses',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Number of households
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(NHouseholds, weightsD1),
+            .groups = 'drop')
+x = x$x
+y = summary(aov(NHouseholds~D1, data = dfr2, weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Number of Households',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# AvgHouseholdSize
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(AvgHouseholdSize, weightsD1),
+            .groups = 'drop')
+x = x$x
+y = summary(aov(AvgHouseholdSize~D1, data = dfr2, 
+                weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Avg. Household Size',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Avg. Income Households
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(logAvgIncomeHousehold, weightsD1),
+            .groups = 'drop')
+x = x$x
+y = summary(aov(logAvgIncomeHousehold~D1, data = dfr2, 
+                weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Log Avg. Income',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Cases Before
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(plac, weightsD1),
+            .groups = 'drop')
+x = x$x
+y = summary(aov(plac~D1, data = dfr2, weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Cases Before Treatment',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+row.names(tabcov) <- NULL
+for (i in 1:dim(tabcov)[1]) {
+  s <- paste(tabcov[i,], collapse = ' & ')
+  s <- gsub('NA', '', paste(tabcov[i,], collapse = ' & '))
+  cat(paste(s, ' \\\\ ', sep = ''), '\n')
+}
+```
 \hline
-Pairs & 34 & 34 & 35 &  &  \\ 
-N & 68 & 68 & 70 &  &  \\
+Pairs & 29 & 32 & 37 &  &  \\ 
+N & 58 & 64 & 74 &  &  \\
 \hline\hline \\[-1.8ex] 
 \end{tabular}
 \end{table}
@@ -257,12 +617,12 @@ N & 68 & 68 & 70 &  &  \\
 
 The intervention took place on the 5^th^ of May, 2018. We randomly assigned
 subjects into three groups and directed each group to separate headquarters to
-avoid spillovers. In the control group ($n = 68$), we told participants that
+avoid spillovers. In the control group ($n = $ `r as.numeric(table(prodfr$D)[1])`), we told participants that
 they would receive a flat payment regardless of their performance (BRL 110 /
-USD 25 per subject). In the individual treatment group ($n = 68$), we informed
+USD 25 per subject). In the individual treatment group ($n = $ `r as.numeric(table(prodfr$D)[2])`), we informed
 subjects that we would rank each subject separately and double the compensation
 for those who performed above the sample median (BRL 220 / USD 50 per subject).
-In the collective treatment group ($n = 70$), we explained that we would rank
+In the collective treatment group ($n = $ `r as.numeric(table(prodfr$D)[3])`), we explained that we would rank
 the performance of each group and double the payment for those teams whose
 results were higher than the sample median (BRL 220 / USD 50 per subject).
 Participants worked in pairs and were aware of other groups, but they did not
@@ -341,33 +701,30 @@ third dependent variable is the number of *A. aegypti* breeding sites removed
 and cleaned. Our fourth variable indicates the number of mosquito larvae
 exterminated. Table \ref{tab:productivity} summarises the experimental results.
 
-\begin{table}[ht] \centering 
-  \caption{Field Productivity} 
-  \label{tab:productivity} 
-\begin{tabular}{@{\extracolsep{5pt}}lcccc} 
-\\[-1.8ex]\hline 
-\hline \\[-1.8ex] 
- & \multicolumn{4}{c}{\textit{Dependent Variable:}} \\ 
-\cline{2-5} 
-\\[-1.8ex] & Houses & Houses & Breeding & Larvae \\ 
-& Visited & Visited ($<$ 2min.) & Sites & Exterminated \\ 
-\hline \\[-1.8ex] 
- Individual Bonus & $-$9.879$^{**}$ & $-$8.044$^{**}$ & 25.118$^{***}$ & 0.022 \\ 
-  & (4.906) & (4.018) & (5.251) & (0.058) \\ 
-  & & & & \\ 
- Collective Bonus & $-$7.554$^{*}$ & $-$6.479$^{*}$ & 21.512$^{***}$ & 0.163$^{**}$ \\ 
-  & (4.428) & (3.571) & (4.049) & (0.076) \\ 
-  & & & & \\ 
-\hline \\[-1.8ex] 
-Observations & 197 & 197 & 197 & 197 \\ 
-Residual SE & 27.301 & 22.153 & 30.545 & 0.425 \\ 
-\hline 
-\hline\\[-1.8ex]
-\multicolumn{5}{l}{\footnotesize \textbf{Note}: Robust standard errors
-clustered at the census tract level in parentheses. $^{*}$p$<$0.1;
-$^{**}$p$<$0.05; $^{***}$p$<$0.01.} 
-\end{tabular} 
-\end{table}
+```{r, echo = FALSE, results='asis', warning=FALSE}
+## Productivity outcome
+mprod <- list()
+mprod[[1]] <- lm(nHouse ~ D, data = prodfr)
+mprod[[2]] <- lm(nHouseLessTwoMin ~ D, data = prodfr)
+mprod[[3]] <- lm(nBreed ~ D, data = prodfr)
+mprod[[4]] <- lm(nLarvae ~ D, data = prodfr)
+stargazer(mprod[[1]], mprod[[2]],
+          mprod[[3]], mprod[[4]],
+          se = starprep(mprod[[1]], mprod[[2]],
+                        mprod[[3]], mprod[[4]],
+                        se_type = "HC1"),
+          dep.var.labels = c('\\shortstack{Houses \\\\ Visited}', 
+                             '\\shortstack{Houses Visited \\\\ in Less than \\\\ Two Minutes}',
+                             '\\shortstack{Breeding Sites \\\\ Terminated}',
+                             '\\shortstack{Larvae \\\\ Terminated}'),
+          keep.stat = c('ser', 'n'),
+          notes = c('Robust Standard Errors in parenthesis.'),
+          keep = c('DIndividual', 'DCollective'),
+          covariate.labels = c('Individual Bonus',
+                               'Collective Bonus'),
+          title = 'Field Productivity', header = FALSE,
+          label = 'tab:productivity')
+```
 
 Subjects who received monetary incentives, either alone or in pairs, visited
 fewer houses than those who did not earn financial rewards. While the result
@@ -377,25 +734,25 @@ larvae and find breeding sites, not to visit a greater number of households. As
 a result, participants in the two treatment groups did a thorough job in each
 household, which explains the lower number of visits during the allotted time.
 We find that subjects in the individual and in the collective bonus groups
-visited $-9.879$ (CI: [XXX, XXX]) and $-7.554$ (CI: [XXX, XXX]) households,
+visited `r round(as.numeric(coef(mprod[[1]])[2]), 3)` (CI: [`r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[2,1]`, `r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[2,2]`]) and `r round(as.numeric(coef(mprod[[1]])[3]), 3)` (CI: [`r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[3,2]`]) households,
 respectively.
 
 Our second indicator provides further evidence in favour of our argument. We
 see that the two groups which earned performance bonuses spent more time in the
 households, as their number of houses visited for less than two minutes is
 significantly lower than those of the control condition. On average,
-participants in the individual bonus treatment arm visited $-8.044$ (CI: [XXX,
-XXX]) houses than the control, and those in the collective bonus group visited
-$-6.479$ (CI: [XXX, XXX]).
+participants in the individual bonus treatment arm visited `r round(as.numeric(coef(mprod[[2]])[2]), 3)` (CI: [`r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[2,1]`,
+`r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[2,2]`]) houses than the control, and those in the collective bonus group visited
+`r round(as.numeric(coef(mprod[[2]])[3]), 3)` (CI: [`r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[3,2]`]).
 
 Incentivised teams find and clean more breeding sites than non-incentivised
-ones. Individually incentivised health workers find 25.118 (CI: [XXX, XXX])
+ones. Individually incentivised health workers find `r round(as.numeric(coef(mprod[[3]])[2]), 3)` (CI: [`r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[2,1]`, `r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[2,2]`])
 more breeding sites than the non-incentivised control group. The effect for
-those in the collective bonus group is 21.512 (CI: [XXX, XXX]), slightly
+those in the collective bonus group is `r round(as.numeric(coef(mprod[[3]])[3]), 3)` (CI: [`r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[3,2]`]), slightly
 smaller than for the individual treatment.
 
 Teams which received collective bonuses are the most effective in finding
-larvae. Subjects who worked in pairs have a 16.3% (CI: [XXX, XXX]) higher
+larvae. Subjects who worked in pairs have a `r round(as.numeric(coef(mprod[[4]])[3]*100),1)`% (CI: [`r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,1]*100`%, `r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,2]*100`%]) higher
 likelihood of finding larvae than those in the control group. Locating mosquito
 larvae is a difficult task, thus the probability of successfully completing the
 task increases when subjects work in teams. Furthermore, our collective bonus
@@ -417,69 +774,70 @@ with individual bonuses, with the latter considered as the control group.
 
 \vspace{.3cm}
 
-\begin{table}[ht] \centering 
-  \caption{Disease Incidence -- Differences in Differences Model} 
-  \label{tab:incidence} 
-\begin{tabular}{@{\extracolsep{1pt}}lccccc} 
-\\[-1.8ex]\hline 
-\hline \\[-1.8ex] 
- & \multicolumn{5}{c}{\textit{Dependent Variable:}} \\ 
-\cline{2-6} 
-\\[-1.8ex] & N Infected & N Infected & N Infected & N Infected & N Infected \\
-& (Full) & (12 Weeks) & (8 Weeks) & (4 Weeks) & (Indv. x Collect.) \\ 
-\hline \\[-1.8ex] 
- Diff-in-diff & $-$0.103$^{*}$ & $-$0.130 & $-$0.167 & $-$0.097 & $-$0.029 \\ 
-  & (0.053) & (0.091) & (0.118) & (0.166) & (0.035) \\ 
-  & & & & & \\ 
-\hline \\[-1.8ex] 
-Observations & 7,452 & 3,312 & 1,656 & 828 & 2,201 \\ 
-Residual SE & 1.004 & 1.319 & 1.442 & 1.513 & 0.381 \\ 
-\hline 
-\hline \\[-1.8ex] 
-\multicolumn{6}{l}{\footnotesize \textbf{Note}: Robust standard errors
-clustered at the census tract level in parentheses. $^{*}$p$<$0.1;
-$^{**}$p$<$0.05; $^{***}$p$<$0.01.} 
-\end{tabular} 
-\end{table}
+```{r, echo = FALSE, results='asis'}
+mod <- list()
+mod[[1]] <- felm(ncas4weekwindow ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
+mod[[2]] <- felm(ncas8weekwindow ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
+mod[[3]] <- felm(ncas12weekwindow ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
+mod[[4]] <- felm(ncas ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
+stargazer(mod[[1]], mod[[2]], mod[[3]], mod[[4]],
+          dep.var.labels = c('\\shortstack{Four \\\\ Weeks Window}',
+                             '\\shortstack{Eight \\\\ Weeks Window}',
+                             '\\shortstack{Twelve \\\\ Weeks Window}',
+                             '\\shortstack{Sixteen \\\\ Weeks Window}'),
+          keep.stat = c('ser', 'n'),
+          keep = c('DID'),
+          notes = c('Robust standard errors clustered at the census tract level in parentheses.'),
+          label = 'tab:incidence',
+          covariate.labels = c('Dif-in-Dif'),
+          dep.var.caption = "Disease Incidence Before and After Intervention:",
+          title = 'Differences-in-Differences Model', header = FALSE)
+```
 
-The intervention lowered dengue incidence in 10.3\% (CI: [XXX, XXX]) if we take
+The intervention lowered dengue incidence in `r round(as.numeric(coef(mod[[4]])[4])*100, 1)`% (CI: [`r round(tidy(mod[[4]], conf.level = 0.9, conf.int = T)$conf.low[4]*100, 1)`%, `r round(tidy(mod[[4]], conf.level = 0.9, conf.int = T)$conf.high[4]*100, 1)`%]) if we take
 both treatments together and compare them with the control group. The result is
 consistent around fewer weeks before and after the intervention, but it does
 not reach conventional levels of statistical significance. This suggests that
-the treatment effect is probably small. The comparison between the two
-treatment statuses show an impact of 2.9\% (CI: [XXX, XXX]) fewer infections in
-the collective bonus group. However, the result is also not statistically
-significant.
+the treatment effect is probably small.
 
 \vspace{.3cm}
 
-\begin{table}[ht]
-  \caption{Disease Incidence in Rio Verde Census Tracts} \centering 
-  \label{tab:census} 
-\begin{tabular}{@{\extracolsep{1pt}}lcccccr}
-\\[-1.8ex]\hline 
-\hline \\[-1.8ex] 
- & \multicolumn{6}{c}{\textit{Dependent Variable:}} \\ 
-\cline{2-7} 
-\\[-1.8ex] & Before & 15 Days & 30 Days & 60 Days & 90 Days & 30-60 Days \\ 
-& Intv. & After Intv. & After Intv. & After Intv. & After Intv. & After Intv. \\
-\hline \\[-1.8ex] 
- Individual & $-$3.534 & 0.116 & 0.551 & 1.551 & 1.534 & 0.936 \\ 
-  & (2.919) & (1.338) & (2.193) & (3.260) & (3.258) & (1.188) \\ 
-  & & & & & & \\ 
- Collective & $-$3.008 & $-$1.329 & $-$0.826 & 0.344 & 1.091 & 1.068 \\ 
-  & (4.174) & (1.440) & (1.971) & (3.233) & (3.610) & (1.582) \\ 
-  & & & & & & \\ 
-\hline \\[-1.8ex] 
-Observations & 139 & 139 & 139 & 139 & 139 & 139 \\ 
-Residual Std. Error & 9.442 & 4.076 & 6.095 & 8.896 & 9.341 & 3.536 \\ 
-\hline 
-\hline \\[-1.8ex] 
-\multicolumn{7}{l}{\footnotesize \textbf{Note}: Robust standard errors
-clustered at the census tract level in parentheses. $^{*}$p$<$0.1;
-$^{**}$p$<$0.05; $^{***}$p$<$0.01.}\\
-\end{tabular} 
-\end{table} 
+```{r, echo=FALSE, results='asis'}
+## Health outcome
+moutc <- list()
+moutc[[1]] <- lm(nc15dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[2]] <- lm(nc30dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[3]] <- lm(nc60dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[4]] <- lm(nc90dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[5]] <- lm(nc30to60dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[6]] <- lm(plac ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+
+stargazer(moutc[[6]], moutc[[1]], moutc[[2]], 
+          moutc[[3]], moutc[[4]], moutc[[5]],
+          se = starprep(moutc[[6]], moutc[[1]], 
+                        moutc[[2]], moutc[[3]], 
+                        moutc[[4]], moutc[[5]],
+                        se_type = "HC1"),
+          dep.var.labels = c('\\shortstack{Before \\\\ Int.}',
+                             '\\shortstack{Fifteen \\\\ Days \\\\ After Int.}',
+                             '\\shortstack{Thirty \\\\ Days \\\\ After Int.}',
+                             '\\shortstack{Sixty \\\\ Days \\\\ After Int.}', 
+                             '\\shortstack{Ninety \\\\ Days \\\\ After Int.}',
+                             '\\shortstack{Btw. Thirty \\\\ \\& Sixty Days \\\\ After Int.}'), label = 'tab:census',
+          keep.stat = c('ser', 'n'),
+          keep = c('D1Individual', 'D1Collective'),
+          covariate.labels = c('Individual Bonus',
+                               'Collective Bonus'),
+          dep.var.caption = "Number of Reported Hospital Cases:",
+          title = 'Disease Incidence', header = FALSE,
+          font.size = 'small')
+```
 
 In our second model, we measure the effect of reward schemes on the number of
 hospitalisations per census tract. Table \ref{tab:census} shows hospitalisation
