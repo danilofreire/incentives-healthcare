@@ -767,7 +767,7 @@ incidence. The first is a differences-in-differences model that tests
 whether the intervention _per se_ had any effect on dengue hospitalisations in
 the city of Rio Verde. The second model compares dengue incidence in each of
 the treatment statuses with incidence figures in the control group. The unit of
-analysis is the census tract.\footnote{There were 139 Census Tracts analyzed by the 96 pairs. This because 43 pairs worked in more than one Census tract at once.} Table \ref{tab:incidence} displays the results
+analysis is the census tract. Table \ref{tab:incidence} displays the results
 for our first model, in which we measure the impact of our intervention after 4,
 8, 12, and 16 weeks. The last column shows how collective incentives compare
 with individual bonuses, with the latter considered as the control group.
@@ -842,7 +842,7 @@ stargazer(moutc[[6]], moutc[[1]], moutc[[2]],
 In our second model, we measure the effect of reward schemes on the number of
 hospitalisations per census tract. Table \ref{tab:census} shows hospitalisation
 counts before the intervention, and then 15, 30, 60, 90, and between 30 to 60
-days after the treatment.
+days after the treatment.\footnote{There were 139 Census Tracts analyzed by the 96 pairs. This because 43 pairs worked in more than one Census tract at once.}
 
 Compared to the control group, neither treatment had an impact on disease
 incidence in the Rio Verde census tracts. The treatment effect is not
