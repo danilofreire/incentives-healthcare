@@ -752,7 +752,7 @@ those in the collective bonus group is `r round(as.numeric(coef(mprod[[3]])[3]),
 smaller than for the individual treatment.
 
 Teams which received collective bonuses are the most effective in finding
-larvae. Subjects who worked in pairs have a `r round(as.numeric(coef(mprod[[4]])[3]*100),1)`% (CI: [`r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,1]*100`%, `r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,2]*100`%]) higher
+larvae. Subjects who worked under this treatment status have a `r round(as.numeric(coef(mprod[[4]])[3]*100),1)`% (CI: [`r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,1]*100`%, `r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,2]*100`%]) higher
 likelihood of finding larvae than those in the control group. Locating mosquito
 larvae is a difficult task, thus the probability of successfully completing the
 task increases when subjects work in teams. Furthermore, our collective bonus
@@ -842,7 +842,7 @@ stargazer(moutc[[6]], moutc[[1]], moutc[[2]],
 In our second model, we measure the effect of reward schemes on the number of
 hospitalisations per census tract. Table \ref{tab:census} shows hospitalisation
 counts before the intervention, and then 15, 30, 60, 90, and between 30 to 60
-days after the treatment.\footnote{There were 139 Census Tracts analyzed by the 96 pairs. This because 43 pairs worked in more than one Census tract at once.}
+days after the treatment.\footnote{The 96 pairs analysed 139 Census Tracts. This because 43 pairs worked in more than one Census tract at once.}
 
 Compared to the control group, neither treatment had an impact on disease
 incidence in the Rio Verde census tracts. The treatment effect is not
