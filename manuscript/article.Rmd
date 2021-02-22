@@ -1,11 +1,11 @@
 ---
 title:  |
-        | Financial Incentives and Health Care Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
+        | Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
 author:
   - Danilo Freire[^freire]
   - Umberto Mignozzetti[^mignozzetti]
 date: \today
-thanks: "We thank Livio DiLonardo, Saad Gulzar, Cathy Hafer, Carlo Holz, Dimitri Landa, Guisela Pereira, Adam Przeworski, Catarina Roman, David Skarbek, Denis Stukal, Marcos Tourinho, Scott Tyson, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Special thanks to XXXX for their excellent research assistance. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
+thanks: "We thank Livio DiLonardo, Saad Gulzar, Cathy Hafer, Carlo Holz, Dimitri Landa, Guisela Pereira, Adam Przeworski, Catarina Roman, David Skarbek, Denis Stukal, Marcos Tourinho, Scott Tyson, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
 fontsize: 12pt
 margin: 2cm
 urlcolor: darkblue
@@ -68,27 +68,26 @@ Department, Emory University, 532 North Kilgo Circle, 4^th^ Floor, Atlanta, GA
 
 \footnotesize
 
-\noindent \textbf{Background}. Mosquito control is the primary means to reduce
-\textit{Aedes aegypti} infections worldwide. However, programmes such as
-insecticide spraying and elimination of breeding sites are conducted
-inconsistently in many developing nations. Recent studies indicate that
-financial incentives may increase the productivity of health personnel, yet
-there is little evidence about the impact of monetary rewards on \textit{A.
-aegypti}-reduction strategies. We evaluated whether individual and collective
-financial incentives improve the performance of healthcare workers fighting
-\textit{A. aegypti}, as well as their effect on city-level numbers of dengue
-hospitalisations.
+\noindent \textbf{Background}. Mosquito control is the most effective means of
+reducing \textit{Aedes aegypti} infections worldwide. In many developing
+countries, however, vector management programmes fail to reach their goals due
+to low worker productivity. Research suggests that financial incentives may
+increase the productivity of health personnel, yet there is little evidence
+about the impact of monetary rewards on \textit{A. aegypti}-reduction
+strategies. We evaluated whether individual and collective financial incentives
+improve the performance of healthcare workers fighting \textit{A. aegypti}, as
+well as their effect on city-level numbers of dengue hospitalisations.
 
 \noindent \textbf{Methodology/Principal findings}. We hired and trained
-subjects to visit households, find \textit{A. aegypti} breeding sites, and kill
-mosquito larvae in the city of Rio Verde, Brazil. In our randomised field
-trial, we provided individual and team bonuses to two treatment groups, and
-offered a flat compensation to the control group for completing their tasks.
-Financial rewards increased the number of cleaned breeding sites in both
-treatment groups (individual and team bonuses) and the collective treatment
-also improved larvae extermination. The intervention lowered dengue
-hospitalisations in 10.3\%, but the result was not consistent across all model
-specifications.
+subjects to visit households, find \textit{A. aegypti} breeding sites, and
+eliminate mosquito larvae in the city of Rio Verde, Brazil. We randomly
+assigned workers into three groups. The control group received a flat
+compensation for their tasks, while workers in the two treatment groups received
+individual and collective monetary bonuses, respectively. Financial rewards
+increased the number of cleaned breeding sites in both treatment groups
+(individual and team bonuses) and the collective treatment also improved larvae
+extermination. The intervention lowered dengue hospitalisations in 10.3\%, but
+the result was not consistent across all model specifications.
 
 \noindent \textbf{Conclusions/Significance}. \textit{A. aegypti} control
 programmes may benefit from alternative compensation schemes, specially when
@@ -105,43 +104,43 @@ hospitalisations.
 \footnotesize
 
 \noindent Diseases transmitted by the \textit{Aedes aegypti} mosquito, such as
-chikungunya, dengue, yellow fever, and Zika, continue to kill thousands of
-people per year. As there are no safe vaccines for many of these infections,
-insecticide spraying and breeding site cleaning are the best means to fight the
-mosquito. In several developing countries, which host the majority of
+chikungunya, dengue, yellow fever, and Zika, continue to affect thousands of
+people per year. As there are no safe vaccines for most of these infections,
+insecticide spraying and breeding site elimination are the best means to fight
+the mosquito. In several developing countries, which host the majority of
 \textit{A. aegypti} infections, anti-mosquito campaigns are carried out
 inconsistently, thus it is crucial to find ways to improve the productivity of
 healthcare workers in charge of these tasks. We designed a randomised field
 experiment that provided individual and collective financial incentives to
-healthcare agents in a Brazilian city and tested the effect of monetary rewards
-on their productivity and on the number of dengue hospitalisations. We find
-that financial bonuses improved the number of cleaned breeding sites in both
-treatment groups (individual and team incentives) and that the collective
+healthcare agents in a Brazilian city, and we tested the effect of monetary
+rewards on their productivity and on city-level dengue hospitalisations. We
+find that financial bonuses improved the number of cleaned breeding sites in
+both treatment groups (individual and team incentives) and that the collective
 treatment also improved larvae extermination. The impact of our treatment on
 city-level hospitalisations was not consistent across all specifications. In
 sum, financial incentives may be used to boost field productivity in
-anti-\textit{A. aegypti} programmes, but we suggest that further research is
-required to evaluate how healthcare worker productivy impacts city-level
-disease outcomes.
+anti-\textit{A. aegypti} programmes, but further research is required to
+evaluate how healthcare worker productivy impacts dengue outcomes.
 
 \vspace{.3cm} 
 \noindent \textbf{Keywords}: Aedes aegypti, dengue, financial
-incentives, mosquito control, preventive health care, randomised field
+incentives, mosquito control, preventive healthcare, randomised field
 experiment, worker productivity 
 \end{abstract}
 
 \normalsize
 
 \newpage
+
 # Introduction
 \label{sec:intro}
 
 The *Aedes aegypti* mosquito is the major worldwide vector of several arboviral
-diseases, including dengue, yellow fever, Zika, and chikungunya
+diseases, including chikungunya, dengue, yellow fever, and Zika
 [@burt2012chikungunya; @jansen2010dengue; @leta2018global;
-@thangamani2016vertical]. Over the past 30 years, arboviral incidence has
+@thangamani2016vertical]. Over the last decades, arboviral incidence has
 increased exponentially, with estimates suggesting that dengue is endemic in
-around 100 countries and causes 400 million infections and 22 thousands deaths
+over 100 countries and causes 400 million infections and 22 thousand deaths
 each year [@bhatt2013global; @cdc2020dengue]. Since there are no safe vaccines
 for most *Aedes*-transmitted diseases [@world2017dengue], we have seen a number
 of dengue and Zika outbreaks in Asia, the Caribbean, South America, and the
@@ -151,39 +150,37 @@ the world [@grandadam2011chikungunya; @kraemer2015global; @mayer2017emergence].
 
 Mosquito control is the primary strategy to prevent *Aedes*-borne infections
 [@beatty2010best; @eisen2009proactive]. The World Health Organization
-recommends the elimination of containers and the use of insecticide to reduce
+recommends the cleaning of containers and the use of insecticide to reduce
 vector breeding, specially in settings where human-vector contacts are
 frequent, such as schools, hospitals, and workplaces [@WHO2012global;
-@world2020denguecontrol]. However, breeding site cleaning and insecticide
-spraying are labour-intensive processes, and they are often carried out
-inconsistently in developing countries [@paz2015dengue; @siddiqui2016use;
-@WHO2012global]. In this regard, improving the performance of those responsible
-for mosquito control is essential to the effectiveness of anti-*Aedes*
-programmes.
+@world2020denguecontrol]. However, breeding site elimination and insecticide
+spraying are labour-intensive processes, which are often carried out
+inconsistently by developing states [@paz2015dengue; @siddiqui2016use;
+@WHO2012global]. In this regard, improving their health agency's performance in
+mosquito control is essential to the effectiveness of anti-*Aedes* programmes.
 
 Research shows that financial incentives may increase the productivity of
-health care workers [@clemens2014physicians; @muthmainnah2017improving;
-@ulrich2005does]. Nevertheless, systematic reviews indicate that the
-generalisability of the available evidence is limited due to methodological
+healthcare workers [@clemens2014physicians; @muthmainnah2017improving;
+@ulrich2005does]. Nevertheless, systematic reviews indicate that the internal
+validity of the available evidence is limited due to methodological
 shortcomings, as several studies suffer from selection bias and inadequate
 experimental blinding [@bassani2013financial; @flodgren2011overview;
-@scott2011effect]. Moreover, it remains unclear which rewarding schemes have a
-stronger effect on health care worker performance [@fainman2020design], and
-whether monetary incentives have a sustained effect on patient outcomes
-[@jha2012long; @langdown2014use].
+@scott2011effect]. The reviews also point out that it remains unclear which
+rewarding schemes have a stronger impact on healthcare worker performance
+[@fainman2020design] and whether monetary incentives have any sustained effects
+on patient outcomes [@jha2012long; @langdown2014use].
 
 In this paper, we explore how financial incentives affect the productivity of
-health care personnel involved in *A. aegypti* control and how they impact
-dengue hospitalisations. We run a randomised field experiment in the city of
-Rio Verde, Brazil, which has experienced a peak in dengue infections in the
-last years. We hired and trained teams of health care workers to perform
-simplified procedures designed to exterminate *A. aegypti* breeding sites. Our
-experiment consisted of two treatment arms plus a control condition. We offered
-individual or collective bonuses to those allocated in the two treatment
-groups, while the control group received a fixed compensation for completing
-their tasks. We then measured how the different reward schemes affect the
-number of breeding sites discovered, larvae exterminated, and city-level dengue
-incidence.
+healthcare personnel involved in *A. aegypti* control and how they impact
+dengue hospitalisations. We ran a randomised field experiment in the city of
+Rio Verde, Brazil, which has experienced a peak in dengue infections in recent
+years. We hired and trained teams of healthcare workers to perform simplified
+procedures designed to exterminate *A. aegypti* breeding sites. Our experiment
+consisted of two treatment arms plus a control condition. We offered individual
+or collective bonuses to those allocated in the two treatment groups, while the
+control group received a fixed compensation for completing their tasks. We then
+measured how the different reward schemes affected the number of breeding sites
+discovered, larvae exterminated, and city-level numbers of dengue incidence.
 
 We find that monetary rewards increase the number of cleaned breeding sites in
 both treatment conditions (individual and team bonuses), and that collective
@@ -201,7 +198,7 @@ patient outcomes and reduce hospitalisations in *Aedes*-endemic countries.
 
 We conducted a randomised field trial in Rio Verde, a municipality in the
 Brazilian Midwestern state of Goiás. In 2017, Rio Verde had 229,000 inhabitants
-and 1,156 confirmed dengue cases, one of highest counts in Goiás
+and 1,156 confirmed dengue cases, one of highest counts in the state
 [@goias2020]. We used Facebook advertisements to recruit potential
 participants. The advertisements directed applicants to Google Forms, where we
 asked for their contact information. We sent a pre-treatment demographic survey
@@ -212,13 +209,14 @@ meeting involved a lecture on *A. aegypti* vector biology and practical
 instructions on how to find and exterminate mosquito breeding sites. Those who
 did not attend the session were also excluded from the study.
 
-Table \ref{tab:covbal} displays the attrition and covariate balance tests for
-our experiment, and the territorial assignment before and after applying
-propensity score matching [@rosenbaum1985constructing] on census tract
-characteristics. We observe no significant differences regarding attrition
-rates, indicating that the treatment was correctly randomised. Participant
-demographics are also similar across all groups, thus the matching technique
-successfully balanced the territorial assignment.
+Table \ref{tab:covbal} displays the attrition rates and the covariance balance
+tests for our experiment. The last two tables report the values for our
+territorial assignment before and after applying propensity score matching
+[@rosenbaum1985constructing] on census tract characteristics. We observe no
+significant differences regarding attrition rates, indicating that the
+treatment was correctly randomised. Participant demographics are also similar
+across all groups, what suggests that the matching technique successfully
+balanced the territorial assignment.
 
 \begin{table}[ht] \centering
 \small
@@ -414,7 +412,6 @@ tabcov <- rbind(tabcov, tab)
 x = round(tapply(rep(1, length(aux$assign3)),
                  aux$assign3,
                  sum), digits = 0)
-tabcov <- rbind(tabcov, tab)
 row.names(tabcov) <- NULL
 for (i in 1:dim(tabcov)[1]) {
   s <- paste(tabcov[i,], collapse = ' & ')
@@ -532,7 +529,6 @@ x = dfr2 %>%
   summarise(x = weighted.mean(NHouses, weightsD1),
             .groups = 'drop')
 x = x$x
-x
 y = summary(aov(NHouses~D1, data = dfr2, weights=dfr2$weightsD1))
 tab <- data.frame(Var = 'Number of Houses',
                   NoBonus = round(x[1],2),
@@ -621,18 +617,19 @@ N & 58 & 64 & 74 &  &  \\
 
 The intervention took place on the 5^th^ of May, 2018. We randomly assigned
 subjects into three groups and directed each group to separate headquarters to
-avoid spillovers. In the control group ($n = $ `r as.numeric(table(prodfr$D)[1])`), we told participants that
-they would receive a flat payment regardless of their performance (BRL 110 /
-USD 25 per subject). In the individual treatment group ($n = $ `r as.numeric(table(prodfr$D)[2])`), we informed
-subjects that we would rank each subject separately and double the compensation
-for those who performed above the sample median (BRL 220 / USD 50 per subject).
-In the collective treatment group ($n = $ `r as.numeric(table(prodfr$D)[3])`), we explained that we would rank
-the performance of each group and double the payment for those teams whose
-results were higher than the sample median (BRL 220 / USD 50 per subject).
-Participants worked in pairs and were aware of other groups, but they did not
-know about the different treatment conditions. The teams received a leaflet
-with a map of the area they should cover. Each route included around 120 houses
-in two or three blocks.
+avoid spillovers. In the control group (n = `r as.numeric(table(prodfr$D)[1])`),
+we told participants that they would receive a flat payment regardless of their
+performance (BRL 110 / USD 25 per subject). In the individual treatment group
+(n = `r as.numeric(table(prodfr$D)[2])`), we informed participants that we would
+rank each one of them separately and double the compensation for those who
+performed above the sample median (BRL 220 / USD 50 per subject). In the
+collective treatment group (n = `r as.numeric(table(prodfr$D)[3])`), we
+explained that we would rank the performance of each group and double the
+payment for those teams whose results were higher than the sample median (BRL
+220 / USD 50 per subject). Participants worked in pairs and were aware of other
+groups, but they did not know about the different treatment conditions. The
+teams received a leaflet with a map of the area they should cover. Each route
+included around 120 houses in two or three blocks.
 
 A typical household visit consisted of the following steps. First, participants
 rang the doorbell and explained that the municipality had experienced a dengue
@@ -649,17 +646,17 @@ of each visit, subjects had to take a picture of the household to account for
 their presence in the location.
 
 This study evaluates two outcomes. The first outcome is the field productivity
-of health care providers. We measure worker productivity by coding cellphone
+of healthcare providers. We measure worker productivity by coding cellphone
 data collected during the intervention into four indicators: 1) the number of
-houses visited; 2) the number of houses visited within less than two minutes;
-3) the number of breeding sites removed and cleaned; 4) the number of
-exterminated larvae. We analyse the data using ordinary least squares with
-robust standard errors [@imbens2016robust]. We estimate the statistical
-power of the study assuming a treatment effect of 0.15 standard deviations.
+breeding sites removed and cleaned; 2) the number of exterminated larvae; 3)
+the number of houses visited; 4) the number of houses visited within less than
+two minutes. We analyse the data using ordinary least squares with robust
+standard errors [@imbens2016robust]. We estimate the statistical power of the
+study assuming a treatment effect of 0.15 standard deviations.
 
 The second outcome of interest is dengue incidence in the municipality of Rio
 Verde measured 4, 8, 12, and 16 days after the intervention. The Rio Verde
-Mayor's Office provided us with its annual health care report, which contains
+Mayor's Office provided us with its annual healthcare report, which contains
 the dates and personal information of patients who had dengue fever and
 received hospital treatment from January to September 2018. We georeferenced
 the home addresses of the patients and compared the incidence map with the
@@ -673,7 +670,7 @@ We pre-registered the experiment on the Evidence in Governance and Policy
 (EGAP) website (<https://osf.io/6q8vu/>), and received IRB approval from New
 York University (IRB-FY2017-17) and Fundação Getulio Vargas (IRB-01/2017). The
 funders of this study had no influence over the formulation, organisation,
-analysis, and interpretation of the outcomes. Health care workers gave written
+analysis, and interpretation of the outcomes. Healthcare workers gave written
 consent upon filling the Qualtrics questionnaire. During the intervention, the
 occupants of households inspected for breeding sites and larvae gave oral
 consent. For more information on the experimental design, sample
@@ -684,7 +681,7 @@ the Supplementary Material.
 \label{sec:results}
 
 We find that financial incentives significantly increase the field productivity
-of health care workers fighting *Aedes aegypti*. Subjects in both the
+of healthcare workers fighting *Aedes aegypti*. Subjects in both the
 individual and the collective bonus groups locate more mosquito breeding sites
 and exterminate more larvae than participants in the control condition. Our
 results also show the intervention decreases city-wide levels of dengue
@@ -698,12 +695,13 @@ hospitalisations.
 ## Field Productivity
 \label{sub:productivity}
 
-We have four indicators to measure health worker productivity. The first is the
-number of houses visited during the intervention. The second indicator is the
-number of houses in which the visits lasted for less than two minutes. The
-third dependent variable is the number of *A. aegypti* breeding sites removed
-and cleaned. Our fourth variable indicates the number of mosquito larvae
-exterminated. Table \ref{tab:productivity} summarises the experimental results.
+Table \ref{tab:productivity} summarises the experimental results. 
+Subjects who receive monetary incentives find and clean more breeding sites
+than those who earned a flat compensation fee. Workers in the individual
+treatment group find `r round(as.numeric(coef(mprod[[3]])[2]), 3)` (CI: [`r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[2,1]`, `r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[2,2]`]) more breeding sites than the
+non-incentivised control group. The effect for those in the collective bonus
+group is `r round(as.numeric(coef(mprod[[3]])[3]), 3)` (CI: [`r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[3,2]`]), slightly smaller than for the individual treatment. This finding suggests that the treatment does improve the performance of healthcare workers.
+
 
 ```{r, echo = FALSE, results='asis', warning=FALSE}
 ## Productivity outcome
@@ -712,17 +710,17 @@ mprod[[1]] <- lm(nHouse ~ D, data = prodfr)
 mprod[[2]] <- lm(nHouseLessTwoMin ~ D, data = prodfr)
 mprod[[3]] <- lm(nBreed ~ D, data = prodfr)
 mprod[[4]] <- lm(nLarvae ~ D, data = prodfr)
-stargazer(mprod[[1]], mprod[[2]],
-          mprod[[3]], mprod[[4]],
-          se = starprep(mprod[[1]], mprod[[2]],
-                        mprod[[3]], mprod[[4]],
+stargazer(mprod[[3]], mprod[[4]],
+          mprod[[1]], mprod[[2]],
+          se = starprep(mprod[[3]], mprod[[4]],
+                        mprod[[1]], mprod[[2]],
                         se_type = "HC1"),
-          dep.var.labels = c('\\shortstack{Houses \\\\ Visited}',
-                             '\\shortstack{Houses Visited \\\\ in Less than \\\\ Two Minutes}',
-                             '\\shortstack{Breeding Sites \\\\ Terminated}',
-                             '\\shortstack{Larvae \\\\ Terminated}'),
+          dep.var.labels = c('\\shortstack{Breeding Sites \\\\ Terminated}',
+                             '\\shortstack{Larvae \\\\ Terminated}',
+                             '\\shortstack{Houses \\\\ Visited}',
+                             '\\shortstack{Houses Visited \\\\ in Less than \\\\ Two Minutes}'),
           keep.stat = c('ser', 'n'),
-          notes = c('Robust Standard Errors in parenthesis.'),
+          notes = c('Robust standard errors in parenthesis.'),
           keep = c('DIndividual', 'DCollective'),
           covariate.labels = c('Individual Bonus',
                                'Collective Bonus'),
@@ -730,44 +728,36 @@ stargazer(mprod[[1]], mprod[[2]],
           label = 'tab:productivity')
 ```
 
-Subjects who received monetary incentives, either alone or in pairs, visited
-fewer houses than those who did not earn financial rewards. While the result
-seems counter-intuitive, it actually attests the effectiveness of the
-treatment. This is because we offered incentives for subjects to exterminate
-larvae and find breeding sites, not to visit a greater number of households. As
-a result, participants in the two treatment groups did a thorough job in each
-household, which explains the lower number of visits during the allotted time.
-We find that subjects in the individual and in the collective bonus groups
-visited `r round(as.numeric(coef(mprod[[1]])[2]), 3)` (CI: [`r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[2,1]`, `r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[2,2]`]) and `r round(as.numeric(coef(mprod[[1]])[3]), 3)` (CI: [`r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[3,2]`]) households,
-respectively.
+\newpage 
 
-Our second indicator provides further evidence in favour of our argument. We
-see that the two groups which earned performance bonuses spent more time in the
-households, as their number of houses visited for less than two minutes is
-significantly lower than those of the control condition. On average,
-participants in the individual bonus treatment arm visited `r round(as.numeric(coef(mprod[[2]])[2]), 3)` (CI: [`r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[2,1]`,
-`r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[2,2]`]) houses than the control, and those in the collective bonus group visited
-`r round(as.numeric(coef(mprod[[2]])[3]), 3)` (CI: [`r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[3,2]`]).
-
-Incentivised teams find and clean more breeding sites than non-incentivised
-ones. Individually incentivised health workers find `r round(as.numeric(coef(mprod[[3]])[2]), 3)` (CI: [`r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[2,1]`, `r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[2,2]`])
-more breeding sites than the non-incentivised control group. The effect for
-those in the collective bonus group is `r round(as.numeric(coef(mprod[[3]])[3]), 3)` (CI: [`r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[3,2]`]), slightly
-smaller than for the individual treatment.
-
-Teams which received collective bonuses are the most effective in finding
-larvae. Subjects who worked in pairs have a `r round(as.numeric(coef(mprod[[4]])[3]*100),1)`% (CI: [`r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,1]*100`%, `r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,2]*100`%]) higher
+Teams who received collective bonuses are the most effective in finding
+larvae. Subjects who worked under this treatment status have a `r round(as.numeric(coef(mprod[[4]])[3]*100),1)`% (CI: [`r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,1]*100`%, `r round(coefci(mprod[[4]], vcov = vcovHC(mprod[[4]], type = "HC1"), level = 0.9), digits=3)[3,2]*100`%]) higher
 likelihood of finding larvae than those in the control group. Locating mosquito
 larvae is a difficult task, thus the probability of successfully completing the
 task increases when subjects work in teams. Furthermore, our collective bonus
-scheme was not excludable within the teams, thus health care workers had an
+scheme was not excludable within the teams, thus healthcare workers had an
 incentive to cooperate and receive higher rewards.
+
+Subjects who received monetary incentives visited fewer houses than those who
+did not earn financial rewards. The result is statistically significant for the
+individual treatment group. While the finding seems counter-intuitive, it
+actually attests the effectiveness of the treatment. This is because we offered
+incentives for subjects to exterminate larvae and find breeding sites, not to
+visit a greater number of households. As a result, participants in the 
+treatment groups did a thorough job in each household, which explains the lower
+number of visits during the allotted time. We find that subjects in the
+individual and in the collective bonus groups visited `r round(as.numeric(coef(mprod[[1]])[2]), 3)` (CI: [`r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[2,1]`, `r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[2,2]`]) and `r round(as.numeric(coef(mprod[[1]])[3]), 3)` (CI: [`r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[1]], vcov = vcovHC(mprod[[1]], type = "HC1"), level = 0.9), digits=3)[3,2]`]) households, respectively.
+
+Our last indicator, the number of houses visited within less than two minutes, provides further evidence in favour of our argument. On average,
+participants in the individual bonus treatment arm visited `r round(as.numeric(coef(mprod[[2]])[2]), 3)` (CI: [`r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[2,1]`,
+`r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[2,2]`]) houses than the control, and those in the collective bonus group visited
+`r round(as.numeric(coef(mprod[[2]])[3]), 3)` (CI: [`r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[2]], vcov = vcovHC(mprod[[2]], type = "HC1"), level = 0.9), digits=3)[3,2]`]). Again, the result for the individual bonus group is statistically significant at the 10% level.
 
 ## Disease Incidence
 \label{sub:incidence}
 
 We employ two models to evaluate the effect of monetary incentives on dengue
-incidence. The first is a differences-in-differences model that tests
+incidence. The first is a differences-in-differences estimation that tests
 whether the intervention _per se_ had any effect on dengue hospitalisations in
 the city of Rio Verde. The second model compares dengue incidence in each of
 the treatment statuses with incidence figures in the control group. The unit of
@@ -798,7 +788,7 @@ stargazer(mod[[1]], mod[[2]], mod[[3]], mod[[4]],
           title = 'Differences-in-Differences Model', header = FALSE)
 ```
 
-The intervention lowered dengue incidence in `r round(as.numeric(coef(mod[[4]])[4])*100, 1)`% (CI: [`r round(tidy(mod[[4]], conf.level = 0.9, conf.int = T)$conf.low[4]*100, 1)`%, `r round(tidy(mod[[4]], conf.level = 0.9, conf.int = T)$conf.high[4]*100, 1)`%]) if we take
+The intervention lowered dengue incidence in 10.3% (CI: [-18.9%, -1.6%]) if we take
 both treatments together and compare them with the control group. The result is
 consistent around fewer weeks before and after the intervention, but it does
 not reach conventional levels of statistical significance. This suggests that
@@ -806,7 +796,7 @@ the treatment effect is probably small.
 
 \vspace{.3cm}
 
-```{r, echo=FALSE, results='asis'}
+```{r, echo=FALSE, results='asis', cache=T}
 ## Health outcome
 moutc <- list()
 moutc[[1]] <- lm(nc15dafter ~ D1,
@@ -846,13 +836,14 @@ stargazer(moutc[[6]], moutc[[1]], moutc[[2]],
 In our second model, we measure the effect of reward schemes on the number of
 hospitalisations per census tract. Table \ref{tab:census} shows hospitalisation
 counts before the intervention, and then 15, 30, 60, 90, and between 30 to 60
-days after the treatment.
+days after the treatment.\footnote{The 96 pairs analysed 139 census tracts.
+This is because 43 pairs worked in more than one census tract at once.}
 
-Compared to the control group, neither treatment had an impact on disease
-incidence in the Rio Verde census tracts. The treatment effect is not
-statistically different from zero in any model specification. Yet, the
-coefficients are negative, what indicates that should an impact have occurred,
-the intervention would have lowered dengue incidence in the treated areas.
+We see that neither treatment has an impact on disease incidence in the Rio
+Verde census tracts. The treatment effect is not statistically different from
+zero in any model specification. Yet, the coefficients are negative, which
+indicates that had an impact occurred, the intervention would have lowered
+dengue incidence in the treated areas.
 
 # Discussion
 \label{sec:discussion}
@@ -869,58 +860,59 @@ than two minutes apart from each other, which suggests that the workers may
 not carry their tasks as intended in the absence of incentives. In a nutshell,
 monetary incentives work.
 
-Our conclusions are consistent with the results of comparable studies conducted
-in other settings, such as education [@duflo2012incentives] and private firms
-[@bandiera2013team]. They also provide further evidence that incentivising team
-work is more effective for labour-intensive tasks, which opens a new avenue for
-research in preventive health care.
+Our conclusions are consistent with results from comparable studies conducted
+in other settings, such as in education [@duflo2012incentives] and in private
+firms [@bandiera2013team]. The findings also lend further evidence that
+incentivising teams is particularly effective when they carry out
+labour-intensive tasks, which opens a new avenue for research in preventive
+healthcare.
 
 Regarding the effect of incentives on city-level dengue incidence, we find only
 mixed results. Why did the treatment not work as we planned? We believe the
-treatment was not strong enough. Our treatment probably did not cover enough
-areas to ensure there was no mosquitos around the assigned blocks. As mosquitos
-can travel for long distances, the treatment might not have been sufficient.
-Also, Rio Verde had significant rates of dengue incidence during our
-experiment, reaching 3,411 reported infections from January to September 2018
-[@goias2020]. Therefore, maybe the treatment works only when applied for
-longer periods of time or in more neighbourhoods.
+treatment was not as strong as it needed to be. Our treatment probably did not
+cover enough areas to ensure there was no mosquitos around the assigned blocks.
+As mosquitos can travel for long distances, the treatment might not have been
+sufficient. Also, Rio Verde had significant rates of dengue incidence during
+our experiment, reaching 3,411 reported infections from January to September
+2018 [@goias2020]. Therefore, the treatment might have stronger effects only
+when applied for longer periods of time or in more neighbourhoods.
 
-In this respect, our study suggests is that even though health care workers may
+In this respect, our study suggests is that even though healthcare workers may
 be motivated, their efforts do not necessarily lead to a reduction in mosquito
 infections. Higher field productivity does not guarantee that the *Aedes
-aegypti* can be eradicated. To our knowledge, we are one of the first studies
-to highlight this issue. Future research may explore the reasons why this is
-the case and if the disconnect between the two can also be identified in other
-areas.
+aegypti* mosquito can be eradicated. To our knowledge, this issue has received
+little attention in the literature. Future research may explore the reasons why
+this is the case and if the disconnect between the two can also be identified
+in other areas.
 
 ## Limitations
 \label{sub:limitations}
 
 The study has several limitations. First, we ran our experiment for a small
 period of time and in a particular Brazilian city, thus the findings may not
-generalise to other locations. Second, our experiment needed a longer and wider
-coverage to measure whether the treatment has a significant impact on dengue
-incidence, as the effect seems smaller than expected. Third, we included a
+generalise to other locations. Second, our experiment needs a broader coverage
+to measure whether the treatment has a significant impact on dengue incidence,
+as the effect size is smaller than we expected. Third, we included a
 post-treatment adjustment to ensure the balance of our territorial variables.
-Although using matching estimators to improve balance is in line with the best
-statistical practices, it requires additional assumptions. Finally, the
-experiment only measures the impact of financial rewards on worker performance,
-and it does not assess the effect of non-monetary incentives, such as
-motivational messages or constant feedback, which may be useful alternatives in
+Although using matching estimators to improve balance is good statistical
+practice, the method requires additional assumptions. Finally, the experiment
+only measures the impact of financial rewards on worker performance, and it
+does not assess the effect of non-monetary incentives, such as motivational
+messages or constant feedback, which may be useful alternatives in
 jurisdictions where legal or financial constraints prevent the government from
 distributing financial bonuses to civil servants.
 
 ## Public Health Implications
 \label{sub:implications}
 
-The experiment has important lessons for policy-making. *Aedes aegypti*-borne
+The experiment has important lessons for policy-making. *A. aegypti*-borne
 diseases are a significant public health concern, especially in developing
 nations. Results of this study indicate that monetary rewards play a major role
 in motivating civil servants, and that peer incentives are more cost-effective
-than individual bonuses. Finally, the article shows anti-mosquito campaigns
-require a sustained effort to guarantee their success, and we still have no
-robust evidence that worker productivity alone is sufficient to reduce dengue
-infections.
+than individual bonuses. Finally, the article shows that anti-mosquito
+campaigns require a sustained effort to guarantee their success, and we still
+have no robust evidence that worker productivity alone is sufficient to reduce
+dengue infections.
 
 \newpage
 \setlength{\parindent}{0cm}
