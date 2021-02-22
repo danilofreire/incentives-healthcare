@@ -73,9 +73,11 @@ rm(pkgs, installIfNot, r)
 load('../data/incentives_healthcare.RData')
 ```
 
+\pagebreak
+
 # A Theory of Service Provision under Moral Hazard in Teams
 
-Consider a strategic interaction between two healthcare workers and a government agency.\footnote{This model was inspired in @bolton2005contract. It is a particular version of their model, aimed at illustrate the effects of our treatment.} The agency hires healthcare workers to provide preventive healthcare. And the workers decide the amount of effort they will exert, conditional on the compensation scheme they receive.
+Consider a strategic interaction between two healthcare workers and a government agency.\footnote{This model was inspired in the @bolton2005contract and the @itoh1991incentives. It is a particular case of their model, aimed at illustrate the effects of our treatment.} The agency hires healthcare workers to provide preventive healthcare. And the workers decide the amount of effort they will exert, conditional on the compensation scheme they receive.
 
 From the perspective of healthcare workers, teams perform preventive healthcare tasks. To inspect a house and eliminate mosquito breeding sites, preventive healthcare workers visit the households in pairs or threesomes. Supposedly, this increases efficiency as it helps the team cover more territory and be more careful in the areas they inspect individually. Team structures also help in terms of lowering free-riding and increasing incentives for cooperative work. To capture this, we assume that a given worker $i$ divides her effort into two tasks: own work effort ($e_i$) and helping efforts ($h_i$). To capture the costs of effort, we assume the following convex cost function $\dfrac{c}{2}(e_i^2 + h_i^2)$, where $c>0$ represents the changes in marginal costs of effort and help.
 
@@ -204,6 +206,8 @@ The derivative of this equation is the polynomial in the second degree in $\alph
 
 Therefore, the maximum benefit that the agency can achieve is higher when the agency compensates the workers for their cooperation. When the agency incentivizes team effort, workers can do better, on margin, by sharing the benefit of successful provision.\footnote{The limits for this reasoning appear when there are gains of specialization. For instance, if the costs for effort and help were such that $\dfrac{c(e+h)^2}{2}$, then diverting energy for help is costly, on margin, at the same rate as the given effort provision. In this case, the compensation to stimulate cooperation has to be significantly higher, and even in this case there will be incentives for not cooperating.}
 
+\pagebreak
+
 # Data Analysis
 
 ## Covariate Balance
@@ -212,15 +216,13 @@ We checked the balance in the participation using four statistics. First, we stu
 
 ### Training Participation
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, cache=TRUE}
 #####
 ## Balance
 #####
 
 ## Training Participation Balance
 tabcov <- data.frame()
-
-# Altruism
 x = tapply(pretreat$Age, 
            pretreat$training,
            mean)
@@ -232,8 +234,6 @@ tab <- data.frame(Var = 'Age',
                   FVal = round(y[[1]][1,4], 3),
                   Pvalue = round(y[[1]][1,5], 3))
 tabcov <- rbind(tabcov, tab)
-
-# Age
 x = tapply(pretreat$Female, 
            pretreat$training,
            mean)
@@ -244,8 +244,6 @@ tab <- data.frame(Var = 'Female',
                   FVal = round(y[[1]][1,4], 3),
                   Pvalue = round(y[[1]][1,5], 3))
 tabcov <- rbind(tabcov, tab)
-
-# Religiosity
 x = tapply(pretreat$HasVehicle, 
            pretreat$training,
            mean)
@@ -256,8 +254,6 @@ tab <- data.frame(Var = 'Has Vehicle?',
                   FVal = round(y[[1]][1,4], 3),
                   Pvalue = round(y[[1]][1,5], 3))
 tabcov <- rbind(tabcov, tab)
-
-# N
 x = round(tapply(rep(1, length(pretreat$training)), 
                  pretreat$training,
                  sum), digits = 0)
@@ -272,7 +268,7 @@ row.names(tabcov) <- NULL
 
 \begin{table}[!htbp] \centering
   \caption{Covariate Balance on Training}
-  \label{appctabcovbalindv}
+  \label{baltraining}
 \begin{tabular}{@{\extracolsep{5pt}} lcccc}
 \\[-1.8ex]\hline
 \hline \\[-1.8ex]
@@ -290,16 +286,13 @@ for (i in 1:dim(tabcov)[1]) {
 
 ### Participation in the Field
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, cache=TRUE}
 #####
 ## Balance
 #####
 
 ## Participation Balance
 tabcov <- data.frame()
-
-
-# Altruism
 x = tapply(pretreat$Age, 
            pretreat$participating,
            mean)
@@ -311,8 +304,6 @@ tab <- data.frame(Var = 'Age',
                   FVal = round(y[[1]][1,4], 3),
                   Pvalue = round(y[[1]][1,5], 3))
 tabcov <- rbind(tabcov, tab)
-
-# Age
 x = tapply(pretreat$Female, 
            pretreat$participating,
            mean)
@@ -323,8 +314,6 @@ tab <- data.frame(Var = 'Female',
                   FVal = round(y[[1]][1,4], 3),
                   Pvalue = round(y[[1]][1,5], 3))
 tabcov <- rbind(tabcov, tab)
-
-# Religiosity
 x = tapply(pretreat$HasVehicle, 
            pretreat$participating,
            mean)
@@ -335,8 +324,6 @@ tab <- data.frame(Var = 'Has Vehicle?',
                   FVal = round(y[[1]][1,4], 3),
                   Pvalue = round(y[[1]][1,5], 3))
 tabcov <- rbind(tabcov, tab)
-
-# N
 x = round(tapply(rep(1, length(pretreat$participating)), 
                  pretreat$participating,
                  sum), digits = 0)
@@ -351,7 +338,7 @@ row.names(tabcov) <- NULL
 
 \begin{table}[!htbp] \centering
   \caption{Covariate Balance on Participation}
-  \label{appctabcovbalindv}
+  \label{balpart}
 \begin{tabular}{@{\extracolsep{5pt}} lcccc}
 \\[-1.8ex]\hline
 \hline \\[-1.8ex]
@@ -366,6 +353,8 @@ for (i in 1:dim(tabcov)[1]) {
 \hline\hline \\[-1.8ex] 
 \end{tabular}
 \end{table}
+
+\pagebreak
 
 ### Individual Assignment
 
@@ -511,7 +500,7 @@ row.names(tabcov) <- NULL
 
 \begin{table}[!htbp] \centering
   \caption{Covariate Balance on Individual Characteristics}
-  \label{appctabcovbalindv}
+  \label{balindvchar}
 \begin{tabular}{@{\extracolsep{5pt}} lccccc}
 \\[-1.8ex]\hline
 \hline \\[-1.8ex]
@@ -529,7 +518,7 @@ for (i in 1:dim(tabcov)[1]) {
 
 ### Unweigted Territorial Assignment
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, cache=TRUE}
 ## Census Sectors characteristics
 tabcov <- data.frame()
 
@@ -642,12 +631,13 @@ for (i in 1:dim(tabcov)[1]) {
 
 ### Propensity-score Weighted Territorial Assignment
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE, results='hide'}
 tabcov <- data.frame()
 # Number of Houses
 x = dfr2 %>%
   group_by(D1) %>%
-  summarise(x = weighted.mean(NHouses, weightsD1))
+  summarise(x = weighted.mean(NHouses, weightsD1),
+            .groups = 'drop')
 x = x$x
 x
 y = summary(aov(NHouses~D1, data = dfr2, weights=dfr2$weightsD1))
@@ -662,7 +652,8 @@ tabcov <- rbind(tabcov, tab)
 # Number of households
 x = dfr2 %>%
   group_by(D1) %>%
-  summarise(x = weighted.mean(NHouseholds, weightsD1))
+  summarise(x = weighted.mean(NHouseholds, weightsD1),
+            .groups = 'drop')
 x = x$x
 y = summary(aov(NHouseholds~D1, data = dfr2, weights=dfr2$weightsD1))
 tab <- data.frame(Var = 'Number of Households',
@@ -676,7 +667,8 @@ tabcov <- rbind(tabcov, tab)
 # AvgHouseholdSize
 x = dfr2 %>%
   group_by(D1) %>%
-  summarise(x = weighted.mean(AvgHouseholdSize, weightsD1))
+  summarise(x = weighted.mean(AvgHouseholdSize, weightsD1),
+            .groups = 'drop')
 x = x$x
 y = summary(aov(AvgHouseholdSize~D1, data = dfr2, 
                 weights=dfr2$weightsD1))
@@ -691,7 +683,8 @@ tabcov <- rbind(tabcov, tab)
 # Avg. Income Households
 x = dfr2 %>%
   group_by(D1) %>%
-  summarise(x = weighted.mean(logAvgIncomeHousehold, weightsD1))
+  summarise(x = weighted.mean(logAvgIncomeHousehold, weightsD1),
+            .groups = 'drop')
 x = x$x
 y = summary(aov(logAvgIncomeHousehold~D1, data = dfr2, 
                 weights=dfr2$weightsD1))
@@ -706,7 +699,8 @@ tabcov <- rbind(tabcov, tab)
 # Cases Before
 x = dfr2 %>%
   group_by(D1) %>%
-  summarise(x = weighted.mean(plac, weightsD1))
+  summarise(x = weighted.mean(plac, weightsD1),
+            .groups = 'drop')
 x = x$x
 y = summary(aov(plac~D1, data = dfr2, weights=dfr2$weightsD1))
 tab <- data.frame(Var = 'Cases Before Treatment',
@@ -737,6 +731,8 @@ for (i in 1:dim(tabcov)[1]) {
 \end{tabular}
 \end{table}
 
+\pagebreak
+
 ## Productivity Outcomes
 
 ```{r, echo = FALSE, results='asis'}
@@ -759,7 +755,8 @@ stargazer(mprod[[1]], mprod[[2]],
           keep = c('DIndividual', 'DCollective'),
           covariate.labels = c('Individual Bonus',
                                'Collective Bonus'),
-          title = 'Field Productivity', header = FALSE)
+          title = 'Field Productivity', header = FALSE,
+          font.size = 'small')
 ```
 
 ## Disease Incidence Outcomes
@@ -830,7 +827,8 @@ Table \ref{difindif} shows the following:
 
 1. There is a 10.3\% effect on the full data model.
 2. The other windows are not significant but the sign is consistent with lower disease incidence.
-3. Comparing individual and collective, collective decreases by 2.9\%, but the result is not significant.
+
+\pagebreak
 
 # Experiment Report
 
@@ -1201,6 +1199,10 @@ This research benefited from the contribution of the following research assistan
 - Vitor Sion
 
 We are very thankful for all their help before, during, and after the field.
+
+### Parcial Implementation and Possible Threats to the Identification
+
+We had one substantial problem during the field, with the partial implementation of the territorial assignment in the control group. The coordinator of the control group base changed the territorial assignment because of pressure from the participants that had to work farther from the base. The coordinator assigned pair for the surroundings of the base. This problem may potentially threat the territorial comparability of the cases, but to ensure that this is not confounding our results, we used propensity-score matching to re-weight these areas. After the matching, the sectors seems comparable, and we are confident that the re-weight allows a comparable territorial assignment.
 
 ## Some field pictures
 
