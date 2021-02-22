@@ -1,0 +1,1235 @@
+---
+title: |
+       | Supplementary Materials for "Financial Incentives and Health Care Provision: Evidence from an Experimental \textit{Aedes aegypti} Control Programme in Brazil"
+author:
+- "Danilo Freire[^freire]"
+- "Umberto Mignozzetti[^mignozzetti]"
+date: \today
+fontfamily: libertine
+fontawesome: yes
+fontsize: 12pt
+monospace-url: yes
+spacing: double
+papersize: a4paper
+bibliography: references.bib
+biblio-style: apalike
+always_allow_html: true
+output:
+  pdf_document:
+    citation_package: natbib
+    fig_caption: yes
+    number_sections: yes
+    toc: true
+    keep_tex: no
+    template: template.latex
+---
+
+\appendix
+
+[^freire]: Independent Researcher, <danilofreire@gmail.com>, <http://danilofreire.github.io>.
+
+[^mignozzetti]: Visiting Assistant Professor, Quantitative Theory and Methods, Emory University, <umberto.mignozzetti@emory.edu>, <http://umbertomig.com>.
+
+```{r, include=FALSE}
+# Knitr options
+knitr::opts_chunk$set(fig.pos = "H") # holds figure position
+knitr::opts_chunk$set(echo = TRUE)
+
+# Random Seed
+set.seed(597154) # From random.org
+```
+
+```{r, include=FALSE, warning=FALSE, echo=FALSE}
+## Initializing
+
+# Start
+rm(list=ls())
+
+# R CRAN
+r <- getOption("repos")
+r["CRAN"] <- "https://cloud.r-project.org/"
+options(repos = r)
+
+# Install required packages
+pkgs <- c('tidyverse', 'ggmap', 'magrittr', 
+          'sf', 'gpclib', 'sp', 'rgdal', 
+          'readxl', 'ggthemes', 'stringr', 
+          'lmtest', 'estimatr', 'sandwich', 
+          'stargazer', 'maptools', 'gridExtra',
+          'WeightIt', 'robustHD', 'kableExtra',
+          'lfe')
+
+installIfNot <- function(x) {
+  if(x %in% rownames(installed.packages()) == FALSE) 
+    install.packages(x, dependencies = T)
+} 
+invisible(lapply(pkgs, installIfNot))
+
+# Load packages
+invisible(lapply(pkgs, require, character.only = T))
+rm(pkgs, installIfNot, r)
+
+# Load data
+load('../data/incentives_healthcare.RData')
+```
+
+# A Theory of Service Provision under Moral Hazard in Teams
+
+Consider a strategic interaction between two healthcare workers and a government agency.\footnote{This model was inspired in @bolton2005contract. It is a particular version of their model, aimed at illustrate the effects of our treatment.} The agency hires healthcare workers to provide preventive healthcare. And the workers decide the amount of effort they will exert, conditional on the compensation scheme they receive.
+
+From the perspective of healthcare workers, teams perform preventive healthcare tasks. To inspect a house and eliminate mosquito breeding sites, preventive healthcare workers visit the households in pairs or threesomes. Supposedly, this increases efficiency as it helps the team cover more territory and be more careful in the areas they inspect individually. Team structures also help in terms of lowering free-riding and increasing incentives for cooperative work. To capture this, we assume that a given worker $i$ divides her effort into two tasks: own work effort ($e_i$) and helping efforts ($h_i$). To capture the costs of effort, we assume the following convex cost function $\dfrac{c}{2}(e_i^2 + h_i^2)$, where $c>0$ represents the changes in marginal costs of effort and help.
+
+Due to the nature of preventive care work, the policy outcome is probabilistic. Preventive healthcare aims to lower the chance of a person getting sick. For example, washing one's hands lowers the chance of a person getting the flu, but from time to time, a person gets the flu regardless of how many times she washes her hands. The only difference is that a person who washes her hands constantly has a lower chance of getting sick and will get sick fewer times during her lifespan. For this reason, we denote the probability of a successful provision of the service by a pair $i$ and $j$ of healthcare workers, as $P(e_i, h_i, e_j, h_j)$. For simplicity, we assume that the probabilities are separable, with $P(e_i, h_i, e_j, h_j) = P_i(e_i, h_j) + P_j(e_j, h_i)$. To make the output more concrete, assume that a given worker $i$ has an individual probability of $P_i(e_i, h_j) = e_i(1+h_j)$ of successfully lowering the disease burden with her effort ($e_i$) and the help of her peer ($h_j$).
+
+From the perspective of the agency, the successful work grants a benefit of $B>0$. This benefit represents the social gains of lowering the amount of disease incidence in the municipality. For example, the payoff could be the amount of money saved from fewer hospitalizations or the economic benefit of fewer people missing work due to diseases transmitted by \textit{Aedes aegypti}. The agency incentivizes workers through salaries with three components: a flat salary without bonuses, individual compensation, and a bonus when the entire team achieves their collective objectives. These formulations allow us to disentangle which scheme offers the highest yield in terms of disease prevention.
+
+The optimal scheme to improve welfare is a contract where the government agency offers a compensation package, and the two healthcare providers choose their effort accordingly. From the perspective of the worker, the expected utility of effort, provided that the compensation depends on successful provision of the service, and that the benefit from salary is given by a concave function $u(.)$. For concreteness, we use the function $u(x) = \sqrt{x}$. The expected utility of effort is then the compensation for each scenario, times their probability. It is equal to:
+
+\begin{eqnarray*}
+    U_i(e_i, h_i; e_j, h_j) & = & P_i(e_i, h_j)P_j(e_j, h_i)u(s+w_{both}) + \\
+    & & P_i(e_i, h_j)(1-P_j(e_j, h_i))u(s+w_{one}) + \\
+    & & (1-P_i(e_i, h_j))P_j(e_j, h_i)u(s+w_{one}) + \\
+    & & (1-P_i(e_i, h_j))(1-P_j(e_j, h_i))u(s) - \dfrac{c}{2}(e_i^2 + h_i^2)
+\end{eqnarray*}
+
+And this utility is symmetric for the worker $j$. To simplify things, consider that the compensation under an unsuccessful service provision is equal to zero: $u(s)=0$, or $s=0$. From the perspective of the government agency, the benefit from offering the compensation is equal to the social benefit in each provision scenario minus the compensation times the likelihood of the scenario:
+
+\begin{eqnarray*}
+    U_A(w_{both}, w_{one}, s; e_i, h_i, e_j, h_j) & = & P_i(e_i, h_j)P_j(e_j, h_i)(2B - 2w_{both}) + \\
+    & & P_i(e_i, h_j)(1-P_j(e_j, h_i))(B-2w_{one}) + \\
+    & & (1-P_i(e_i, h_j))P_j(e_j, h_i)(B-2w_{one})
+\end{eqnarray*}
+
+The situation is a standard contract theory problem, where we have three compensation packages: no bonus ($w_{both} = w_{one} = 0$), individual bonus ($w_{both} = w_{one} \neq 0$), and collective bonus ($w_{both} \neq w_{one}$, $w_{both} \neq 0$, and $w_{one} \neq 0$). The optimal contract is then the solution for the following constrained optimization problem:
+
+\begin{eqnarray*}
+    \max_{w_{both}, w_{one}} U_A(w_{both}, w_{one}; e_i, h_i, e_j, h_j) \text{, subject to:} \\
+    & (e_i, h_i) \in \arg \max U_i(e_i, h_i; e_j, h_j, w_{both}, w_{one}) \\
+    & (e_j, h_j) \in \arg \max U_j(e_j, h_j; e_i, h_i, w_{both}, w_{one})
+\end{eqnarray*}
+
+And by choosing an optimal compensation scheme, the agency can induce more effort and more cooperation among workers.
+
+## Baseline: no incentive bonuses
+
+When the agency only pays a flat salary without performance incentives, the agency sets the performance compensation equals to zero: $w_{both} = w_{one} = 0$. This changes the expected utility of the agent to the following:
+
+\begin{eqnarray*}
+U_i(e_i, h_i; e_j, h_j) & = & - \dfrac{c}{2}(e_i^2 + h_i^2)
+\end{eqnarray*}
+
+In this setting, exerting effort generates only costs and no benefits. The agents exert zero effort and help in equilibrium: $e_i^* = e_j^* = 0$ and $h_i^* = h_j^* = 0$. The agency pays the minimum wage accepted by law, and in this model, we assume that this wage is equal to zero. Accordingly, the agency's expected benefit is equal to:
+
+\[
+R_A(\text{no bonus}) \ = \ 0
+\]
+
+The prediction here is that workers will exert no effort, and the agency will have only costs without accruing any benefit. This is the worst-case scenario in terms of the agency's welfare. In the experiment, it matches the control condition.\footnote{Throughout the chapter, we assume that the optimal output for the agency is equal to the maximum welfare for society. Although this is not always the case, it is a reasonable simplification for the purposes of this chapter. Adding a difference here would only complicate my results and provide no further insight into designing an incentive scheme to maximize welfare.}
+
+## Performance bonus for individuals
+
+When the benefits are tied to individual performance, the government agency compensates the workers for their effort, without tying their bonuses to helping other workers. This means that $h_i^* = h_j^* = 0$, but the optimal level of effort is always positive. Let $\alpha$ the bonus the government agency offers to workers conditional on lowering the incidence of the disease. Each worker then evaluates the utility of the bonus as $u_i(\alpha) = \sqrt{\alpha}$, as the utility of the agent is concave, representing the risk aversion of the agent. The optimization problem, from the perspective of the agent, is to maximize her expected utility, given the bonus offered by the government agency upon achieving a successful provision:
+
+\begin{eqnarray*}
+\max_{e_i} U_i(e_i) & = & \max_{e_i} \left[P_i(e_i, 0)\sqrt{\alpha} - \dfrac{c}{2}(e_i^2)\right] \\
+ & = & \max_{e_i} \left[e_i\sqrt{\alpha} - \dfrac{c}{2}(e_i^2)\right]
+\end{eqnarray*}
+
+Both workers face the same incentive structure, so the equilibrium is symmetric, with $e_i = e_j$. Taking the derivative and equating it to zero, gives us the following optimal effort level: $e_i^* = e_j^* = \dfrac{\sqrt{\alpha}}{c}$. The optimal level of effort represents the point where the marginal benefit from the government agency's compensation is equal to the marginal cost of effort. The benefit of a successful provision of the healthcare service is equal to -- for both players -- the total benefit times the chance of a successful provision times the difference between the benefit accrued from a successful provision minus the bonus paid for the worker. To compute the optimal contract the government agency has to offer in this setting, we must choose $\alpha$ to maximize the agency's expected utility:
+
+\begin{eqnarray*}
+\max_{\alpha} R_A(e_i^*(\alpha), e_j^*(\alpha)) & = & \max_{\alpha} \left[2 \dfrac{\sqrt{\alpha}}{c} (B-\alpha)\right]
+\end{eqnarray*}
+
+The optimal bonus is equal to $\alpha^* = \dfrac{B}{3}$. Plugging the optimal bonus and the optimal effort levels into the welfare function, we find the agency's expected revenue, which in this case is equal to:
+
+\[
+R_A(\text{individual bonus}) \ = \ \dfrac{4}{c} \left[ \dfrac{B}{3} \right]^{\dfrac{3}{2}}
+\]
+
+The revenue is always greater than zero, provided that the costs of investing effort and the social benefits of the policy are greater than zero.
+
+## Performance bonus for teams
+
+When the government agency sets rewards for both individual and team performance, healthcare workers divide their time between expending effort in their job ($e_i$) and helping their teams to get their jobs done ($h_i$). Helping may take many forms: from simple peer pressure and monitoring to ensure the peer is doing the job well, to efficiently dividing tasks and exploiting complementarities in their duties. From the government agency's perspective, incentivizing workers to help each other can potentiate the chances of obtaining successful service provision. From the standpoint of healthcare workers, optimal effort becomes a mix of her own efforts and the helping efforts that maximize her expected utility, provided that both efforts are incentive-compatible. Incentive compatible means, in the case of healthcare workers, that both efforts are exerted to match the governmental agency's contractual incentives. The expected utility for the agent $i$ consists of the chance of getting a bonus times the utility of the bonus. This is iterated in each of the possible service provision scenarios.
+
+\begin{eqnarray*}
+\max_{(e_i,h_i)} U_i(e_i, h_i; e_j, h_j) & = & \max_{(e_i,h_i)} \{e_j(1+h_i)e_i(1+h_j)u(w_{ij}) + \\
+& & e_j(1+h_i)(1-e_i(1+h_j))u(w_{j}) + \\
+& & e_i(1+h_j)(1-e_j(1+h_i))u(w_{i}) - c\dfrac{e_i^2+h_i^2}{2}\}
+\end{eqnarray*}
+
+Again, both players are ex-ante similar in terms of their expected utilities. This allow us to solve for the Symmetric Nash Equilibrium, where:
+
+1. The effort of a given healthcare provider ($i$) is equal to the effort of the other healthcare provider ($j$): $e_i = e_j = e$.
+2. The help of one healthcare provider is equal to the help of the other healthcare provider $h_i = h_j = h$.
+3. Both agents have the same utility function, $U_i(.) = U_j(.)$.
+
+Maximizing the expected utility leads us to the optimal effort and amount of help for the healthcare provider, given the contractual scheme. The optimal provision must satisfy the following equation:
+
+\begin{eqnarray*}
+\dfrac{\partial U}{\partial e} & = & e(1+h)^2(u(w_{ij})-u(w_{i})-u(w_{j})) + (1+h)u(w_{i})-ce \\
+\dfrac{\partial U}{\partial h} & = &
+e^2(1+h)(u(w_{ij})-u(w_{i})-u(w_{j})) + eu(w_{j})-ch
+\end{eqnarray*}
+
+To simplify our computation, we consider contracts that vary in one dimension $\alpha$. The individual part of the contractual benefit is equal to multiples of this contract for each situation: own successful provision and the successful colleague provision.
+
+In this example, we restrict our attention to contracts where $u(w_{i}) = u(w_{j}) = \sqrt{\alpha}$ and $u(w_{ij}) = 2u(w_{i})$. These contracts are a better match for the conditions we set in the experiment: they represent the collective gain when recompensing the agent for peer and individual successes. The optimal effort and help become:
+
+\[
+e_{i}^{*} = e_{j}^{*} = \dfrac{\sqrt{\alpha c}}{c - \alpha}
+\]
+
+and 
+
+\[
+h_{i}^{*} = h_{j}^{*} = \dfrac{\alpha}{c-\alpha}
+\]
+
+The governmental agency now maximizes the bonus for the individual provision ($\alpha$), given that the collective provision is higher than it is. The expected revenue of the agency is equal to the chance of lowering the disease burden times the benefit minus the costs of paying the healthcare provider's salaries:
+
+\begin{eqnarray*}
+\max_{\alpha} R_A(e_{i}^{*}(\alpha), h_{i}^{*}(\alpha), e_{j}^{*}(\alpha), h_{i}^{*}(\alpha)) & = & \max_{\alpha} \left[2 \dfrac{c\sqrt{c\alpha}}{(c-\alpha)^2} (B-2\alpha)\right]
+\end{eqnarray*}
+
+The derivative of this equation is the polynomial in the second degree in $\alpha$. By the intermediate value theorem, it is easy to see that it has one solution for $\alpha \in [0, B]$. To illustrate, consider Figure \ref{figrevmax}, where we plot the expected revenue for the agency ($R_A(\alpha)$), as a function of the offered compensation $\alpha$, and the three types of contracts: no productivity incentives, individual productivity incentives, and team productivity incentives, fixing $B = c = 1$.
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{../figures/figrev.pdf}
+\caption{Governmental Agency's Revenue in terms of Contract and Compensation}
+\label{figrevmax}
+\end{figure}
+
+Therefore, the maximum benefit that the agency can achieve is higher when the agency compensates the workers for their cooperation. When the agency incentivizes team effort, workers can do better, on margin, by sharing the benefit of successful provision.\footnote{The limits for this reasoning appear when there are gains of specialization. For instance, if the costs for effort and help were such that $\dfrac{c(e+h)^2}{2}$, then diverting energy for help is costly, on margin, at the same rate as the given effort provision. In this case, the compensation to stimulate cooperation has to be significantly higher, and even in this case there will be incentives for not cooperating.}
+
+# Data Analysis
+
+## Covariate Balance
+
+We checked the balance in the participation using four statistics. First, we study the decision to participate in the training day. Second, we studied the decision to participate in the experiment. It requires the person to show up for training, and then participate during the field. Third, we checked the balance in the individual characteristics collected by the pre-treatment survey. Finally, we checked the territorial assignment to make sure that the pre-treatment characteristics is balanced in the places that were undergoing visit. We run regressions for all the aspects above. We had balance for the individual assignment (models one to three), and for the territorial assignment, we had imbalance that was corrected using propensity-score matching.
+
+### Training Participation
+
+```{r, echo = FALSE}
+#####
+## Balance
+#####
+
+## Training Participation Balance
+tabcov <- data.frame()
+
+# Altruism
+x = tapply(pretreat$Age, 
+           pretreat$training,
+           mean)
+y = summary(aov(Age~training, 
+                data = pretreat))
+tab <- data.frame(Var = 'Age',
+                  `NotTraining` = round(x[1],2),
+                  `Training` = round(x[2],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Age
+x = tapply(pretreat$Female, 
+           pretreat$training,
+           mean)
+y = summary(aov(Female~training, data = pretreat))
+tab <- data.frame(Var = 'Female',
+                  `NotTraining` = round(x[1],2),
+                  `Training` = round(x[2],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Religiosity
+x = tapply(pretreat$HasVehicle, 
+           pretreat$training,
+           mean)
+y = summary(aov(HasVehicle~training, data = pretreat))
+tab <- data.frame(Var = 'Has Vehicle?',
+                  `NotTraining` = round(x[1],2),
+                  `Training` = round(x[2],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# N
+x = round(tapply(rep(1, length(pretreat$training)), 
+                 pretreat$training,
+                 sum), digits = 0)
+tab <- data.frame(Var = 'N',
+                  `NotTraining` = round(x[1],2),
+                  `Training` = round(x[2],2),
+                  FVal = NA,
+                  Pvalue = NA)
+tabcov <- rbind(tabcov, tab)
+row.names(tabcov) <- NULL
+```
+
+\begin{table}[!htbp] \centering
+  \caption{Covariate Balance on Training}
+  \label{appctabcovbalindv}
+\begin{tabular}{@{\extracolsep{5pt}} lcccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Variable & Not Training & Training & F-Statistic & P-Value \\
+\hline \\[-1.8ex]
+```{r, echo=FALSE, results='asis'}
+for (i in 1:dim(tabcov)[1]) {
+  cat(paste(paste(tabcov[i,], collapse = ' & '), 
+        ' \\\\ ', sep = ''), '\n')
+}
+```
+\hline\hline \\[-1.8ex] 
+\end{tabular}
+\end{table}
+
+### Participation in the Field
+
+```{r, echo = FALSE}
+#####
+## Balance
+#####
+
+## Participation Balance
+tabcov <- data.frame()
+
+
+# Altruism
+x = tapply(pretreat$Age, 
+           pretreat$participating,
+           mean)
+y = summary(aov(Age~participating, 
+                data = pretreat))
+tab <- data.frame(Var = 'Age',
+                  `NotParticipating` = round(x[1],2),
+                  `Participating` = round(x[2],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Age
+x = tapply(pretreat$Female, 
+           pretreat$participating,
+           mean)
+y = summary(aov(Female~participating, data = pretreat))
+tab <- data.frame(Var = 'Female',
+                  `NotParticipating` = round(x[1],2),
+                  `Participating` = round(x[2],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Religiosity
+x = tapply(pretreat$HasVehicle, 
+           pretreat$participating,
+           mean)
+y = summary(aov(HasVehicle~participating, data = pretreat))
+tab <- data.frame(Var = 'Has Vehicle?',
+                  `NotParticipating` = round(x[1],2),
+                  `Participating` = round(x[2],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# N
+x = round(tapply(rep(1, length(pretreat$participating)), 
+                 pretreat$participating,
+                 sum), digits = 0)
+tab <- data.frame(Var = 'N',
+                  `NotParticipating` = round(x[1],2),
+                  `Participating` = round(x[2],2),
+                  FVal = NA,
+                  Pvalue = NA)
+tabcov <- rbind(tabcov, tab)
+row.names(tabcov) <- NULL
+```
+
+\begin{table}[!htbp] \centering
+  \caption{Covariate Balance on Participation}
+  \label{appctabcovbalindv}
+\begin{tabular}{@{\extracolsep{5pt}} lcccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Variable & Not Participating & Participating & F-Statistic & P-Value \\
+\hline \\[-1.8ex]
+```{r, echo=FALSE, results='asis'}
+for (i in 1:dim(tabcov)[1]) {
+  cat(paste(paste(tabcov[i,], collapse = ' & '), 
+        ' \\\\ ', sep = ''), '\n')
+}
+```
+\hline\hline \\[-1.8ex] 
+\end{tabular}
+\end{table}
+
+### Individual Assignment
+
+```{r, echo = FALSE}
+#####
+## Balance
+#####
+
+## Pairs characteristics
+tabcov <- data.frame()
+
+# Age
+x = tapply(pretreat$Age, 
+           pretreat$assignment,
+           mean)
+y = summary(aov(Age~assignment, 
+                data = pretreat))
+tab <- data.frame(Var = 'Age',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Female
+x = tapply(pretreat$Female, 
+           pretreat$assignment,
+           mean)
+y = summary(aov(Female~assignment, data = pretreat))
+tab <- data.frame(Var = 'Female',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Has Vehicle
+x = tapply(pretreat$HasVehicle, 
+           pretreat$assignment,
+           mean)
+y = summary(aov(HasVehicle~assignment, data = pretreat))
+tab <- data.frame(Var = 'Has Vehicle?',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Altruism
+x = tapply(pretreat$aboveMedianAltr, 
+           pretreat$assignment,
+           mean)
+y = summary(aov(aboveMedianAltr~assignment, data = pretreat))
+tab <- data.frame(Var = 'Altruist',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Religiosity
+x = tapply(pretreat$relig, 
+           pretreat$assignment,
+           mean)
+y = summary(aov(relig~assignment, data = pretreat))
+tab <- data.frame(Var = 'Religiosity',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Political Engagement
+x = tapply(pretreat$polengage, 
+           pretreat$assignment,
+           mean)
+y = summary(aov(polengage~assignment, data = pretreat))
+tab <- data.frame(Var = 'Pol. Engagement',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Social Engagement
+x = tapply(pretreat$socengage, 
+           pretreat$assignment,
+           mean)
+y = summary(aov(socengage~assignment, data = pretreat))
+tab <- data.frame(Var = 'Soc. Engagement',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Above Two Minimum Wage Family
+x = tapply(pretreat$aboveTwoMinWageFam, 
+           pretreat$assignment,
+           mean)
+y = summary(aov(aboveTwoMinWageFam~assignment, data = pretreat))
+tab <- data.frame(Var = 'Above Two Min. Wage',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Above Median Facebook popularity
+x = tapply(pretreat$FBpop, 
+           pretreat$assignment,
+           mean)
+y = summary(aov(FBpop~assignment, data = pretreat))
+tab <- data.frame(Var = 'Facebook Popularity',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# N
+x = round(tapply(rep(1, length(pretreat$assignment)), 
+                 pretreat$assignment,
+                 sum), digits = 0)
+tab <- data.frame(Var = 'N',
+                  NoBonus = round(x[1],0),
+                  Individual = round(x[2],0),
+                  Collective = round(x[3],0),
+                  FVal = NA,
+                  Pvalue = NA)
+tabcov <- rbind(tabcov, tab)
+row.names(tabcov) <- NULL
+```
+
+\begin{table}[!htbp] \centering
+  \caption{Covariate Balance on Individual Characteristics}
+  \label{appctabcovbalindv}
+\begin{tabular}{@{\extracolsep{5pt}} lccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Variable & Control & Individual & Collective & F-Statistic & P-Value \\
+\hline \\[-1.8ex]
+```{r, echo=FALSE, results='asis'}
+for (i in 1:dim(tabcov)[1]) {
+  cat(paste(paste(tabcov[i,], collapse = ' & '), 
+        ' \\\\ ', sep = ''), '\n')
+}
+```
+\hline\hline \\[-1.8ex] 
+\end{tabular}
+\end{table}
+
+### Unweigted Territorial Assignment
+
+```{r, echo = FALSE}
+## Census Sectors characteristics
+tabcov <- data.frame()
+
+# Number of Houses
+x = tapply(dfr2$NHouses, 
+           dfr2$D1,
+           mean)
+y = summary(aov(NHouses~D1, data = dfr2))
+tab <- data.frame(Var = 'Number of Houses',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Age
+x = tapply(dfr2$NHouseholds, 
+           dfr2$D1,
+           mean)
+y = summary(aov(NHouseholds~D1, data = dfr2))
+tab <- data.frame(Var = 'Number of Households',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# AvgHouseholdSize
+x = tapply(dfr2$AvgHouseholdSize, 
+           dfr2$D1,
+           mean)
+y = summary(aov(AvgHouseholdSize~D1, data = dfr2))
+tab <- data.frame(Var = 'Avg. Household Size',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Avg. Income Households
+x = tapply(dfr2$logAvgIncomeHousehold, 
+           dfr2$D1,
+           mean)
+y = summary(aov(logAvgIncomeHousehold~D1, data = dfr2))
+tab <- data.frame(Var = 'Log Avg. Income',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Cases Before
+x = tapply(dfr2$plac, 
+           dfr2$D1,
+           mean)
+y = summary(aov(plac~D1, data = dfr2))
+tab <- data.frame(Var = 'Cases Before Treatment',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+row.names(tabcov) <- NULL
+
+## re-weighting
+dfr2$weightsD1 = weightit(D1~NHouses+
+                    NHouseholds+AvgHouseholdSize+
+                    logAvgIncomeHousehold+plac, 
+                  data = dfr2, focal = "No bonus", 
+                  method = 'cbps',
+                  estimand = "ATT")$weights
+
+dfr$weightsD1 <- weightit(D1~NHouses+
+                    NHouseholds+AvgHouseholdSize+
+                    logAvgIncomeHousehold+plac, 
+                  data = dfr, focal = "Control", 
+                  method = 'cbps',
+                  estimand = "ATT")$weights
+
+dfr$weightsD2 <- weightit(D2~NHouses+
+                            NHouseholds+AvgHouseholdSize+
+                            logAvgIncomeHousehold+plac, 
+                          data = dfr, focal = "No intervention", 
+                          method = 'cbps',
+                          estimand = "ATT")$weights
+```
+
+\begin{table}[!htbp] \centering 
+  \caption{Covariate Balance Un-Weighted Territorial Assignment} 
+  \label{appcunweightbalter} 
+\begin{tabular}{@{\extracolsep{5pt}} lccccc}
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Variable & Control & Individual & Collective & F-Statistic & P-Value \\
+\hline \\[-1.8ex] 
+```{r, echo=FALSE, results='asis'}
+for (i in 1:dim(tabcov)[1]) {
+  cat(paste(paste(tabcov[i,], collapse = ' & '), 
+        ' \\\\ ', sep = ''), '\n')
+}
+```
+\hline\hline \\[-1.8ex] 
+\end{tabular}
+\end{table}
+
+### Propensity-score Weighted Territorial Assignment
+
+```{r, echo=FALSE}
+tabcov <- data.frame()
+# Number of Houses
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(NHouses, weightsD1))
+x = x$x
+x
+y = summary(aov(NHouses~D1, data = dfr2, weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Number of Houses',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Number of households
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(NHouseholds, weightsD1))
+x = x$x
+y = summary(aov(NHouseholds~D1, data = dfr2, weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Number of Households',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# AvgHouseholdSize
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(AvgHouseholdSize, weightsD1))
+x = x$x
+y = summary(aov(AvgHouseholdSize~D1, data = dfr2, 
+                weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Avg. Household Size',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Avg. Income Households
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(logAvgIncomeHousehold, weightsD1))
+x = x$x
+y = summary(aov(logAvgIncomeHousehold~D1, data = dfr2, 
+                weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Log Avg. Income',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+
+# Cases Before
+x = dfr2 %>%
+  group_by(D1) %>%
+  summarise(x = weighted.mean(plac, weightsD1))
+x = x$x
+y = summary(aov(plac~D1, data = dfr2, weights=dfr2$weightsD1))
+tab <- data.frame(Var = 'Cases Before Treatment',
+                  NoBonus = round(x[1],2),
+                  Individual = round(x[2],2),
+                  Collective = round(x[3],2),
+                  FVal = round(y[[1]][1,4], 3),
+                  Pvalue = round(y[[1]][1,5], 3))
+tabcov <- rbind(tabcov, tab)
+row.names(tabcov) <- NULL
+```
+
+\begin{table}[!htbp] \centering 
+  \caption{Covariate Balance Weighted Territorial Assignment} 
+  \label{appcweightbalter} 
+\begin{tabular}{@{\extracolsep{5pt}} lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Variable & No Bonus & Individual & Collective & F-Statistic & P-Value \\
+\hline \\[-1.8ex] 
+```{r, echo=FALSE, results='asis'}
+for (i in 1:dim(tabcov)[1]) {
+  cat(paste(paste(tabcov[i,], collapse = ' & '), 
+        ' \\\\ ', sep = ''), '\n')
+}
+```
+\hline\hline \\[-1.8ex] 
+\end{tabular}
+\end{table}
+
+## Productivity Outcomes
+
+```{r, echo = FALSE, results='asis'}
+## Productivity outcome
+mprod <- list()
+mprod[[1]] <- lm(nHouse ~ D, data = prodfr)
+mprod[[2]] <- lm(nHouseLessTwoMin ~ D, data = prodfr)
+mprod[[3]] <- lm(nBreed ~ D, data = prodfr)
+mprod[[4]] <- lm(nLarvae ~ D, data = prodfr)
+stargazer(mprod[[1]], mprod[[2]],
+          mprod[[3]], mprod[[4]],
+          se = starprep(mprod[[1]], mprod[[2]],
+                        mprod[[3]], mprod[[4]],
+                        se_type = "HC1"),
+          dep.var.labels = c('\\shortstack{Houses \\\\ Visited}', 
+                             '\\shortstack{Houses Vis. in \\\\ Less than Two Min.}',
+                             '\\shortstack{Breeding Sites \\\\ Terminated}',
+                             '\\shortstack{Larvae \\\\ Terminated}'),
+          keep.stat = c('ser', 'n'),
+          keep = c('DIndividual', 'DCollective'),
+          covariate.labels = c('Individual Bonus',
+                               'Collective Bonus'),
+          title = 'Field Productivity', header = FALSE)
+```
+
+## Disease Incidence Outcomes
+
+For the disease incidence regressions, the results in Table \ref{'diseasein} show all null effect.
+
+```{r, echo=FALSE, results='asis'}
+## Health outcome
+moutc <- list()
+moutc[[1]] <- lm(nc15dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[2]] <- lm(nc30dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[3]] <- lm(nc60dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[4]] <- lm(nc90dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[5]] <- lm(nc30to60dafter ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+moutc[[6]] <- lm(plac ~ D1,
+                 data = dfr2, weights = dfr2$weightsD1)
+
+stargazer(moutc[[6]], moutc[[1]], moutc[[2]], 
+          moutc[[3]], moutc[[4]], moutc[[5]],
+          se = starprep(moutc[[6]], moutc[[1]], 
+                        moutc[[2]], moutc[[3]], 
+                        moutc[[4]], moutc[[5]],
+                        se_type = "HC1"),
+          dep.var.labels = c('\\shortstack{Before \\\\ Int.}',
+                             '\\shortstack{Fifteen D. \\\\ After Int.}',
+                             '\\shortstack{Thirty D. \\\\ After Int.}',
+                             '\\shortstack{Sixty D. \\\\ After Int.}', 
+                             '\\shortstack{Ninety D. \\\\ After Int.}',
+                             '\\shortstack{Btw. Thirty \\\\ \\& Sixty D. \\\\ After Int.}'), label = 'diseasein',
+          keep.stat = c('ser', 'n'),
+          keep = c('D1Individual', 'D1Collective'),
+          covariate.labels = c('Individual Bonus',
+                               'Collective Bonus'),
+          dep.var.caption = "Number of Reported Hospital Cases:",
+          title = 'Disease Incidence', header = FALSE,
+          font.size = 'small')
+```
+
+## Differences-in-differences for the Healthcare Outcomes
+
+For the differences-in-differences models, the results are in Table \ref{difindif}.
+
+```{r, echo = FALSE, results='asis'}
+mod <- list()
+mod[[1]] <- felm(ncas4weekwindow ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
+mod[[2]] <- felm(ncas8weekwindow ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
+mod[[3]] <- felm(ncas12weekwindow ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
+mod[[4]] <- felm(ncas ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
+stargazer(mod[[1]], mod[[2]], mod[[3]], mod[[4]],
+          dep.var.labels = c('\\shortstack{Four \\\\ Weeks Window}',
+                             '\\shortstack{Eight \\\\ Weeks Window}',
+                             '\\shortstack{Twelve \\\\ Weeks Window}',
+                             '\\shortstack{Sixteen \\\\ Weeks Window}'),
+          keep.stat = c('ser', 'n'),
+          keep = c('DID'),
+          label = 'difindif',
+          covariate.labels = c('Dif-in-Dif'),
+          dep.var.caption = "Disease Incidence Before and After Intervention:",
+          title = 'Differences-in-Differences Model', header = FALSE)
+```
+
+Table \ref{difindif} shows the following:
+
+1. There is a 10.3\% effect on the full data model.
+2. The other windows are not significant but the sign is consistent with lower disease incidence.
+3. Comparing individual and collective, collective decreases by 2.9\%, but the result is not significant.
+
+# Experiment Report
+
+Here we use the American Political Science Association experimental session standard report to present all the details involved in the experiment.
+
+## Hypothesis
+
+### Question addressed by the experiment
+
+In this experiment, we study the impact of monetary incentives on the performance of health care workers in Brazil. The study aims to find which financial incentive scheme is better to improve the performance of the workers in the field.
+
+Most of the developmental economics papers on incentives for public service providers highlight that better compensation works. However, these papers focus on services that are individually provided, such as a teacher in a classroom. In health care, rarely the efforts are undertaken independently, and this poses the question: what is the best way to improve public health care provision, when teams, rather than individuals, provide the service?
+
+In this paper, we undertake the first effort to bridge this gap by testing whether team incentives are more effective than individual incentives to improve preventive healthcare provision in Brazil.
+
+The Brazilian case is well suited for this test for two main reasons. First, disease borne by the Aedes aegypti is one of the leading causes of congenital disabilities, hospitalization, and casualties in the global south. Second, a pair of health care workers are responsible for visiting households and exterminate the disease in Brazil. Therefore, we could test individual versus team bonuses in a setting that is relevant to welfare.
+
+### Hypothesis tested
+
+We tested which types of bonuses are better for improving the performance of health care workers in Brazil. We tested three incentive schemes: first, monetary compensation with no performance bonuses; second, individual compensation for performance above the median in the headquarter they were assigned; and third, peer bonus compensation for team performance above the median in the headquarters. Theoretically, team bonuses should be more effective, as it increases peer monitoring, diminishing the free-riding problem. However, if there are fewer complementarities, individual rewards can be more productive. This poses the question: which incentive scheme is better for community-based prevention of Aedes aegypti borne diseases in Brazil?
+
+## Subjects and Context
+
+### Why was this subject pool selected?
+
+The subjects participating in the experiment were selected based on a Facebook recruitment Ad posted in the Municipality of Rio Verde, Goias State, Brazil. We chose this town because we had an agreement with the mayor's office, and also because it had a considerable spike in dengue fever cases in 2018. One of the Facebook ads follows below.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{../figures/rvRecruit1.png}
+\caption{Facebook Recruitment Ad with Pilot Participants' picture.\label{appcfbad}}
+\end{figure}
+
+The Facebook Ad redirected the participant to a Google Forms where s/he filled up a participation eligibility form. The Google form used is below.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{../figures/rvRecruit2.png}
+\caption{Google Form Recruitment.\label{appcgform}}
+\end{figure}
+
+After that, we send them an email, asking questions on demographics and other characteristics.
+
+### Who was eligible to participate in the study?
+
+Adults, 18 old or older.
+
+### What would result in the exclusion of a participant?
+
+Being underage or not show up for the training and the intervention.
+
+### Were any aspects of recruitment changed after the recruitment began?
+
+No.
+
+### Procedures used to recruit and select participants
+
+We posted a Facebook ad in the municipality participating in the intervention. The ad invited potential participants to join the research and explained the compensation. If they clicked the ad, they were directed to Google Forms, where they added their e-mails and personal information.
+
+### Recruitment dates
+
+The online recruitment took place right after filling up the form. We send potential participants information regarding Aedes aegypti prevention and a link for a pre-treatment survey. After filled, participants were informed about the live training dates and selected preferred times to participate. They then had to show up for the two-hour training session.
+
+The training date for the pilot was April 13, 2018. The training date for the intervention was May 4, 2018. A picture of the May 4 training day follows below.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{../figures/rvTraining.png}
+\caption{Training Day.\label{appctrday}}
+\end{figure}
+
+### Settings and locations where the data were collected
+
+There are two primary datasets used in the paper. First, we collected productivity data from the cell phones used by the participants in the field. Second, we collected governmental data on diseases transmitted by the Aedes aegypti from the Brazilian Ministry of Health diseases notification system (SINAN).
+
+The first dataset is generated by the participants pictures in the field. The second dataset is comprised of governmental records of people that checked into hospitals and were confirmed having dengue fever. This data has the address of the person, that we then used to geolocate the case. Among the diseases transmitted by the Aedes aegypti, dengue fever is the most frequent and easy to detect.
+
+### Relevant specifics about the population
+
+All the participants were from the municipality of Rio Verde, in the state of Goiás, in Brazil. A map of the municipality follows below:
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{../figures/rvMap.png}
+\caption{Rio Verde, GO, Brazil Map.\label{appcmaprv}}
+\end{figure}
+
+## Allocation Methods
+
+### Randomization procedure
+
+We generated the random assignment using block randomization applied on seven variables:
+
+1. Age
+2. Above median altruism
+3. Above median religiosity score
+4. Above median Political Engagement
+5. Above median social engagement
+6. Above two minimum wage family income
+7. Above median Facebook popularity (number of friends)
+
+These variables were computed from surveys that we collected prior to the intervention. To test the balance, we use F-tests on the block randomization data. The balance tests follow in the data analysis section.
+
+## Random assignment
+
+### Units of randomization
+
+We randomized the treatment at the level of the participant.
+
+### Cluster random assignment
+
+No cluster random assignment was used. However, in the differences-in-differences estimation, we use the census sector where the pair worked to cluster the standard errors.
+
+## Blinding
+
+### Were participants unaware of the treatment assignment?
+
+Yes. They knew their incentive schemes, but not other incentive schemes. To ensure that there would be no spillovers, we divided each treatment assigned teams into three different headquarters:
+
+1. Assembleia de Deus Church (No bonus)
+2. Videiras Church (Individual reward)
+3. Sara Nossa Terra Church (Collective bonus)
+
+These headquarters were away from each other to avoid contact between participants.
+
+### Were those administering the intervention unaware of the random assignment?
+
+No. The head research assistants in each group knew that different treatment would be administered in other research headquarters. This measure was taken in case the treatment spillover, and we needed to remove pairs that were disturbing the work from the field.
+
+### Checked whether blind was successful?
+
+The single-blind was successful. We received no complaints during the intervention day. After the intervention day, participants became aware of the experiment. The post-treatment spillover made the post-treatment survey ineffective because they refused to cooperate with the researchers.
+
+## Treatments
+
+### Treatment groups
+
+We have three treatment groups:
+
+1. Control (no performance bonus)
+2. Individual treatment
+3. Collective treatment
+
+In the control group, a bonus was assigned without performance concerns. 
+
+In the individual treatment group, we explained the participants that we would rank the performance based on number of visited houses, number of breeding sites removed and cleaned, and number of larvae exterminated. Participants would have their performance ranked and the ones above the median would double their monetary reward (from BRL 110.00 to BRL 220.00). 
+
+In the collective treatment group, we explained the participants that we would rank their team performance based on number of visited houses, number of breeding sites removed and cleaned, and number of larvae exterminated. We would sum their individual performance with the performance of their field peers, and then rank the teams. Teams with performance above the median would double their monetary reward (from BRL 110.00 to BRL 220.00, for each person in the team).
+
+The fieldwork was performed in pairs, to mimic the Aedes Aegypti actual practices in Brazil.
+
+### Control groups
+
+The control group received a monetary reward with no performance requirement.
+
+### Experimental instructions
+
+In the study day, around 5AM, we randomly assigned pairs, and send emails to the individuals directing them to each of the headquarters, based on their treatment status.
+
+We had three study headquarters: the control headquarters (Assembleia de Deus church); the individual treatment headquarters (Videiras church); and the peer treatment headquarters (Sara Nossa Terra church). We printed set of leaflets with places that they had to administer the treatment. One example of a leaflet follows below:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{../figures/rvWorkBlock.png}
+\caption{Example Working Area\label{appcevwbl}}
+\end{figure}
+
+And the working areas follow below:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{../figures/rvWorkArea.png}
+\caption{Example Working Area\label{appcevwbl}}
+\end{figure}
+
+We handed in the cellphones and the working kits for them. An example of the working kits design follows below:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{../figures/rvKit3.jpeg}
+\caption{Teams Uniforms.\label{appcteamunif}}
+\end{figure}
+
+The cellphone was a Samsung, model Galaxy A1. A picture with a testing of the data collection app follows below.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{../figures/rvApp.jpeg}
+\caption{Cellphone with data collection app in test.\label{appccpdcit}}
+\end{figure}
+
+The informative leaflet distributed to households follow here:
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{../figures/rvKit4.jpg}
+\includegraphics[width=0.8\textwidth]{../figures/rvKit5.jpg}
+\caption{Example leaflet handed to households.\label{appcexhhleafl}}
+\end{figure}
+
+Then, at around 11:00am we administered the main treatments. They consisted in tell the following instructions to the participants, when we handed the leaflet with their working places:
+
+- **Control:** we told them that there would be an increase in their payment without explaining the reason. We told them about how performance would be measured, without saying anything about compensation based on performance.
+- **Individual treatment:** we told the participants that we would measure their performances in the field, and that we would rank all the performances. The individuals with performance above the median would receive the bonus. We also explained in lay terms what was a median, and how we would measure performance.
+- **Peer treatment:** we told the participants that we would measure their performances in the field, and that we would rank all the performances. The pairs with performance above the median would receive the bonus. We also explained in lay terms what was a median, and how we would measure performance.
+
+## How and when manipulations were administered
+
+### Method of delivery
+
+The manipulations were delivered in person, by the chief headquarter RA, first to all the pairs in a speech, then to each pair in person. For each pair, we reinforced the instructions while handing in the leaflets.
+
+### Software used to administer the treatment
+
+The randomization was performed in R. The treatment administration was done in person. 
+
+## Results
+
+### Outcome measures
+
+There are two groups of outcomes. First, the performance outcomes that are collected from the cellphone used by each participant in the field. Second, the governmental data reported by the health care facilities in the municipality, with all dengue cases.
+
+For the performance data we have:
+
+1. Geolocated pictures of house fronts as a proof that they visited to house.
+2. Pictures of exterminated breeding sites.
+3. Video of exterminated a. aegypti larvae.
+
+For governmental data, we have all the people infected by dengue fever that went to the hospital. There were no reported cases of Zika and Chikungunya, as the detection of these diseases are less standardized that Dengue. Moreover, the mayors office have no recollection of microcephaly incidence in the area during the period.
+
+The data then corresponds to all dengue cases, with address of the infected person, date of check-in to the hospital, and the severity of the case.
+
+### Covariates
+
+We collected information on demographics.
+
+### Which outcomes and subgroup analysis were specified prior to the experiment?
+
+As the mayors office did not handed in the infections data prior to the intervention, we asked the neighborhoods that had higher dengue fever incidence prior to the intervention, and placed the territorial assignment in these places. However, due to absence of micro-level infectious disease data, we could not consider them prior to the intervention.
+
+### Exploratory analysis
+
+We run a pilot with 20 pairs before main intervention. We did not administered the incentivized intervention in the pilot to avoid contamination in the main results. The pilot helped us to update the expectations regarding the productivity in the field. Previously, we projected that we should assign around 20 houses per pairs. However, in the pilot we learned that pairs could visit from 40 to 60 houses per pair. In around one-thirty of them nobody answered the door, and in most of them the yards were too small to find any breeding sites. Moreover, most of the places with dengue in the previous week were visited by the municipal health care workers.
+
+## CONSORT
+
+### Number of subjects initially accessed for eligibility
+
+`r dim(pretreat)[1]` individuals filled in the Google Form. `sum(pretreat$training=='Training')` showed for the training session one day before the intervention. `r sum(pretreat$participating == 'Participating')` individuals showed to the intervention and remained until the end of it.
+
+### Exclusions prior to random assignment
+
+From all eligible people, we excluded the ones that missed the training and the field implementation session. This accounts for `r round(as.numeric(prop.table(table(pretreat$participating))[1]*100), 2)``\% of the total.
+
+### Subjects initially assigned to each experimental group
+
+1. `r as.numeric(table(pretreat$assignment)[3])` to control group.
+2. `r as.numeric(table(pretreat$assignment)[2])` to individual treatment group.
+3. `r as.numeric(table(pretreat$assignment)[1])` to peer treatment group.
+
+### Proportion received x not received intervention
+
+1. `r as.numeric(table(pretreat$assignment[pretreat$participating == 'Participating'])[3])` received the control intervention out of `r as.numeric(table(pretreat$assignment)[3])` in the control group.
+2. `r as.numeric(table(pretreat$assignment[pretreat$participating == 'Participating'])[2])` received the intervention out of `r as.numeric(table(pretreat$assignment)[2])` in the individual treatment group.
+3. `r as.numeric(table(pretreat$assignment[pretreat$participating == 'Participating'])[1])` received the intervention out of `r as.numeric(table(pretreat$assignment)[1])` in the peer treatment group.
+
+### Why did not receive intervention?
+
+The individuals did not received the intervention if they missed the field. They were then excluded from the data.
+
+### Number subjects each group dropped experiment
+
+No subject were dropped from the assignment. The attrition was caused by the fact that there were individuals that did not show up for the training and the treatment.
+
+## Statistical analysis
+
+### Describe statistical analysis
+
+We run four types of statistical analysis:
+
+1. Balance tests
+2. Performance outcome analysis
+3. Disease incidence analysis
+4. Differences-in-differences analysis
+
+The main equations for the performance outcomes are:
+
+\[
+Y_i = \alpha + \beta D_i + \varepsilon_i
+\]
+
+Where $\beta$ is the outcome of interest, $Y_i$ is the outcome for case $i$, and $D_i$ is the treatment status for case $i$. And the code is:
+
+\begin{verbatim}
+mod <- lm(outc ~ treat, data = dataframe)
+\end{verbatim}
+
+The main equations for the disease incidence are:
+
+\[
+Y_i = \alpha + \beta D_i + \varepsilon_i
+\]
+
+Where $\beta$ is the outcome of interest, $Y_i$ is the outcome for case $i$, and $D_i$ is the treatment status for case $i$. The only difference is that the estimates are weighted using the propensity score matching. And the code is:
+
+\begin{verbatim}
+mod <- lm(outc ~ treat, 
+          data = dataframe, 
+          weights = dataframe$weights)
+\end{verbatim}
+
+Finally, the differences-in-differences estimator has the following form:
+
+\[
+Y_i = \alpha + \gamma Time_i + \theta Treat_i + \beta Time_i \times Treat_i + \varepsilon_i
+\]
+
+And our quantity of interest is $\beta$. The codes for the regression models we run are as follows:
+
+\begin{verbatim}
+mod <- felm(outc ~ time+treat+DID|0|0|CensusSectors, 
+            data = dataframe)
+\end{verbatim}
+
+These regressions uses the package \texttt{lfe}, as it facilitates the use of cluster-robust standard errors.
+
+## Standard errors
+
+The robust standard errors are computed using \texttt{vcovHC} function in the package \texttt{sandwich}. The standard error is the same as the Stata's \textit{comma-robust}.
+
+## Attrition
+
+The attrition reports have been analyzed in the data analysis section of this appendix.
+
+
+## Other information
+
+### IRB
+
+We received IRB from the New York University and Fundação Getulio Vargas.
+
+- NYU IRB number: IRB-FY2017-17
+- FGV IRB number: IRB-01/2017
+
+### Pre-registration
+
+The study was pre-registered using the EGAP pre-registry tool, by the number 20180504AA.
+
+### Funding
+
+The study was funded by the FGV applied research grant office (RPCAP-FGV). They did not interfere in the study design nor the results.
+
+### Replication dataset
+
+The replication materials is in the following website: (https://github.com/danilofreire/incentives-health-care).
+
+### Thanks
+
+This research benefited from the contribution of the following research assistants:
+
+- Guilherme Fasolin
+- Giovanna França
+- Phillipe Guedon
+- Natalia Liberato
+- Fatima Portella
+- Catarina Roman
+- Leticia Santana
+- Larissa Santos
+- Vitor Sion
+
+We are very thankful for all their help before, during, and after the field.
+
+## Some field pictures
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{../figures/rvPilot.jpg}
+\caption{Field pictures}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{../figures/rvFieldPic1.png}
+\caption{Field pictures}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{../figures/rvFieldPic2.jpg}
+\caption{Field pictures}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{../figures/diseaseincidence60dw.pdf}
+\caption{Disease incidence before and after.\label{appcdisincbaf}}
+\end{figure}
+
+# R Session Information
+
+```{r}
+sessionInfo()
+```
