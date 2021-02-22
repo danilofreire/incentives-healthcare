@@ -617,12 +617,12 @@ N & 58 & 64 & 74 &  &  \\
 
 The intervention took place on the 5^th^ of May, 2018. We randomly assigned
 subjects into three groups and directed each group to separate headquarters to
-avoid spillovers. In the control group ($n = $ `r as.numeric(table(prodfr$D)[1])`), we told participants that
+avoid spillovers. In the control group (n = `r as.numeric(table(prodfr$D)[1])`), we told participants that
 they would receive a flat payment regardless of their performance (BRL 110 /
-USD 25 per subject). In the individual treatment group ($n = $ `r as.numeric(table(prodfr$D)[2])`), we informed
+USD 25 per subject). In the individual treatment group (n = `r as.numeric(table(prodfr$D)[2])`), we informed
 subjects that we would rank each subject separately and double the compensation
 for those who performed above the sample median (BRL 220 / USD 50 per subject).
-In the collective treatment group ($n = $ `r as.numeric(table(prodfr$D)[3])`), we explained that we would rank
+In the collective treatment group (n = `r as.numeric(table(prodfr$D)[3])`), we explained that we would rank
 the performance of each group and double the payment for those teams whose
 results were higher than the sample median (BRL 220 / USD 50 per subject).
 Participants worked in pairs and were aware of other groups, but they did not
@@ -767,7 +767,7 @@ incidence. The first is a differences-in-differences model that tests
 whether the intervention _per se_ had any effect on dengue hospitalisations in
 the city of Rio Verde. The second model compares dengue incidence in each of
 the treatment statuses with incidence figures in the control group. The unit of
-analysis is the census tract. Table \ref{tab:incidence} displays the results
+analysis is the census tract.\footnote{There were 139 Census Tracts analyzed by the 96 pairs. This because 43 pairs worked in more than one Census tract at once.} Table \ref{tab:incidence} displays the results
 for our first model, in which we measure the impact of our intervention after 4,
 8, 12, and 16 weeks. The last column shows how collective incentives compare
 with individual bonuses, with the latter considered as the control group.
