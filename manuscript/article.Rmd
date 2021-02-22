@@ -1,7 +1,7 @@
 ---
 title:  |
         | Financial Incentives and Health Care Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
-author: 
+author:
   - Danilo Freire[^freire]
   - Umberto Mignozzetti[^mignozzetti]
 date: \today
@@ -31,16 +31,17 @@ output:
 r <- getOption("repos")
 r["CRAN"] <- "https://cran.rstudio.com/"
 options(repos = r)
+
 # Install required packages
-pkgs <- c('tidyverse', 'magrittr', 'lmtest',
-          'estimatr', 'sandwich', 'stargazer',
-          'gridExtra', 'WeightIt', 'robustHD', 
-          'kableExtra', 'lfe')
+pkgs <- c("tidyverse", "magrittr", "lmtest",
+          "estimatr", "sandwich", "stargazer",
+          "gridExtra", "WeightIt", "robustHD",
+          "kableExtra", "lfe", "fixest")
 
 installIfNot <- function(x) {
-  if(x %in% rownames(installed.packages()) == FALSE) 
+  if(x %in% rownames(installed.packages()) == FALSE)
     install.packages(x, dependencies = T)
-} 
+}
 invisible(lapply(pkgs, installIfNot))
 
 # Load packages
@@ -48,7 +49,7 @@ invisible(lapply(pkgs, require, character.only = T))
 rm(pkgs, installIfNot, r)
 
 # Load data
-load('../data/incentives_healthcare.RData')
+load("../data/incentives_healthcare.RData")
 ```
 
 [^freire]: Independent Researcher,
@@ -65,24 +66,25 @@ Department, Emory University, 532 North Kilgo Circle, 4^th^ Floor, Atlanta, GA
 
 \begin{abstract}
 
-\footnotesize 
+\footnotesize
 
-\noindent \textbf{Background}. Mosquito control strategies are the primary
-means to reduce \textit{Aedes aegypti} infections worldwide. However,
-insecticide spraying is conducted inconsistently across the developing world.
-Recent studies indicate that financial incentives may increase the productivity
-of health personnel, yet there is little evidence on the impact of monetary
-rewards on \textit{A. aegypti}-reduction programmes. We evaluated whether
-individual and collective financial incentives improves the performance of
-healthcare workers fighting \textit{A. aegypti}, as well as their effect on
-city-level numbers of dengue hospitalisations.
+\noindent \textbf{Background}. Mosquito control is the primary means to reduce
+\textit{Aedes aegypti} infections worldwide. However, programmes such as
+insecticide spraying and elimination of breeding sites are conducted
+inconsistently in many developing nations. Recent studies indicate that
+financial incentives may increase the productivity of health personnel, yet
+there is little evidence about the impact of monetary rewards on \textit{A.
+aegypti}-reduction strategies. We evaluated whether individual and collective
+financial incentives improve the performance of healthcare workers fighting
+\textit{A. aegypti}, as well as their effect on city-level numbers of dengue
+hospitalisations.
 
 \noindent \textbf{Methodology/Principal findings}. We hired and trained
 subjects to visit households, find \textit{A. aegypti} breeding sites, and kill
 mosquito larvae in the city of Rio Verde, Brazil. In our randomised field
-trial, we provided individual and team bonuses to two treatment groups, while
-the control group received a flat compensation for completing their tasks.
-Financial bonuses increased the number of cleaned breeding sites in both
+trial, we provided individual and team bonuses to two treatment groups, and
+offered a flat compensation to the control group for completing their tasks.
+Financial rewards increased the number of cleaned breeding sites in both
 treatment groups (individual and team bonuses) and the collective treatment
 also improved larvae extermination. The intervention lowered dengue
 hospitalisations in 10.3\%, but the result was not consistent across all model
@@ -100,7 +102,7 @@ hospitalisations.
 \renewcommand{\abstractname}{Author Summary}
 \begin{abstract}
 
-\footnotesize 
+\footnotesize
 
 \noindent Diseases transmitted by the \textit{Aedes aegypti} mosquito, such as
 chikungunya, dengue, yellow fever, and Zika, continue to kill thousands of
@@ -122,8 +124,10 @@ anti-\textit{A. aegypti} programmes, but we suggest that further research is
 required to evaluate how healthcare worker productivy impacts city-level
 disease outcomes.
 
-\vspace{.3cm}
-\noindent \textbf{Keywords}: Aedes aegypti, dengue, financial incentives, mosquito control, preventive health care, randomised field experiment, worker productivity
+\vspace{.3cm} 
+\noindent \textbf{Keywords}: Aedes aegypti, dengue, financial
+incentives, mosquito control, preventive health care, randomised field
+experiment, worker productivity 
 \end{abstract}
 
 \normalsize
@@ -179,7 +183,7 @@ individual or collective bonuses to those allocated in the two treatment
 groups, while the control group received a fixed compensation for completing
 their tasks. We then measured how the different reward schemes affect the
 number of breeding sites discovered, larvae exterminated, and city-level dengue
-incidence. 
+incidence.
 
 We find that monetary rewards increase the number of cleaned breeding sites in
 both treatment conditions (individual and team bonuses), and that collective
@@ -206,40 +210,40 @@ excluded all individuals under 18 years old and invited the remaining
 applicants to our training session, which we ran on the 4^th^ of May, 2018. The
 meeting involved a lecture on *A. aegypti* vector biology and practical
 instructions on how to find and exterminate mosquito breeding sites. Those who
-did not attend the session were also excluded from the study. 
+did not attend the session were also excluded from the study.
 
 Table \ref{tab:covbal} displays the attrition and covariate balance tests for
 our experiment, and the territorial assignment before and after applying
 propensity score matching [@rosenbaum1985constructing] on census tract
 characteristics. We observe no significant differences regarding attrition
-rates, indicating that the treatment was correctly randomised. Participant 
+rates, indicating that the treatment was correctly randomised. Participant
 demographics are also similar across all groups, thus the matching technique
 successfully balanced the territorial assignment.
 
-\begin{table}[ht] \centering 
+\begin{table}[ht] \centering
 \small
-  \caption{Covariate Balance on Individual Characteristics} 
-  \label{tab:covbal} 
-\begin{tabular}{@{\extracolsep{5pt}} lcccccc} 
-\\[-1.8ex]\hline 
-\hline \\[-1.8ex] 
+  \caption{Covariate Balance on Individual Characteristics}
+  \label{tab:covbal}
+\begin{tabular}{@{\extracolsep{5pt}} lcccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
 Variable & Attrition & Control & Individual & Collective & F-Statistic & P-Value \\
-\hline \\[-1.8ex] 
+\hline \\[-1.8ex]
 & & \multicolumn{5}{l}{Panel A: Attrition Pattern Test} \\
 \hline \\[-1.8ex]
 ```{r, echo = FALSE, cache=TRUE, results='asis'}
 tabcov <- data.frame()
 pretreat$assign2 <- ifelse(is.na(pretreat$assignment)|
-                             pretreat$participating!='Participating', 
+                             pretreat$participating!='Participating',
                            'Attrition', pretreat$assignment)
 pretreat$assign2 <- factor(pretreat$assign2, levels = c('Attrition',
                                                         'No bonus',
                                                         'Individual',
                                                         'Collective'))
-x = tapply(pretreat$Age, 
+x = tapply(pretreat$Age,
            pretreat$assign2,
            mean)
-y = summary(aov(Age~assign2, 
+y = summary(aov(Age~assign2,
                 data = pretreat))
 tab <- data.frame(Var = 'Age',
                   `Atrition` = round(x[1],2),
@@ -249,10 +253,10 @@ tab <- data.frame(Var = 'Age',
                   FVal = round(y[[1]][1,4], 3),
                   Pvalue = round(y[[1]][1,5], 3))
 tabcov <- rbind(tabcov, tab)
-x = tapply(pretreat$Female, 
+x = tapply(pretreat$Female,
            pretreat$assign2,
            mean)
-y = summary(aov(Female~assign2, 
+y = summary(aov(Female~assign2,
                 data = pretreat))
 tab <- data.frame(Var = 'Female',
                   `Atrition` = round(x[1],2),
@@ -262,7 +266,7 @@ tab <- data.frame(Var = 'Female',
                   FVal = round(y[[1]][1,4], 3),
                   Pvalue = round(y[[1]][1,5], 3))
 tabcov <- rbind(tabcov, tab)
-x = tapply(pretreat$HasVehicle, 
+x = tapply(pretreat$HasVehicle,
            pretreat$assign2,
            mean)
 y = summary(aov(HasVehicle~assign2, data = pretreat))
@@ -274,7 +278,7 @@ tab <- data.frame(Var = 'Has Vehicle',
                   FVal = round(y[[1]][1,4], 3),
                   Pvalue = round(y[[1]][1,5], 3))
 tabcov <- rbind(tabcov, tab)
-x = round(tapply(rep(1, length(pretreat$assign2)), 
+x = round(tapply(rep(1, length(pretreat$assign2)),
                  pretreat$assign2,
                  sum), digits = 0)
 tab <- data.frame(Var = 'N',
@@ -292,27 +296,27 @@ for (i in 1:dim(tabcov)[1]) {
   cat(paste(s, ' \\\\ ', sep = ''), '\n')
 }
 ```
-\hline \\[-1.8ex] 
-\end{tabular} 
-\begin{tabular}{@{\extracolsep{5pt}} lccccc} 
+\hline \\[-1.8ex]
+\end{tabular}
+\begin{tabular}{@{\extracolsep{5pt}} lccccc}
 Variable & Control & Individual & Collective & F-Statistic & P-Value \\
-\hline \\[-1.8ex] 
+\hline \\[-1.8ex]
 & \multicolumn{5}{l}{Panel B: Covariate Balance on Individual Characteristics} \\
 \hline \\[-1.8ex]
 ```{r, echo = FALSE, cache=TRUE, results='asis'}
 tabcov <- data.frame()
 pretreat$assign3 <- ifelse(is.na(pretreat$assignment)|
-                             pretreat$participating!='Participating', 
+                             pretreat$participating!='Participating',
                            NA, pretreat$assignment)
 pretreat$assign3 <- factor(pretreat$assign3, levels = c('No bonus',
                                                         'Individual',
                                                         'Collective'))
 aux <- filter(pretreat, !is.na(assign3))
 # Age
-x = tapply(aux$Age, 
+x = tapply(aux$Age,
            aux$assign3,
            mean)
-y = summary(aov(Age~assign3, 
+y = summary(aov(Age~assign3,
                 data = aux))
 tab <- data.frame(Var = 'Age',
                   NoBonus = round(x[1],2),
@@ -323,10 +327,10 @@ tab <- data.frame(Var = 'Age',
 tabcov <- rbind(tabcov, tab)
 
 # Altruism
-x = tapply(aux$aboveMedianAltr, 
+x = tapply(aux$aboveMedianAltr,
            aux$assign3,
            mean)
-y = summary(aov(aboveMedianAltr~assign3, 
+y = summary(aov(aboveMedianAltr~assign3,
                 data = aux))
 tab <- data.frame(Var = 'Altruist',
                   NoBonus = round(x[1],2),
@@ -337,10 +341,10 @@ tab <- data.frame(Var = 'Altruist',
 tabcov <- rbind(tabcov, tab)
 
 # Religiosity
-x = tapply(aux$relig, 
+x = tapply(aux$relig,
            aux$assign3,
            mean)
-y = summary(aov(relig~assign3, 
+y = summary(aov(relig~assign3,
                 data = aux))
 tab <- data.frame(Var = 'Religiosity',
                   NoBonus = round(x[1],2),
@@ -351,10 +355,10 @@ tab <- data.frame(Var = 'Religiosity',
 tabcov <- rbind(tabcov, tab)
 
 # Political Engagement
-x = tapply(aux$polengage, 
+x = tapply(aux$polengage,
            aux$assign3,
            mean)
-y = summary(aov(polengage~assign3, 
+y = summary(aov(polengage~assign3,
                 data = aux))
 tab <- data.frame(Var = 'Pol. Engagement',
                   NoBonus = round(x[1],2),
@@ -365,10 +369,10 @@ tab <- data.frame(Var = 'Pol. Engagement',
 tabcov <- rbind(tabcov, tab)
 
 # Social Engagement
-x = tapply(aux$socengage, 
+x = tapply(aux$socengage,
            aux$assign3,
            mean)
-y = summary(aov(socengage~assign3, 
+y = summary(aov(socengage~assign3,
                 data = aux))
 tab <- data.frame(Var = 'Soc. Engagement',
                   NoBonus = round(x[1],2),
@@ -379,10 +383,10 @@ tab <- data.frame(Var = 'Soc. Engagement',
 tabcov <- rbind(tabcov, tab)
 
 # Above Two Minimum Wage Family
-x = tapply(aux$aboveTwoMinWageFam, 
+x = tapply(aux$aboveTwoMinWageFam,
            aux$assign3,
            mean)
-y = summary(aov(aboveTwoMinWageFam~assign3, 
+y = summary(aov(aboveTwoMinWageFam~assign3,
                 data = aux))
 tab <- data.frame(Var = 'Above Two Min. Wage',
                   NoBonus = round(x[1],2),
@@ -393,10 +397,10 @@ tab <- data.frame(Var = 'Above Two Min. Wage',
 tabcov <- rbind(tabcov, tab)
 
 # Above Median Facebook popularity
-x = tapply(aux$FBpop, 
+x = tapply(aux$FBpop,
            aux$assign3,
            mean)
-y = summary(aov(FBpop~assign3, 
+y = summary(aov(FBpop~assign3,
                 data = aux))
 tab <- data.frame(Var = 'Facebook Popularity',
                   NoBonus = round(x[1],2),
@@ -407,7 +411,7 @@ tab <- data.frame(Var = 'Facebook Popularity',
 tabcov <- rbind(tabcov, tab)
 
 # N
-x = round(tapply(rep(1, length(aux$assign3)), 
+x = round(tapply(rep(1, length(aux$assign3)),
                  aux$assign3,
                  sum), digits = 0)
 tabcov <- rbind(tabcov, tab)
@@ -418,15 +422,15 @@ for (i in 1:dim(tabcov)[1]) {
   cat(paste(s, ' \\\\ ', sep = ''), '\n')
 }
 ```
-\hline \\[-1.8ex] 
+\hline \\[-1.8ex]
 & \multicolumn{5}{l}{Panel C: Unmatched Covariate Balance on Territorial Assignment} \\
-\hline \\[-1.8ex] 
+\hline \\[-1.8ex]
 ```{r, echo = FALSE, cache=TRUE, results='asis'}
 ## Census Sectors characteristics
 tabcov <- data.frame()
 
 # Number of Houses
-x = tapply(dfr2$NHouses, 
+x = tapply(dfr2$NHouses,
            dfr2$D1,
            mean)
 y = summary(aov(NHouses~D1, data = dfr2))
@@ -439,7 +443,7 @@ tab <- data.frame(Var = 'Number of Houses',
 tabcov <- rbind(tabcov, tab)
 
 # Age
-x = tapply(dfr2$NHouseholds, 
+x = tapply(dfr2$NHouseholds,
            dfr2$D1,
            mean)
 y = summary(aov(NHouseholds~D1, data = dfr2))
@@ -452,7 +456,7 @@ tab <- data.frame(Var = 'Number of Households',
 tabcov <- rbind(tabcov, tab)
 
 # AvgHouseholdSize
-x = tapply(dfr2$AvgHouseholdSize, 
+x = tapply(dfr2$AvgHouseholdSize,
            dfr2$D1,
            mean)
 y = summary(aov(AvgHouseholdSize~D1, data = dfr2))
@@ -465,7 +469,7 @@ tab <- data.frame(Var = 'Avg. Household Size',
 tabcov <- rbind(tabcov, tab)
 
 # Avg. Income Households
-x = tapply(dfr2$logAvgIncomeHousehold, 
+x = tapply(dfr2$logAvgIncomeHousehold,
            dfr2$D1,
            mean)
 y = summary(aov(logAvgIncomeHousehold~D1, data = dfr2))
@@ -478,7 +482,7 @@ tab <- data.frame(Var = 'Log Avg. Income',
 tabcov <- rbind(tabcov, tab)
 
 # Cases Before
-x = tapply(dfr2$plac, 
+x = tapply(dfr2$plac,
            dfr2$D1,
            mean)
 y = summary(aov(plac~D1, data = dfr2))
@@ -493,22 +497,22 @@ row.names(tabcov) <- NULL
 ## re-weighting
 dfr2$weightsD1 = weightit(D1~NHouses+
                     NHouseholds+AvgHouseholdSize+
-                    logAvgIncomeHousehold+plac, 
-                  data = dfr2, focal = "No bonus", 
+                    logAvgIncomeHousehold+plac,
+                  data = dfr2, focal = "No bonus",
                   method = 'cbps',
                   estimand = "ATT")$weights
 
 dfr$weightsD1 <- weightit(D1~NHouses+
                     NHouseholds+AvgHouseholdSize+
-                    logAvgIncomeHousehold+plac, 
-                  data = dfr, focal = "Control", 
+                    logAvgIncomeHousehold+plac,
+                  data = dfr, focal = "Control",
                   method = 'cbps',
                   estimand = "ATT")$weights
 
 dfr$weightsD2 <- weightit(D2~NHouses+
                             NHouseholds+AvgHouseholdSize+
-                            logAvgIncomeHousehold+plac, 
-                          data = dfr, focal = "No intervention", 
+                            logAvgIncomeHousehold+plac,
+                          data = dfr, focal = "No intervention",
                           method = 'cbps',
                           estimand = "ATT")$weights
 for (i in 1:dim(tabcov)[1]) {
@@ -517,9 +521,9 @@ for (i in 1:dim(tabcov)[1]) {
   cat(paste(s, ' \\\\ ', sep = ''), '\n')
 }
 ```
-\hline \\[-1.8ex] 
+\hline \\[-1.8ex]
 & \multicolumn{5}{l}{Panel D: Matched Covariate Balance on Territorial Assignment} \\
-\hline \\[-1.8ex] 
+\hline \\[-1.8ex]
 ```{r, echo = FALSE, cache=TRUE, results='asis'}
 tabcov <- data.frame()
 # Number of Houses
@@ -559,7 +563,7 @@ x = dfr2 %>%
   summarise(x = weighted.mean(AvgHouseholdSize, weightsD1),
             .groups = 'drop')
 x = x$x
-y = summary(aov(AvgHouseholdSize~D1, data = dfr2, 
+y = summary(aov(AvgHouseholdSize~D1, data = dfr2,
                 weights=dfr2$weightsD1))
 tab <- data.frame(Var = 'Avg. Household Size',
                   NoBonus = round(x[1],2),
@@ -575,7 +579,7 @@ x = dfr2 %>%
   summarise(x = weighted.mean(logAvgIncomeHousehold, weightsD1),
             .groups = 'drop')
 x = x$x
-y = summary(aov(logAvgIncomeHousehold~D1, data = dfr2, 
+y = summary(aov(logAvgIncomeHousehold~D1, data = dfr2,
                 weights=dfr2$weightsD1))
 tab <- data.frame(Var = 'Log Avg. Income',
                   NoBonus = round(x[1],2),
@@ -607,9 +611,9 @@ for (i in 1:dim(tabcov)[1]) {
 }
 ```
 \hline
-Pairs & 29 & 32 & 37 &  &  \\ 
+Pairs & 29 & 32 & 37 &  &  \\
 N & 58 & 64 & 74 &  &  \\
-\hline\hline \\[-1.8ex] 
+\hline\hline \\[-1.8ex]
 \end{tabular}
 \end{table}
 
@@ -651,7 +655,7 @@ houses visited; 2) the number of houses visited within less than two minutes;
 3) the number of breeding sites removed and cleaned; 4) the number of
 exterminated larvae. We analyse the data using ordinary least squares with
 robust standard errors [@imbens2016robust]. We estimate the statistical
-power of the study assuming a treatment effect of 0.15 standard deviations. 
+power of the study assuming a treatment effect of 0.15 standard deviations.
 
 The second outcome of interest is dengue incidence in the municipality of Rio
 Verde measured 4, 8, 12, and 16 days after the intervention. The Rio Verde
@@ -663,7 +667,7 @@ distribution of our intervention. We also compare dengue incidence in each of
 the treatment statuses with incidence figures in the control group. In both
 models, the unit of analysis is the census tract. We employ a
 differences-in-differences estimator to measure the treatment effects
-[@angrist2008mostly]. 
+[@angrist2008mostly].
 
 We pre-registered the experiment on the Evidence in Governance and Policy
 (EGAP) website (<https://osf.io/6q8vu/>), and received IRB approval from New
@@ -713,7 +717,7 @@ stargazer(mprod[[1]], mprod[[2]],
           se = starprep(mprod[[1]], mprod[[2]],
                         mprod[[3]], mprod[[4]],
                         se_type = "HC1"),
-          dep.var.labels = c('\\shortstack{Houses \\\\ Visited}', 
+          dep.var.labels = c('\\shortstack{Houses \\\\ Visited}',
                              '\\shortstack{Houses Visited \\\\ in Less than \\\\ Two Minutes}',
                              '\\shortstack{Breeding Sites \\\\ Terminated}',
                              '\\shortstack{Larvae \\\\ Terminated}'),
@@ -818,16 +822,16 @@ moutc[[5]] <- lm(nc30to60dafter ~ D1,
 moutc[[6]] <- lm(plac ~ D1,
                  data = dfr2, weights = dfr2$weightsD1)
 
-stargazer(moutc[[6]], moutc[[1]], moutc[[2]], 
+stargazer(moutc[[6]], moutc[[1]], moutc[[2]],
           moutc[[3]], moutc[[4]], moutc[[5]],
-          se = starprep(moutc[[6]], moutc[[1]], 
-                        moutc[[2]], moutc[[3]], 
+          se = starprep(moutc[[6]], moutc[[1]],
+                        moutc[[2]], moutc[[3]],
                         moutc[[4]], moutc[[5]],
                         se_type = "HC1"),
           dep.var.labels = c('\\shortstack{Before \\\\ Int.}',
                              '\\shortstack{Fifteen \\\\ Days \\\\ After Int.}',
                              '\\shortstack{Thirty \\\\ Days \\\\ After Int.}',
-                             '\\shortstack{Sixty \\\\ Days \\\\ After Int.}', 
+                             '\\shortstack{Sixty \\\\ Days \\\\ After Int.}',
                              '\\shortstack{Ninety \\\\ Days \\\\ After Int.}',
                              '\\shortstack{Btw. Thirty \\\\ \\& Sixty Days \\\\ After Int.}'), label = 'tab:census',
           keep.stat = c('ser', 'n'),
@@ -879,7 +883,7 @@ can travel for long distances, the treatment might not have been sufficient.
 Also, Rio Verde had significant rates of dengue incidence during our
 experiment, reaching 3,411 reported infections from January to September 2018
 [@goias2020]. Therefore, maybe the treatment works only when applied for
-longer periods of time or in more neighbourhoods. 
+longer periods of time or in more neighbourhoods.
 
 In this respect, our study suggests is that even though health care workers may
 be motivated, their efforts do not necessarily lead to a reduction in mosquito
