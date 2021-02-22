@@ -794,7 +794,7 @@ stargazer(mod[[1]], mod[[2]], mod[[3]], mod[[4]],
           title = 'Differences-in-Differences Model', header = FALSE)
 ```
 
-The intervention lowered dengue incidence in `r round(as.numeric(coef(mod[[4]])[4])*100, 1)`% (CI: [`r round(tidy(mod[[4]], conf.level = 0.9, conf.int = T)$conf.low[4]*100, 1)`%, `r round(tidy(mod[[4]], conf.level = 0.9, conf.int = T)$conf.high[4]*100, 1)`%]) if we take
+The intervention lowered dengue incidence in 10.3% (CI: [-18.9%, -1.6%]) if we take
 both treatments together and compare them with the control group. The result is
 consistent around fewer weeks before and after the intervention, but it does
 not reach conventional levels of statistical significance. This suggests that
