@@ -210,6 +210,89 @@ Therefore, the maximum benefit that the agency can achieve is higher when the ag
 
 # Data Analysis
 
+## Data Sources
+
+We have five data sources in this study, all in the file `./data/incentives_healthcare.RData`:
+
+- `pretreat`: Pre-treatment Balance Information.
+- `prodfr`: Field Productivity Data.
+- `dfr`: Disease Incidence in All the Rio Verde Census Sectors.
+- `dfr2`: Disease Incidence in the Rio Verde Census Sectors that undergone the Intervention.
+- `did_full`: Differences-in-differences Estimation using the Intervention against a Pure-Control-Group.
+
+### Pre-treatment Balance Dataset
+
+The pre-treatment balance dataset contains the information of all the individuals that iterated with the experimental team at any point of time. To be in this dataset, the person has to have filled the recruitment Google Forms that we circulated on the Social Media in the municipality. The dataset contains 13 variables, that were collected before the intervention in the Google Forms, and also in pre-treatment surveys before the Training Session.
+
+1. `Age`: Age of the participant
+2. `Female`: Dummy for Female Participant
+3. `HasVehicle`: Dummy for Having Vehicle (car or motorcycle)
+4. `aboveMedianAltr`: Dummy for Above-median Altruism Scale
+5. `relig`: Dummy for Above-median religiosity
+6. `polengage`: Dummy for Above-median political engagement
+7. `socengage`: Dummy for Above-median social engagement
+8. `collegeplus`: Dummy for College or More of Schooling
+9. `aboveTwoMinWageFam`: Dummy for Above Two Brazilian Minimum Wage (R\$ 900.00 monthly)
+10. `FBpop`: Dummy for Above-median Facebook Popularity
+11. `training`: Dummy for Participation in the Training Session
+12. `participating`: Dummy for Participation in the Field Experiment
+13. `assignment`: Dummy for Treatment Status Assignment.
+
+### Field Productivity Dataset
+
+The field productivity dataset was collected by us based on the productivity in the field. The productivity was measured by three components:
+
+1. Number of Houses Visited
+2. Number of Possible Breeding Sites Cleaned
+3. Number of Larvae Exterminated
+
+All this data was compiled using the pictures taken in the field. All participants were instructed to take pictures of cleaned breeding sites, and make a video the larvae that they exterminated. When done with the house inspection, they were instructed to take a picture of the front of the house, for us to review their work.
+
+The dataset has the compilation from the metadata of these materials. It has the following variables:
+
+1. `D`: Treatment Assignment.
+2. `pair_n`: Pair Index.
+3. `nHouse`: Number of Houses Visited.
+4. `nBreed`: Number of Breeding Sites Cleaned.
+5. `nLarvae`: Number of Larvae Exterminated.
+6. `nHouseVisit`: Number of Houses that were indeed visited (based on having pictures of breeding sites and larvae videos).
+7. `nHouseLessTwoMin`: Number of Houses visited in less than two minutes (which denotes either that the pair have not gone to the place, or that there were no households at home).
+
+### Disease Incidence Datasets.
+
+To measure whether the intervention had an impact on the municipal healthcare system, we collected  There are two disease incidence datasets that we collected thirteen variables in two distinct datasets. All datasets compile the data from the National Health Notification System (SINAN) for the municipality. The dataset has all the hospitalized people from four months before and four month after the intervention take place. We geolocated the address of the households that were hospitalized with Dengue fever in the municipality, and matched the case to the Census Sector that the person lives in. Then, we computed the number of cases before and after windows around the intervention. The result is two datasets, `dfr` (with all census sectors) and `dfr2` (with only the census sectors matched in the intervention). Both datasets have the following variables:
+
+1. `CensusSectors`: Last Three Digits of Census Sector (2010 Brazilian Census)
+2. `NHouses`: Census Sector Number Houses (2010 Brazilian Census)
+3. `NHouseholds`: Census Sector Average Number of Households in Homes (2010 Brazilian Census)
+4. `AvgHouseholdSize`: Census Sector Average Household Income (2010 Brazilian Census)
+5. `logAvgIncomeHousehold`: Census Sector Log of Average Household Income (2010 Brazilian Census)
+6. `D1`: Treatment Assignment
+7. `D2`: Intervention x No Intervention (No Intervention empty in the `dfr2`)
+8. `nc15dafter`: Number of cases 15 days after the intervention.
+9. `nc30dafter`: Number of cases 30 days after the intervention.
+10. `nc60dafter`: Number of cases 60 days after the intervention.
+11. `nc90dafter`: Number of cases 90 days after the intervention.
+12. `nc30to60dafter`: Number of cases between 30 and sixty days after the intervention.
+13. `plac`: Number of cases before the intervention.
+
+### Differences-in-differences Dataset.
+
+We build the dataset `did_full` to investigate whether there were any impact of the intervention in public health outcomes. The disease incidence data analyses the effect of the treatment. In the differences in differences, we put all the treatments together, and investigate how they perform against a pure control group, the census sectors that were not visited during the intervention.
+
+The dataset has ten variables:
+
+1. `CensusSectors`: Last Three Digits of Census Sector (2010 Brazilian Census)
+2. `D`: Treatment Status Census Sector (Intervention versus Pure Control)
+3. `weekn`: Week Name
+4. `ncas`: Number of cases in a given Week and Census Sector
+5. `Tm`: Week Number
+6. `Tm2`: Intervention timing indicator
+7. `DID`: Differences-in-differences ($Tm2 \times D$)
+8. `ncas4weekwindow`: Number of cases four weeks window around the intervention.
+9. `ncas8weekwindow`: Number of cases eight weeks window around the intervention.
+10. `ncas12weekwindow`: Number of cases twelve weeks window around the intervention.
+
 ## Covariate Balance
 
 We checked the balance in the participation using four statistics. First, we study the decision to participate in the training day. Second, we studied the decision to participate in the experiment. It requires the person to show up for training, and then participate during the field. Third, we checked the balance in the individual characteristics collected by the pre-treatment survey. Finally, we checked the territorial assignment to make sure that the pre-treatment characteristics is balanced in the places that were undergoing visit. We run regressions for all the aspects above. We had balance for the individual assignment (models one to three), and for the territorial assignment, we had imbalance that was corrected using propensity-score matching.
