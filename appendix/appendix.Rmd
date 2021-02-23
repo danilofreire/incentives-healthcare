@@ -1068,7 +1068,7 @@ We had three headquarters: the headquarters for the control group (Assembleia de
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{../figures/rvWorkBlock.png}
+\includegraphics[width=0.8\textwidth, height=13cm]{../figures/rvWorkBlock.png}
 \caption{Example Leaflet.\label{appcevwbl}}
 \end{figure}
 
@@ -1076,7 +1076,7 @@ And the working areas follow below:
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{../figures/rvWorkArea.png}
+\includegraphics[width=0.8\textwidth, height=11cm]{../figures/rvWorkArea.png}
 \caption{Example Working Area.\label{appcevwa}}
 \end{figure}
 
@@ -1084,7 +1084,7 @@ We handed in the cellphones and the working kits to subjects. An example of the 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{../figures/rvKit3.jpeg}
+\includegraphics[width=0.8\textwidth, height=9cm]{../figures/rvKit3.jpeg}
 \caption{Teams Uniforms\label{appcteamunif}}
 \end{figure}
 
@@ -1092,15 +1092,15 @@ The cellphone was a Samsung Galaxy A1. A screenshot of the data collection app f
 
 \begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{../figures/rvApp.jpeg}
+\includegraphics[width=0.4\textwidth, height=6cm]{../figures/rvApp.jpeg}
 \caption{Cellphone with Data Collection App.\label{appccpdcit}}
 \end{figure}
 
 The informative leaflet distributed to households follow here:
 
 \begin{figure}
-\includegraphics[width=0.8\textwidth]{../figures/rvKit4.jpg}
-\includegraphics[width=0.8\textwidth]{../figures/rvKit5.jpg}
+\includegraphics[width=0.8\textwidth, height=7cm]{../figures/rvKit4.jpg}
+\includegraphics[width=0.8\textwidth, height=7cm]{../figures/rvKit5.jpg}
 \caption{Example Leaflet Handed to Households.\label{appcexhhleafl}}
 \end{figure}
 
@@ -1269,7 +1269,7 @@ We are very thankful for their help before, during, and after the field experime
 
 We had one substantial problem during the field, with the partial implementation of the territorial assignment in the control group. The coordinator of the control group base changed the territorial assignment because of pressure from the participants that had to work farther from the base. The coordinator assigned pair for the surroundings of the base. This problem may potentially threat the territorial comparability of the cases, but to ensure that this is not confounding our results, we used propensity-score matching to re-weight these areas. After the matching, the sectors seems comparable, and we are confident that the re-weight allows a comparable territorial assignment.
 
-## Some field pictures
+## Some Field Pictures
 
 \begin{figure}
 \centering
@@ -1279,13 +1279,13 @@ We had one substantial problem during the field, with the partial implementation
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{../figures/rvFieldPic1.png}
+\includegraphics[width=0.7\textwidth, height=12cm]{../figures/rvFieldPic1.png}
 \caption{Field pictures}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{../figures/rvFieldPic2.jpg}
+\includegraphics[width=0.7\textwidth, height=10cm]{../figures/rvFieldPic2.jpg}
 \caption{Field pictures}
 \end{figure}
 
@@ -1297,6 +1297,8 @@ We had one substantial problem during the field, with the partial implementation
 
 # R Session Information
 
+\footnotesize
 ```{r}
 sessionInfo()
 ```
+\normalsize
