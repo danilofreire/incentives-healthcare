@@ -5,7 +5,7 @@ author:
   - Danilo Freire[^freire]
   - Umberto Mignozzetti[^mignozzetti]
 date: \today
-thanks: "We thank Saad Gulzar, Cathy Hafer, Dimitri Landa, Rebecca Morton, Adam Przeworski, Catarina Roman, Renard Sexton, David Skarbek, Denis Stukal, and participants at EGAP, MPSA, NYU PE Seminar, and SPSA for their valuable comments. We also thank the FGV Applied Research Centre for funding this research. Replication materials are available at <http://github.com/danilofreire/incentives-healthcare>."
+thanks: "We thank Saad Gulzar, Cathy Hafer, Dimitri Landa, Rebecca Morton, Adam Przeworski, Catarina Roman, Renard Sexton, David Skarbek, Denis Stukal, and participants at EGAP, MPSA, NYU PE Seminar, and SPSA for their valuable comments. We also thank the FGV Applied Research Centre for funding this research. Each named author has equally contributed to conducting the underlying research and drafting this manuscript. To the best of our knowledge, the authors have no conflict of interest, financial or otherwise. Replication materials are available at <http://github.com/danilofreire/incentives-healthcare>."
 fontsize: 12pt
 margin: 2cm
 urlcolor: darkblue
@@ -26,7 +26,7 @@ output:
     template: template.latex
 ---
 
-```{r, message=FALSE, warning=FALSE, echo=FALSE}
+```{r, message=FALSE, warning=FALSE, echo=FALSE, cache=T}
 # If you need to install any package while knitting the document
 r <- getOption("repos")
 r["CRAN"] <- "https://cran.rstudio.com/"
@@ -229,7 +229,7 @@ Variable & Attrition & Control & Individual & Collective & F-Statistic & P-Value
 \hline \\[-1.8ex]
 & & \multicolumn{5}{l}{Panel A: Attrition Pattern Test} \\
 \hline \\[-1.8ex]
-```{r, echo = FALSE, cache=TRUE, results='asis'}
+```{r, echo = FALSE, results='asis', cache=T}
 tabcov <- data.frame()
 pretreat$assign2 <- ifelse(is.na(pretreat$assignment)|
                              pretreat$participating!='Participating',
@@ -301,7 +301,7 @@ Variable & Control & Individual & Collective & F-Statistic & P-Value \\
 \hline \\[-1.8ex]
 & \multicolumn{5}{l}{Panel B: Covariate Balance on Individual Characteristics} \\
 \hline \\[-1.8ex]
-```{r, echo = FALSE, cache=TRUE, results='asis'}
+```{r, echo = FALSE, results='asis', cache=T}
 tabcov <- data.frame()
 pretreat$assign3 <- ifelse(is.na(pretreat$assignment)|
                              pretreat$participating!='Participating',
@@ -422,7 +422,7 @@ for (i in 1:dim(tabcov)[1]) {
 \hline \\[-1.8ex]
 & \multicolumn{5}{l}{Panel C: Unmatched Covariate Balance on Territorial Assignment} \\
 \hline \\[-1.8ex]
-```{r, echo = FALSE, cache=TRUE, results='asis'}
+```{r, echo = FALSE, results='asis', cache=T}
 ## Census Sectors characteristics
 tabcov <- data.frame()
 
@@ -521,7 +521,7 @@ for (i in 1:dim(tabcov)[1]) {
 \hline \\[-1.8ex]
 & \multicolumn{5}{l}{Panel D: Matched Covariate Balance on Territorial Assignment} \\
 \hline \\[-1.8ex]
-```{r, echo = FALSE, cache=TRUE, results='asis'}
+```{r, echo = FALSE, results='asis', cache=T}
 tabcov <- data.frame()
 # Number of Houses
 x = dfr2 %>%
@@ -695,6 +695,16 @@ hospitalisations.
 ## Field Productivity
 \label{sub:productivity}
 
+```{r, echo = FALSE, results='asis', warning=FALSE, cache=T}
+## Productivity outcome
+library(lmtest)
+mprod <- list()
+mprod[[1]] <- lm(nHouse ~ D, data = prodfr)
+mprod[[2]] <- lm(nHouseLessTwoMin ~ D, data = prodfr)
+mprod[[3]] <- lm(nBreed ~ D, data = prodfr)
+mprod[[4]] <- lm(nLarvae ~ D, data = prodfr)
+```
+
 Table \ref{tab:productivity} summarises the experimental results. 
 Subjects who receive monetary incentives find and clean more breeding sites
 than those who earned a flat compensation fee. Workers in the individual
@@ -703,7 +713,7 @@ non-incentivised control group. The effect for those in the collective bonus
 group is `r round(as.numeric(coef(mprod[[3]])[3]), 3)` (CI: [`r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[3,1]`, `r round(coefci(mprod[[3]], vcov = vcovHC(mprod[[3]], type = "HC1"), level = 0.9), digits=3)[3,2]`]), slightly smaller than for the individual treatment. This finding suggests that the treatment does improve the performance of healthcare workers.
 
 
-```{r, echo = FALSE, results='asis', warning=FALSE}
+```{r, echo = FALSE, results='asis', warning=FALSE, cache=T}
 ## Productivity outcome
 mprod <- list()
 mprod[[1]] <- lm(nHouse ~ D, data = prodfr)
@@ -768,7 +778,7 @@ with individual bonuses, with the latter considered as the control group.
 
 \vspace{.3cm}
 
-```{r, echo = FALSE, results='asis'}
+```{r, echo = FALSE, results='asis', cache=T}
 mod <- list()
 mod[[1]] <- felm(ncas4weekwindow ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
 mod[[2]] <- felm(ncas8weekwindow ~ Tm2+D+DID|0|0|CensusSectors, data = did_full)
@@ -836,8 +846,9 @@ stargazer(moutc[[6]], moutc[[1]], moutc[[2]],
 In our second model, we measure the effect of reward schemes on the number of
 hospitalisations per census tract. Table \ref{tab:census} shows hospitalisation
 counts before the intervention, and then 15, 30, 60, 90, and between 30 to 60
-days after the treatment.\footnote{The 96 pairs analysed 139 census tracts.
-This is because 43 pairs worked in more than one census tract at once.}
+days after the treatment. Note that 96 pairs of healthcare workers analysed 139
+census tracts. This is because 43 of those pairs worked in more than one census
+tract at once.
 
 We see that neither treatment has an impact on disease incidence in the Rio
 Verde census tracts. The treatment effect is not statistically different from
