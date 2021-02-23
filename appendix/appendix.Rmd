@@ -11,7 +11,7 @@ fontsize: 12pt
 monospace-url: yes
 spacing: double
 papersize: a4paper
-bibliography: references.bib
+bibliography: "../manuscript/references.bib"
 biblio-style: apalike
 always_allow_html: true
 output:
@@ -76,7 +76,7 @@ load('../data/incentives_healthcare.RData')
 
 # A Theory of Service Provision under Moral Hazard in Teams
 
-Consider the following interaction between healthcare workers and a government agency.\footnote{This model was inspired by @bolton2005contract and @itoh1991incentives. Here we present a particular case of their model to illustrate the effects of our treatment.} The agency hires the workers to provide preventive healthcare. And the workers decide the amount of effort they will exert, conditional on the compensation scheme they receive.
+Consider the following interaction between healthcare workers and a government agency.\footnote{This model was inspired by \citet{bolton2005contract} and \citet{itoh1991incentives}. Here we present a particular case of their model to illustrate the effects of our treatment.} The agency hires the workers to provide preventive healthcare. And the workers decide the amount of effort they will exert, conditional on the compensation scheme they receive.
 
 Workers perform preventive healthcare tasks. To inspect a house and eliminate mosquito breeding sites, healthcare workers visit the households in pairs or in groups of three. Supposedly, this increases efficiency as it helps the team cover more territory and be more careful in the areas they inspect individually. Team structures also help in terms of lowering free-riding and increasing incentives for cooperative work. To capture this, we assume that a given worker $i$ divides her work effort into two tasks: those which she accomplishes with her own effort ($e_i$) and helping efforts ($h_i$). To capture the costs of effort, we assume the following convex cost function $\dfrac{c}{2}(e_i^2 + h_i^2)$, where $c>0$ represents the changes in marginal costs of effort and help.
 
@@ -199,13 +199,11 @@ The derivative of this equation is the polynomial in the second degree in $\alph
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth]{../figures/figrev.pdf}
-\caption{Governmental Agency's Revenue in terms of Contract and Compensation}
+\caption{Governmental Agency's Revenue in Terms of Contract and Compensation}
 \label{figrevmax}
 \end{figure}
 
 Therefore, the maximum benefit that the agency can achieve is higher when the agency compensates the workers for their cooperation. When the agency incentivises team effort, workers can do better, on margin, by sharing the benefit of successful provision.\footnote{The limits for this reasoning appear when there are gains of specialisation. For instance, if the costs for effort and help were such that $\dfrac{c(e+h)^2}{2}$, then diverting energy for help is costly, on margin, at the same rate as the given effort provision. In this case, the compensation to stimulate cooperation has to be significantly higher, and even in this case there will be incentives for not cooperating.}
-
-\pagebreak
 
 # Data Analysis
 
@@ -907,10 +905,8 @@ stargazer(mod[[1]], mod[[2]], mod[[3]], mod[[4]],
 
 The results suggest the following:
 
-1. There is a 10.3\% effect on the full data model.
+1. There is a 10.3% effect on the full data model.
 2. The coefficient for the other windows are not significant but the signs are consistent with lower disease incidence.
-
-\pagebreak
 
 # Experiment Report
 
@@ -1081,7 +1077,7 @@ And the working areas follow below:
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{../figures/rvWorkArea.png}
-\caption{Example Working Area.\label{appcevwbl}}
+\caption{Example Working Area.\label{appcevwa}}
 \end{figure}
 
 We handed in the cellphones and the working kits to subjects. An example of the working kit design follows below:
