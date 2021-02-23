@@ -78,7 +78,7 @@ load('../data/incentives_healthcare.RData')
 
 Consider the following interaction between healthcare workers and a government agency.\footnote{This model was inspired by \citet{bolton2005contract} and \citet{itoh1991incentives}. Here we present a particular case of their model to illustrate the effects of our treatment.} The agency hires the workers to provide preventive healthcare. And the workers decide the amount of effort they will exert, conditional on the compensation scheme they receive.
 
-Workers perform preventive healthcare tasks. To inspect a house and eliminate mosquito breeding sites, healthcare workers visit the households in pairs or in groups of three. Supposedly, this increases efficiency as it helps the team cover more territory and be more careful in the areas they inspect individually. Team structures also help in terms of lowering free-riding and increasing incentives for cooperative work. To capture this, we assume that a given worker $i$ divides her work effort into two tasks: those which she accomplishes with her own effort ($e_i$) and helping efforts ($h_i$). To capture the costs of effort, we assume the following convex cost function $\dfrac{c}{2}(e_i^2 + h_i^2)$, where $c>0$ represents the changes in marginal costs of effort and help.
+Workers perform preventive healthcare tasks. To inspect a house and eliminate mosquito breeding sites, healthcare workers visit the households in pairs or in groups of three. Supposedly, this increases efficiency as it helps the team cover more territory and be more careful in the areas they inspect individually. Team structures also help in terms of lowering free-riding and increasing incentives for cooperative work. To capture this, we assume that a given worker $i$ divides her work effort into two tasks: her own effort ($e_i$) and helping efforts ($h_i$). To capture the costs of effort, we assume the following convex cost function $\dfrac{c}{2}(e_i^2 + h_i^2)$, where $c>0$ represents the changes in marginal costs of effort and help.
 
 Due to the nature of preventive care work, the policy outcome is probabilistic. Preventive healthcare aims to lower the chance of a person getting sick. For example, washing one's hands lowers the chance of flu infections, but from time to time a person gets the flu regardless of how many times she washes her hands. The only difference is that a person who washes her hands constantly has a lower chance of getting sick and will get sick fewer times during her lifespan. For this reason, we denote the probability of a successful provision of the service by a pair $i$ and $j$ of healthcare workers, as $P(e_i, h_i, e_j, h_j)$. For simplicity, we assume that the probabilities are separable, with $P(e_i, h_i, e_j, h_j) = P_i(e_i, h_j) + P_j(e_j, h_i)$. To make the output more concrete, assume that a given worker $i$ has an individual probability of $P_i(e_i, h_j) = e_i(1+h_j)$ of successfully lowering the disease burden with her effort ($e_i$) and with the help of her peer ($h_j$).
 
@@ -111,7 +111,7 @@ The situation is a standard contract theory problem, in which we have three comp
 
 And by choosing an optimal compensation scheme, the agency can induce more effort and more cooperation among workers.
 
-## Baseline: No Incentive Bonuses
+## Baseline: No Bonus
 
 When the agency only pays a flat salary without performance incentives, the agency sets the performance compensation equal to zero: $w_{both} = w_{one} = 0$. This changes the expected utility of the agent to the following:
 
@@ -125,7 +125,7 @@ In this setting, exerting effort generates only costs and no benefits. The agent
 R_A(\text{no bonus}) \ = \ 0
 \]
 
-The prediction here is that workers will exert no effort, and that the agency will have only costs without accruing any benefit. This is the worst-case scenario in terms of the agency's welfare. In the experiment, it matches the control condition.\footnote{Throughout the chapter, we assume that the optimal output for the agency is equal to the maximum welfare for society. Although this is not always the case, it is a reasonable simplification for the purposes of this article. Adding a difference here would only complicate our results and provide no further insight into designing an incentive scheme to maximise welfare.}
+The prediction here is that workers will exert no effort, and that the agency will have only costs without accruing any benefit. This is the worst-case scenario in terms of the agency's welfare. In the experiment, it matches the control condition.\footnote{Throughout the article, we assume that the optimal output for the agency is equal to the maximum welfare for society. Although this is not always the case, it is a reasonable simplification for the purposes of this article. Adding a difference here would only complicate our results and provide no further insight into designing an incentive scheme to maximise welfare.}
 
 ## Performance Bonus for Individuals
 
@@ -209,17 +209,17 @@ Therefore, the maximum benefit that the agency can achieve is higher when the ag
 
 ## Data Sources
 
-We have five data sources in this study, all of them are included in `./data/incentives_healthcare.RData`:
+We use five data sources in this study. All of them are included in `../data/incentives_healthcare.RData`:
 
 - `pretreat`: Pre-treatment balance information.
 - `prodfr`: Field productivity data.
 - `dfr`: Disease incidence in every Rio Verde census sector.
 - `dfr2`: Disease incidence in every Rio Verde census sector that received the intervention.
-- `did_full`: Differences-in-differences estimator that measures the effect of our intervention against a pure control group.
+- `did_full`: Differences-in-differences estimation that measures the effect of our intervention against a pure control group.
 
 ### Pre-Treatment Balance Dataset
 
-The pre-treatment balance dataset contains information about every individuals who interacted with the experimental team at any point of time. To be included in this dataset, the person has to have filled the recruitment form we had circulated on Facebook as part of our campaign. The dataset contains 13 variables that we collected before the intervention. We gathered these data either via Google Forms, or in pre-treatment surveys before the training session.
+The pre-treatment balance dataset contains information about every individual who interacted with the research team at any point of time. To be included in this dataset, the person needs to have filled the Google Form we circulated on Facebook as part of our recruitment campaign. This dataset contains 13 variables that we collected before the intervention. We gathered these data either via Google Forms, or in pre-treatment surveys before the training session.
 
 1. `Age`: Age of the participant.
 2. `Female`: Dummy for female participant.
@@ -237,13 +237,13 @@ The pre-treatment balance dataset contains information about every individuals w
 
 ### Field Productivity Dataset
 
-We collected field productivity data based on the subjects' performance during the experiment. We measured productivity using three indicators:
+We collected field productivity data based on the subjects' performance during the experiment. We measured productivity with three indicators:
 
 1. Number of houses visited.
 2. Number of possible breeding sites exterminated.
 3. Number of larvae exterminated.
 
-We compiled these data using pictures taken in the field. All participants were instructed to take pictures of clean breeding sites, and to make videos showing the larvae they exterminated. After finishing the inspection of each household, subjects had to take a last picture of the house to prove that they had been there.
+We compiled these data using photos taken during the field experiment. All participants were instructed to take pictures of clean breeding sites, and to make videos showing the larvae they exterminated. After finishing the inspection of each household, subjects had to take a last picture of the house to prove that they had been there.
 
 The final dataset has the following variables:
 
@@ -252,12 +252,12 @@ The final dataset has the following variables:
 3. `nHouse`: Number of houses visited.
 4. `nBreed`: Number of breeding sites cleaned.
 5. `nLarvae`: Number of larvae exterminated.
-6. `nHouseVisit`: Number of houses that were indeed visited (based on having pictures of breeding sites and larvae videos).
+6. `nHouseVisit`: Number of houses that were indeed visited (based on pictures of breeding sites and larvae videos).
 7. `nHouseLessTwoMin`: Number of houses visited in less than two minutes (which denotes either that the pair did not go to the place, or that there were no residents at home).
 
 ### Disease Incidence Datasets
 
-To assess whether the intervention had an impact on the municipal healthcare system, we collected thirteen variables in two distinct datasets. All datasets compile data from the National Health Notification System (SINAN) for the  Rio Verde municipality. The dataset has the complete records of all individuals who had been hospitalised between four months before and four month after the intervention. We geolocated the household addresses of those individuals who were hospitalised with dengue fever, then we matched the case to the census sector where that person lives. Finally, we computed the number of cases before and after a few time windows around the intervention. The result is two datasets, `dfr` (with all census sectors) and `dfr2` (with only the census sectors matched in the intervention). Both datasets have the following variables:
+To assess whether the intervention had an impact on the municipal healthcare system, we collected 13 variables in two distinct datasets. All datasets compile data from the National Health Notification System (SINAN) for the Rio Verde municipality. The dataset has the complete records of all individuals who had been hospitalised between four months before and four month after the intervention. We geolocated the household addresses of those individuals who were hospitalised with dengue fever, then we matched the case to the census sector where that person lives. Finally, we computed the number of cases before and after a few time windows around the intervention. The result is two datasets, `dfr` (with all census sectors) and `dfr2` (with only the census sectors matched in the intervention). Both datasets have the following variables:
 
 1. `CensusSectors`: Last three digits of census sector (2010 Brazilian census).
 2. `NHouses`: Number of houses in each census sector (2010 Brazilian census).
@@ -265,7 +265,7 @@ To assess whether the intervention had an impact on the municipal healthcare sys
 4. `AvgHouseholdSize`: Average household income per census sector (2010 Brazilian Census).
 5. `logAvgIncomeHousehold`: Log of average household income per census sector (2010 Brazilian Census).
 6. `D1`: Treatment assignment.
-7. `D2`: Intervention x no intervention (no Intervention empty in `dfr2`).
+7. `D2`: Intervention x no intervention (no intervention missing in `dfr2`).
 8. `nc15dafter`: Number of cases 15 days after the intervention.
 9. `nc30dafter`: Number of cases 30 days after the intervention.
 10. `nc60dafter`: Number of cases 60 days after the intervention.
@@ -275,7 +275,7 @@ To assess whether the intervention had an impact on the municipal healthcare sys
 
 ### Differences-in-Differences Dataset
 
-We build `did_full` dataset to investigate whether the intervention had any impact on public health outcomes. The disease incidence data describes the treatment effect. In the differences-in-differences models, we combine all treatments and investigate how they perform against a pure control group, which are the census sectors that were not visited during the intervention.
+We build the `did_full` dataset to investigate whether our intervention had any impact on public health outcomes. The disease incidence data describe the treatment effect. In the differences-in-differences models, we combine all treatments and investigate how they perform against a pure control group, which are the census sectors that were not visited during the intervention.
 
 The dataset has ten variables:
 
@@ -292,7 +292,7 @@ The dataset has ten variables:
 
 ## Covariate Balance
 
-We measure covariate balance using four statistics. First, we check whether subjects decided to join us for the training day. Second, we assess their decision to participate in the experiment. Subjects had to take part in the training process and then participate in the fieldwork. Third, we checked if individual characteristics are balanced across our treatment groups. We collected that information via Google Forms and using a pre-treatment survey. Finally, we checked the territorial assignment to make sure that the pre-treatment characteristics are balanced in the places that subjects visited. We find a good level of balance for the individual assignment (models 1 to 3), and we corrected eventual imbalances in the territorial assignment using propensity-score matching [@rosenbaum1985constructing].
+We measure covariate balance using four statistics. First, we check whether subjects decided to take part in the training sessions. Second, we evaluate the balance among those who decided to participate in the experiment. Subjects had to take part in the training process and participate in the fieldwork. Third, we check if individual characteristics are balanced across our treatment groups. As we mentioned above, we collected that information via Google Forms and using a pre-treatment survey. Finally, we check the territorial assignment to make sure that the pre-treatment characteristics are balanced across the places that subjects visited. We find good balance for the individual assignment (models 1 to 3), and we corrected eventual imbalances in the territorial assignment using propensity score matching [@rosenbaum1985constructing].
 
 ### Training Participation
 
@@ -1110,7 +1110,7 @@ We administered the main treatments at 11:00. They consisted in telling the foll
 - **Individual treatment:** we told participants that we would measure their performances in the field, and that we would rank all performances. The individuals with performance above the median would receive the bonus. We also explained in lay terms what a median is and how we would measure their performance.
 - **Peer treatment:** we told participants that we would measure their performances in the field, and that we would rank all performances. The pairs with performance above the median would receive the bonus. We also explained in lay terms what a median is and how we would measure their performance.
 
-## How and When Manipulations were Administered
+## How and When Manipulations Were Administered
 
 ### Method of Delivery
 
@@ -1285,7 +1285,7 @@ We had one substantial problem during the field, with the partial implementation
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth, height=10cm]{../figures/rvFieldPic2.jpg}
+\includegraphics[width=0.7\textwidth, height=13cm]{../figures/rvFieldPic2.jpg}
 \caption{Field pictures}
 \end{figure}
 
@@ -1295,7 +1295,7 @@ We had one substantial problem during the field, with the partial implementation
 \caption{Disease incidence before and after.\label{appcdisincbaf}}
 \end{figure}
 
-# R Session Information
+# Session Information
 
 \footnotesize
 ```{r}

@@ -5,7 +5,7 @@ author:
   - Danilo Freire[^freire]
   - Umberto Mignozzetti[^mignozzetti]
 date: \today
-thanks: "We thank Livio DiLonardo, Saad Gulzar, Cathy Hafer, Carlo Holz, Dimitri Landa, Guisela Pereira, Adam Przeworski, Catarina Roman, David Skarbek, Denis Stukal, Marcos Tourinho, Scott Tyson, and participants at MPSA, NYU PE Seminar, and SPSA for their valuable comments. Replication materials are available at <http://github.com/danilofreire/incentives-health-care>."
+thanks: "We thank Saad Gulzar, Cathy Hafer, Dimitri Landa, Rebecca Morton, Adam Przeworski, Catarina Roman, Renard Sexton, David Skarbek, Denis Stukal, and participants at EGAP, MPSA, NYU PE Seminar, and SPSA for their valuable comments. We also thank the FGV Applied Research Centre for funding this research. Replication materials are available at <http://github.com/danilofreire/incentives-healthcare>."
 fontsize: 12pt
 margin: 2cm
 urlcolor: darkblue
@@ -85,12 +85,12 @@ assigned workers into three groups. The control group received a flat
 compensation for their tasks, while workers in the two treatment groups received
 individual and collective monetary bonuses, respectively. Financial rewards
 increased the number of cleaned breeding sites in both treatment groups
-(individual and team bonuses) and the collective treatment also improved larvae
+(individual and team bonuses), and the collective treatment also improved larvae
 extermination. The intervention lowered dengue hospitalisations in 10.3\%, but
 the result was not consistent across all model specifications.
 
 \noindent \textbf{Conclusions/Significance}. \textit{A. aegypti} control
-programmes may benefit from alternative compensation schemes, specially when
+programmes may benefit from alternative compensation schemes, especially when
 provided to teams. For this strategy to succeed, financial incentives have to
 be distributed widely as their aggregate effect is limited. More research is
 needed to assess whether higher worker productivity decreases dengue
@@ -120,7 +120,7 @@ treatment also improved larvae extermination. The impact of our treatment on
 city-level hospitalisations was not consistent across all specifications. In
 sum, financial incentives may be used to boost field productivity in
 anti-\textit{A. aegypti} programmes, but further research is required to
-evaluate how healthcare worker productivy impacts dengue outcomes.
+evaluate how healthcare worker productivity impacts dengue outcomes.
 
 \vspace{.3cm} 
 \noindent \textbf{Keywords}: Aedes aegypti, dengue, financial
@@ -151,7 +151,7 @@ the world [@grandadam2011chikungunya; @kraemer2015global; @mayer2017emergence].
 Mosquito control is the primary strategy to prevent *Aedes*-borne infections
 [@beatty2010best; @eisen2009proactive]. The World Health Organization
 recommends the cleaning of containers and the use of insecticide to reduce
-vector breeding, specially in settings where human-vector contacts are
+vector breeding, especially in settings where human-vector contacts are
 frequent, such as schools, hospitals, and workplaces [@WHO2012global;
 @world2020denguecontrol]. However, breeding site elimination and insecticide
 spraying are labour-intensive processes, which are often carried out
@@ -180,7 +180,7 @@ consisted of two treatment arms plus a control condition. We offered individual
 or collective bonuses to those allocated in the two treatment groups, while the
 control group received a fixed compensation for completing their tasks. We then
 measured how the different reward schemes affected the number of breeding sites
-discovered, larvae exterminated, and city-level numbers of dengue incidence.
+discovered, larvae exterminated, and city-wide dengue incidence.
 
 We find that monetary rewards increase the number of cleaned breeding sites in
 both treatment conditions (individual and team bonuses), and that collective
@@ -215,7 +215,7 @@ territorial assignment before and after applying propensity score matching
 [@rosenbaum1985constructing] on census tract characteristics. We observe no
 significant differences regarding attrition rates, indicating that the
 treatment was correctly randomised. Participant demographics are also similar
-across all groups, what suggests that the matching technique successfully
+across all groups, which suggests that the matching technique successfully
 balanced the territorial assignment.
 
 \begin{table}[ht] \centering
