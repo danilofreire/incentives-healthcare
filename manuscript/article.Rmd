@@ -5,7 +5,7 @@ author:
   - Danilo Freire[^freire]
   - Umberto Mignozzetti[^mignozzetti]
 date: \today
-thanks: "We thank Saad Gulzar, Cathy Hafer, Dimitri Landa, Rebecca Morton, Adam Przeworski, Catarina Roman, Renard Sexton, David Skarbek, Denis Stukal, and participants at EGAP, MPSA, NYU PE Seminar, and SPSA for their valuable comments. We also thank the FGV Applied Research Centre for funding this research. Each named author has equally contributed to conducting the underlying research and drafting this manuscript. To the best of our knowledge, the authors have no conflict of interest, financial or otherwise. Replication materials are available at <http://github.com/danilofreire/incentives-healthcare>."
+thanks: "We thank Taylor Boas, Saad Gulzar, Cathy Hafer, Daniel Hidalgo, Dimitri Landa, Rebecca Morton, Adam Przeworski, Catarina Roman, Renard Sexton, David Skarbek, Denis Stukal, and participants at EGAP, MPSA, NYU PE Seminar, and SPSA for their valuable comments. We also thank the FGV Applied Research Centre for funding this research. Each named author has equally contributed to conducting the underlying research and drafting this manuscript. To the best of our knowledge, the authors have no conflict of interest, financial or otherwise. Replication materials are available at <http://github.com/danilofreire/incentives-healthcare>."
 fontsize: 12pt
 margin: 2cm
 urlcolor: darkblue
@@ -26,7 +26,7 @@ output:
     template: template.latex
 ---
 
-```{r, message=FALSE, warning=FALSE, echo=FALSE, cache=T}
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
 # If you need to install any package while knitting the document
 r <- getOption("repos")
 r["CRAN"] <- "https://cran.rstudio.com/"
@@ -137,7 +137,7 @@ experiment, worker productivity
 
 The *Aedes aegypti* mosquito is the major worldwide vector of several arboviral
 diseases, including chikungunya, dengue, yellow fever, and Zika
-[@burt2012chikungunya; @jansen2010dengue; @leta2018global;
+[@boas2019electoral; @burt2012chikungunya; @jansen2010dengue; @leta2018global;
 @thangamani2016vertical]. Over the last decades, arboviral incidence has
 increased exponentially, with estimates suggesting that dengue is endemic in
 over 100 countries and causes 400 million infections and 22 thousand deaths

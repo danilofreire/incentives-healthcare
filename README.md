@@ -13,7 +13,7 @@ experiment, worker productivity
 
 You can cite the article as: 
 
-> Freire, D. and Mignozzetti, U. 2021. "Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil", _BioArXiv_, DOI: <https://doi.org/10.31235/osf.io/9a6ch>.
+> Freire, D. and Mignozzetti, U. 2021. "Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil".
 
 BibTeX entry:
 
@@ -23,6 +23,6 @@ BibTeX entry:
   author       = {Freire, Danilo and Mignozzetti, Umberto},
   pages        = {1--15},
   year         = {2021},
-  howpublished = {\url{https://doi.org/10.31235/osf.io/9a6ch}}
+  howpublished = {\url{https://github.com/danilofreire/incentives-healthcare}}
 }
 ``` 
