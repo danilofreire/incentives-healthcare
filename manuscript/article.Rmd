@@ -156,8 +156,8 @@ frequent, such as schools, hospitals, and workplaces [@WHO2012global;
 @world2020denguecontrol]. However, breeding site elimination and insecticide
 spraying are labour-intensive processes, which are often carried out
 inconsistently by developing states [@paz2015dengue; @siddiqui2016use;
-@WHO2012global]. In this regard, improving their health agency's performance in
-mosquito control is essential to the effectiveness of anti-*Aedes* programmes.
+@WHO2012global]. In this regard, improving the performance of their healthcare
+agencies is essential to the effectiveness of anti-*Aedes* programmes.
 
 Research shows that financial incentives may increase the productivity of
 healthcare workers [@clemens2014physicians; @muthmainnah2017improving;
@@ -725,8 +725,8 @@ stargazer(mprod[[3]], mprod[[4]],
           se = starprep(mprod[[3]], mprod[[4]],
                         mprod[[1]], mprod[[2]],
                         se_type = "HC1"),
-          dep.var.labels = c('\\shortstack{Breeding Sites \\\\ Terminated}',
-                             '\\shortstack{Larvae \\\\ Terminated}',
+          dep.var.labels = c('\\shortstack{Breeding Sites \\\\ Exterminated}',
+                             '\\shortstack{Larvae \\\\ Exterminated}',
                              '\\shortstack{Houses \\\\ Visited}',
                              '\\shortstack{Houses Visited \\\\ in Less than \\\\ Two Minutes}'),
           keep.stat = c('ser', 'n'),
