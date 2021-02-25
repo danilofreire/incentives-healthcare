@@ -1,6 +1,6 @@
 ## Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
 
-This GitHub repository contains data and documented R code for ["Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil"](), authored by [Danilo Freire](http://danilofreire.github.io) and [Umberto Mignozzetti](http://umbertomig.com). 
+This GitHub repository contains data and documented R code for ["Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil"](https://github.com/danilofreire/incentives-healthcare/blob/master/manuscript/article.pdf), authored by [Danilo Freire](http://danilofreire.github.io) and [Umberto Mignozzetti](http://umbertomig.com). 
 
 > **Background**. Mosquito control is the most effective means of reducing *Aedes aegypti* infections worldwide. In many developing countries, however, vector management programmes fail to reach their goals due to low worker productivity. Research suggests that financial incentives may increase the productivity of health personnel, yet there is little evidence about the impact of monetary rewards on *A. aegypti*-reduction strategies. We evaluated whether individual and collective financial incentives improve the performance of healthcare workers fighting *A. aegypti*, as well as their effect on city-level numbers of dengue hospitalisations.
 >
