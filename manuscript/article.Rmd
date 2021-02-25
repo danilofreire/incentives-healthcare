@@ -666,16 +666,16 @@ models, the unit of analysis is the census tract. We employ a
 differences-in-differences estimator to measure the treatment effects
 [@angrist2008mostly].
 
+## Ethics Statement
+
 We pre-registered the experiment on the Evidence in Governance and Policy
-(EGAP) website (<https://osf.io/6q8vu/>), and received IRB approval from New
-York University (IRB-FY2017-17) and Fundação Getulio Vargas (IRB-01/2017). The
-funders of this study had no influence over the formulation, organisation,
-analysis, and interpretation of the outcomes. Healthcare workers gave written
-consent upon filling the Qualtrics questionnaire. During the intervention, the
-occupants of households inspected for breeding sites and larvae gave oral
-consent. For more information on the experimental design, sample
-characteristics, exclusion criteria, and estimation methods, please refer to
-the Supplementary Material.
+(EGAP) website (#20180504AA, <https://osf.io/6q8vu/>), and received IRB
+approval from New York University (IRB-FY2017-17) and Fundação Getulio Vargas
+(IRB-01/2017). The funders of this study had no influence over the formulation,
+organisation, analysis, and interpretation of the outcomes. Healthcare workers
+gave written consent upon filling the pre-treatment questionnaire. During the
+intervention, the occupants of households inspected for breeding sites and
+larvae gave verbal consent. For more information about the experimental design, please refer to the Supplementary Material.
 
 # Results
 \label{sec:results}
