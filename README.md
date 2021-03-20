@@ -1,6 +1,6 @@
 ## Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil
 
-This GitHub repository contains data and documented R code for ["Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil"](https://github.com/danilofreire/incentives-healthcare/blob/master/manuscript/article.pdf), authored by [Danilo Freire](http://danilofreire.github.io) and [Umberto Mignozzetti](http://umbertomig.com). 
+This GitHub repository contains data and documented R code for ["Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil"](https://www.medrxiv.org/content/10.1101/2021.03.10.21252321v1), authored by [Danilo Freire](http://danilofreire.github.io) and [Umberto Mignozzetti](http://umbertomig.com). 
 
 > **Background**. Mosquito control is the most effective means of reducing *Aedes aegypti* infections worldwide. In many developing countries, however, vector management programmes fail to reach their goals due to low worker productivity. Research suggests that financial incentives may increase the productivity of health personnel, yet there is little evidence about the impact of monetary rewards on *A. aegypti*-reduction strategies. We evaluated whether individual and collective financial incentives improve the performance of healthcare workers fighting *A. aegypti*, as well as their effect on city-level numbers of dengue hospitalisations.
 >
@@ -19,15 +19,15 @@ BibTeX entry:
 
 ```
 @article{freire2021incentives,
-	author       = {Freire, Danilo and Mignozzetti, Umberto},
-	title        = {{Financial Incentives and Healthcare Provision: Evidence from an Experimental \textit{Aedes aegypti} Control Programme in Brazil}},
-	elocation-id = {2021.03.10.21252321},
-	journal      = {medRxiv},
-	year         = {2021},
+  author       = {Freire, Danilo and Mignozzetti, Umberto},
+  title        = {{Financial Incentives and Healthcare Provision: Evidence from an Experimental \textit{Aedes aegypti} Control Programme in Brazil}},
+  elocation-id = {2021.03.10.21252321},
+  journal      = {medRxiv},
+  year         = {2021},
   pages        = {1--15},
-	doi          = {10.1101/2021.03.10.21252321},
-	publisher    = {Cold Spring Harbor Laboratory Press},
-	URL          = {https://www.medrxiv.org/content/early/2021/03/19/2021.03.10.21252321},
-	eprint       = {https://www.medrxiv.org/content/early/2021/03/19/2021.03.10.21252321.full.pdf}
+  doi          = {10.1101/2021.03.10.21252321},
+  publisher    = {Cold Spring Harbor Laboratory Press},
+  URL          = {https://www.medrxiv.org/content/early/2021/03/19/2021.03.10.21252321},
+  eprint       = {https://www.medrxiv.org/content/early/2021/03/19/2021.03.10.21252321.full.pdf}
 }
 ``` 
