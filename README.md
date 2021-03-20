@@ -13,16 +13,21 @@ experiment, worker productivity
 
 You can cite the article as: 
 
-> Freire, D. and Mignozzetti, U. 2021. "Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil".
+> Freire, D. and Mignozzetti, U. 2021. "Financial Incentives and Healthcare Provision: Evidence from an Experimental *Aedes aegypti* Control Programme in Brazil". _medRxiv_. Available at <https://www.medrxiv.org/content/10.1101/2021.03.10.21252321v1>.
 
 BibTeX entry:
 
 ```
-@misc{freire-mignozzetti2021incentives,
-  title        = {{Financial Incentives and Healthcare Provision: Evidence from an Experimental \textit{Aedes aegypti} Control Programme in Brazil}},
-  author       = {Freire, Danilo and Mignozzetti, Umberto},
+@article{freire2021incentives,
+	author       = {Freire, Danilo and Mignozzetti, Umberto},
+	title        = {{Financial Incentives and Healthcare Provision: Evidence from an Experimental \textit{Aedes aegypti} Control Programme in Brazil}},
+	elocation-id = {2021.03.10.21252321},
+	journal      = {medRxiv},
+	year         = {2021},
   pages        = {1--15},
-  year         = {2021},
-  howpublished = {\url{https://github.com/danilofreire/incentives-healthcare}}
+	doi          = {10.1101/2021.03.10.21252321},
+	publisher    = {Cold Spring Harbor Laboratory Press},
+	URL          = {https://www.medrxiv.org/content/early/2021/03/19/2021.03.10.21252321},
+	eprint       = {https://www.medrxiv.org/content/early/2021/03/19/2021.03.10.21252321.full.pdf}
 }
 ``` 
